@@ -54,7 +54,7 @@ node scripts/verify-countdown.mjs
 python scripts/compare-screenshots.py
 ```
 
-`QA_PACKAGE_ROOT` can point to an existing node_modules directory containing Playwright. Otherwise the browser script resolves a locally installed Playwright package. Install Playwright separately if needed. Full-page screenshots and JSON results are written to ignored `artifacts/parity/`; the earlier prototype evidence remains under `artifacts/`. Browser checks use isolated headless Edge profiles and block Google Tag Manager requests. They do not interact with a personal browser profile. `scripts/verify-browser.mjs` retains the earlier narrow prototype check; use `verify-full-browser.mjs` for this milestone.
+`QA_PACKAGE_ROOT` can point to an existing node_modules directory containing Playwright. Otherwise the browser script resolves a locally installed Playwright package. Install Playwright separately if needed. Full-page screenshots and JSON results are written to ignored `artifacts/parity/`; the earlier prototype evidence remains under `artifacts/`. Browser checks use isolated headless Edge profiles and block Google Tag Manager requests. They do not interact with a personal browser profile. Use `scripts/verify-full-browser.mjs` for complete-page browser checks.
 
 ## Next stage
 
