@@ -235,6 +235,7 @@
       "destination": "Newbury",
       "distanceMiles": 42,
       "overallTime": "6 hours",
+      "rideTime": "4.5 hours",
       "routeMapImage": "img/ride-maps/marmalade-sandwich.jpeg",
       "meetPoint": {
         "name": "Reading",
