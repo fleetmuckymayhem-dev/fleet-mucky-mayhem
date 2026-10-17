@@ -326,7 +326,8 @@
       "startTime": "09:30",
       "destination": "Bisley, National Shooting Centre (NSC)",
       "distanceMiles": 27,
-      "overallTime": "3.5 hours",
+      "overallTime": "4 hours",
+      "rideTime": "3 hours",
       "routeMapImage": "img/ride-maps/lock-stock-and-barrel.jpg",
       "meetPoint": {
         "name": "Reading Road Canal Wharf",
