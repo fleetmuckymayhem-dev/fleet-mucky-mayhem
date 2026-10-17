@@ -268,6 +268,7 @@
       "destination": "Hampton Court",
       "distanceMiles": 64,
       "overallTime": "9 hours",
+      "rideTime": "6.5 hours",
       "routeMapImage": "img/ride-maps/lunch-at-the-palace.png",
       "meetPoint": {
         "name": "Reading Road Canal Wharf",
