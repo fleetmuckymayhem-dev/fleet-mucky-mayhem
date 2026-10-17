@@ -5,10 +5,10 @@
           <!-- Text Column -->
           <div class="col-xxl-6 order-xxl-1 order-1">
             <h2 class="brand-text display-2">Where To Next...</h2>
-            <h4 class="brand-text pb-3">Countdown: <span id="days">00</span> Day(s), <span id="hours">00</span> Hours,
+            <h4 id="next-countdown" class="brand-text pb-3">Countdown: <span id="days">00</span> Day(s), <span id="hours">00</span> Hours,
               <span id="min">00</span> Minutes, <span id="sec">00</span> Seconds
             </h4>
-            <div>
+            <div id="next-intro">
               <p class="lead text-start pb-3">All Regular Rides are notified via the <a
                   href="https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD" target="_blank" role="button"
                   class="brand-text">WhatsApp Group <i class="bi bi-box-arrow-up-right brand-text"></i></a>.<br />
@@ -18,20 +18,20 @@
               <h5><span class="brand-text">Title:</span> <span id="next-title">Loading…</span></h5>
               <h5><span class="brand-text">Date:</span> <span id="next-date">Loading…</span></h5>
               <h5><span class="brand-text">Start Time:</span> <span id="next-start-time">Loading…</span></h5>
-              <h5><span class="brand-text">Start Point:</span> <span id="next-start-point-name">Loading…</span>
+              <h5 id="next-start-point-row"><span class="brand-text">Start Point:</span> <span id="next-start-point-name">Loading…</span>
                 (<a id="next-start-point-link" href="#" target="_blank" class="brand-text">Google Maps
                   <i class="bi bi-box-arrow-up-right brand-text link-icon"></i></a>)
               </h5>
               <h5><span class="brand-text">Destination:</span> <span id="next-destination">Loading…</span></h5>
-              <h5><span class="brand-text">Distance (approx.):</span> <span id="next-distance">--</span> miles</h5>
-              <h5><span class="brand-text">Event Time (estimate):</span> <span id="next-overall-time">--</span></h5>
+              <h5 id="next-distance-row"><span class="brand-text">Distance (approx.):</span> <span id="next-distance">--</span> miles</h5>
+              <h5 id="next-overall-time-row"><span class="brand-text">Event Time (estimate):</span> <span id="next-overall-time">--</span></h5>
             </div>
           </div>
           <!-- Map Column -->
           <div class="col-xxl-6 text-center pt-5 order-xxl-2 order-2">
             <img id="next-route-map" src="img/ride-maps/marmalade-sandwich.jpeg" alt="Route Map"
               class="img-thumbnail mx-auto d-block">
-            <p class="text-bg-info">Route is provided for guidance only.</p>
+            <p id="next-route-caption" class="text-bg-info">Route is provided for guidance only.</p>
           </div>
         </div>
       </div>

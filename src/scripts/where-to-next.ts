@@ -4,7 +4,14 @@ const fallback = 'img/ride-maps/no-map-provided.png';
 let stop: (() => void) | undefined;
 let generation = 0;
 function text(id: string, value: string | number) { const el = document.getElementById(id); if (el) el.textContent = String(value); }
+function celebrationMode(enabled: boolean) {
+  for (const id of ['next-countdown', 'next-intro', 'next-start-point-row', 'next-distance-row', 'next-overall-time-row', 'next-route-caption']) {
+    const el = document.getElementById(id);
+    if (el) el.hidden = enabled;
+  }
+}
 function renderRide(ride: Ride | null) {
+  celebrationMode(false);
   text('next-title', ride?.title ?? 'TBD');
   text('next-date', formatRideDate(ride?.date));
   text('next-start-time', ride ? (ride.startTime ?? '09:30') : '--');
@@ -24,6 +31,19 @@ function renderRide(ride: Ride | null) {
     image.alt = ride ? `${ride.title} Route Map` : 'No route map provided';
   }
 }
+function renderCelebration() {
+  renderRide(null);
+  celebrationMode(true);
+  text('next-title', 'The Muckies Midwinter Celebration');
+  text('next-date', '1st December 2026');
+  text('next-start-time', '19:00');
+  text('next-destination', 'The Prince of Wales');
+  const image = document.getElementById('next-route-map');
+  if (image instanceof HTMLImageElement) {
+    image.src = 'img/muckies-midwinter-celebration-2026.png';
+    image.alt = 'The Muckies Midwinter Celebration, 1st December 2026: festive bicycles beside a warmly lit pub';
+  }
+}
 function renderClock(target: number | null) {
   const clock = countdownParts(target);
   for (const [id, value] of Object.entries({ days: clock.days, hours: clock.hours, min: clock.minutes, sec: clock.seconds })) text(id, String(value).padStart(2, '0'));
@@ -38,7 +58,10 @@ export async function initWhereToNext(): Promise<void> {
     let selected: Ride | null | undefined;
     const tick = () => {
       const ride = nextRide(data.longerRides);
-      if (ride !== selected) { renderRide(ride); selected = ride; }
+      if (ride !== selected) {
+        if (ride) renderRide(ride); else renderCelebration();
+        selected = ride;
+      }
       renderClock(ride?.date ? londonDeparture(ride.date, ride.startTime) : null);
     };
     tick();
