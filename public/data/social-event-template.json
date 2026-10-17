@@ -1,0 +1,51 @@
+{
+  "_instructions": {
+    "purpose": "Use this template to create a new Social Event entry for social-events.json",
+    "howToUse": [
+      "1. Copy the 'newEvent' object below",
+      "2. Paste it into the 'events' array in social-events.json",
+      "3. Fill in all the fields following the guidance below",
+      "4. Remove any fields marked as OPTIONAL if not needed",
+      "5. Save social-events.json and rebuild the site"
+    ],
+    "fieldGuide": {
+      "id": "Lowercase, hyphenated: {event-type}-{YYYY-MM-DD} e.g. 'pub-quiz-2026-01-17'",
+      "title": "The event name as it appears in the calendar",
+      "date": "ISO format YYYY-MM-DD e.g. '2026-01-17'",
+      "startTime": "24-hour format HH:MM e.g. '19:30'",
+      "duration": "OPTIONAL - Estimated duration e.g. '2-3 hours'",
+      "meetPoint.name": "Venue name",
+      "meetPoint.googleMapsUrl": "Google Maps link to venue",
+      "meetPoint.note": "OPTIONAL - Extra info like 'Upstairs function room'",
+      "guidance": "Brief description of the event and any useful information"
+    }
+  },
+
+  "newEvent": {
+    "id": "event-type-YYYY-MM-DD",
+    "title": "Event Title Here",
+    "date": "YYYY-MM-DD",
+    "startTime": "19:30",
+    "duration": "2-3 hours",
+    "meetPoint": {
+      "name": "Venue Name",
+      "googleMapsUrl": "https://maps.app.goo.gl/YOUR_MAPS_LINK",
+      "note": ""
+    },
+    "guidance": "Brief description of the event and any useful information for attendees."
+  },
+
+  "_exampleEvent": {
+    "id": "pub-quiz-2026-01-17",
+    "title": "Pub Quiz Night",
+    "date": "2026-01-17",
+    "startTime": "19:30",
+    "duration": "2-3 hours",
+    "meetPoint": {
+      "name": "The Mucky Duck",
+      "googleMapsUrl": "https://maps.app.goo.gl/example",
+      "note": "Upstairs function room"
+    },
+    "guidance": "Join us for our monthly pub quiz! Teams of up to 6. Food available from 6pm."
+  }
+}

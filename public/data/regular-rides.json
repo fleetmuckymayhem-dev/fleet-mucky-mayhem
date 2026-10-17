@@ -1,0 +1,24 @@
+{
+  "_schema": {
+    "version": "1.0",
+    "eventType": "Regular-Ride"
+  },
+  "events": [
+    {
+      "id": "sunday-social-ride",
+      "title": "Sunday Social Ride",
+      "daysOfWeek": [0],
+      "startTime": "10:00",
+      "startRecur": "2026-01-01",
+      "endRecur": "2026-12-31",
+      "duration": "03:00",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "distanceMiles": 15,
+      "description": "Our regular weekly social ride. All abilities welcome. We typically explore the local towpaths and trails.",
+      "notes": []
+    }
+  ]
+}

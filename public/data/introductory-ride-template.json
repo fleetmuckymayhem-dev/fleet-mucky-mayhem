@@ -1,0 +1,54 @@
+{
+  "_instructions": {
+    "purpose": "Use this template to create a new Introductory Ride entry for introductory-rides.json",
+    "howToUse": [
+      "1. Copy the 'newRide' object below",
+      "2. Paste it into the 'events' array in introductory-rides.json",
+      "3. Fill in all the fields following the guidance below",
+      "4. Remove any fields marked as OPTIONAL if not needed",
+      "5. Save introductory-rides.json and rebuild the site"
+    ],
+    "fieldGuide": {
+      "id": "Lowercase, hyphenated: intro-ride-{YYYY-MM-DD} e.g. 'intro-ride-2026-01-18'",
+      "title": "The ride name as it appears in the calendar",
+      "date": "ISO format YYYY-MM-DD e.g. '2026-01-18'",
+      "startTime": "24-hour format HH:MM e.g. '10:00'",
+      "duration": "OPTIONAL - Estimated duration e.g. '1.5-2 hours'",
+      "meetPoint.name": "Meeting location name",
+      "meetPoint.googleMapsUrl": "Google Maps link to meeting point",
+      "meetPoint.note": "OPTIONAL - Extra info about meeting point",
+      "guidance": "Brief description of the ride - distance, terrain, pace, etc."
+    },
+    "rideGuidelines": [
+      "Introductory rides are designed for newcomers to cycling or the club",
+      "Typically 8-12 miles on flat, traffic-free routes",
+      "No one gets left behind - the group stays together",
+      "Perfect first step before joining regular rides"
+    ]
+  },
+
+  "newRide": {
+    "id": "intro-ride-YYYY-MM-DD",
+    "title": "Intro Ride Title",
+    "date": "YYYY-MM-DD",
+    "startTime": "10:00",
+    "meetPoint": {
+      "name": "Reading Road Canal Wharf",
+      "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",
+      "note": ""
+    },
+    "guidance": "Gentle ride on flat paths. Perfect for newcomers. No one left behind!"
+  },
+
+  "_exampleRide": {
+    "id": "intro-ride-2026-01-18",
+    "title": "New Year Intro Ride",
+    "date": "2026-01-18",
+    "startTime": "10:00",
+    "meetPoint": {
+      "name": "Reading Road Canal Wharf",
+      "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+    },
+    "guidance": "Gentle 8-mile loop on flat canal paths. Perfect for newcomers. No one left behind!"
+  }
+}

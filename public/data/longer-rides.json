@@ -1,0 +1,870 @@
+{
+  "_schema": {
+    "version": "1.0",
+    "eventType": "Longer-Ride"
+  },
+  "longerRides": [
+    {
+      "id": "lock-stock-and-barrel-2026-02-21",
+      "title": "Lock, Stock and Barrel",
+      "date": "2026-02-21",
+      "year": 2026,
+      "startTime": "09:30",
+      "destination": "Bisley, National Shooting Centre (NSC)",
+      "distanceMiles": 27,
+      "overallTime": "4 hours",
+      "routeMapImage": "img/ride-maps/lock-stock-and-barrel.jpg",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Easy going along towpath, Cafe at NSC, Bisley.",
+      "notes": ["The weather was excellent. 9 set out from Fleet.  The towpath had an amount of goopy mud, but overall it was reasonable going. The new section of towpath at Deepcut flight is wide and excellent going.  The cafe was great value and good food/coffee.  A minor stop on the return trip to top up a tyre, otherwise no incidents"],
+      "photosUrl": "https://app.box.com/s/mh9gribpzx08fvdjnwrc4d8pmw9uu3o8"
+    },
+    {
+      "id": "war-of-the-worlds-2026-03-14",
+      "title": "War of the Worlds",
+      "date": "2026-03-14",
+      "year": 2026,
+      "startTime": "09:30",
+      "destination": "Woking",
+      "distanceMiles": 36,
+      "overallTime": "5.5 hours",
+      "routeMapImage": "img/ride-maps/war-of-the-worlds.jpg",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Easy going along towpath, H.G. Wells statue, Martian Alien Tripod sculpture, Cafe at The Lightbox Art Gallery.",
+      "notes": ["11 headed out on this ride and all made it back...a result!  The weather was pretty much perfect and the towpath is slowly drying out. On the way out at the end off the new towpath section passing Deepcut lock flight they have installed 3 clear black and white 'bollards' to stop vehicle access.... and Rob (whilst busy chatting... no surprise there then!) managed to find one! Doh!... a very spectatuclar crash! Ouch!.... Bike and Rider appeared most okay... some physical bruises and bruised pride mainly.  We were able to enjoy the sun and sat outside at the Lightbox cafe at Woking. On the return journey near to Mytchett canal cafe, Peter decided that it was so warm that he opted for a dip in the canal.... maybe a lack of concentration going under a bridge... handlebars clipped the bridge and in he dived! Double Doh!  We had the almost mandatory 'puncture' from Barney too and Rob used his excellent electric pump to get him home."],
+      "photosUrl": "https://app.box.com/s/u5sz0hy6c6au68ssj1w5k81o2ckj5sdh"
+    },
+    {
+      "id": "rags-to-riches-2026-04-04",
+      "title": "Rags to Riches",
+      "date": "2026-04-04",
+      "year": 2026,
+      "startTime": "09:30",
+      "destination": "Weybridge",
+      "distanceMiles": 48,
+      "overallTime": "7 hours",
+      "routeMapImage": "img/ride-maps/no-map-provided.png",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": [
+        "Easy going along towpath. All options for shorter rides and trains from Brookwood (14m), Woking (18m), Weybridge (24m) , Woking(30m), Brookwood (34m) - please CHECK THAT THE TRAINS ARE RUNNING.  Additionally you need to be carrying an absolute minimum of 1.5 Litres of fluid, preferably 2 Litres, plus consider some snacks and possibly Gels etc. Ensure you fill your bottles/hydration pack at the Cafe.",
+       "The bikes are parked on the high street, not visible from the cafe if in indoors, please ensure you have adequate security locks with you!"
+      ],
+      "notes": [
+        "10 set out, one arrived at the start with a puncture (tubeless set up), needed some air... but picked up a 2nd puncture and it failed to properly seal, hence dropped out at Woking. No major issues were had.",
+        "Arrived 12:35 at Cafe Enzo as always coffee, food and service were excellent. One rider opted to come back to Fleet in the \"broom wagon\"... Andy had driven out to meet the riders, so 8 headed back.",
+        "Departed from Cafe about 13:20.  Back in Fleet before 16:30... perfect timing."
+      ],
+      "photosUrl": "https://app.box.com/s/g11rapmp6fh8z6isod45wjmofxb6incf"
+    },
+    {
+      "id": "burnt-cakes-2026-05-02",
+      "title": "Burnt Cakes",
+      "date": "2026-05-02",
+      "year": 2026,
+      "startTime": "09:00",
+      "destination": "Winchester",
+      "distanceMiles": 40,
+      "overallTime": "8 hours",
+      "routeMapImage": "img/ride-maps/burnt_cakes.png",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",
+        "note": "NOTE EARLIER START"
+      },
+      "guidance": [
+        "You need to be carrying an absolute minimum of 3 Litres of fluids... please do NOT turn up with any less than this... if you do not have enough fluids at the start, we will kindly ask you NOT to join the ride.",
+        "Travelling on towpath, cross country, some tarmac, Three Castle Path, Abbotstone Down cycle trail, Oxdrove Way, Wayfarer's Walk, Allan King Way, South Downs Way. We pass Cheesefoot Head where Boomtown festival is held. The scenery is spectacular!",
+        "It is at least 6 hours riding to Winchester, there are no planned stops on the way, you need to carry enough fluids and food for this testing ride.",
+        "Return by train Winchester to Fleet. This is certainly a challenging ride on old drovers tracks.",
+        "Make sure you have plenty of fluids and snacks"
+      ],
+      "notes": [
+        "8 set out, one arrived needing extra air in tyres (tubeless set up). The weather was good, cool to start, but warmed up and we just beat the rain to Winchester. ",
+        "Someone fell into nettles, got both feet wet in one of the only puddles and also broke a spoke!  Thankfully everyone carried enough fluids and food... well done everyone!",
+        "We arrived in Winchester approx 15.15.  all very tired in the cafe, after eating and coffee, headed for the train, back in Fleet after 17:15... it was raining.",
+        "6 hours 15 mins overall ride time and 8 hours 15 mins out and back."
+      ],
+      "photosUrl": "https://app.box.com/s/96w2tcq1fze7g8pzi2tti4us1w4q17x3"
+    },
+    {
+      "id": "jabberwocky-2026-05-23",
+      "title": "Jabberwocky",
+      "date": "2026-05-23",
+      "year": 2026,
+      "startTime": "09:00",
+      "destination": "Guildford and Wey Navigation",
+      "distanceMiles": 50,
+      "overallTime": "8 hours",
+      "routeMapImage": ["img/ride-maps/jabberwocky.jpeg"],
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": [
+        "Mixed riding including Tarmac, a fun challenging ride!  This is not the usual near flat ride!",
+        "We head to Guildford, via Ash, Pirbright. A mix of towpath, tarmac, cross country.",
+        "Lunch, coffee at Yvonne Arnaud theatre cafe",
+        "Then follow the Wey Navigation (approx 12 miles) towards Weybridge, pick up Basingstoke canal for the return.  Stop for Coffee at the Light Box, Woking",
+        "Make sure you have plenty of fluids and snacks",
+        "Opt out points - Guildford (18 miles), Woking (36 miles)"
+      ],
+      "notes": [
+        "09:00 Depart! A very hot and sunny day!",
+        "10 folks left Fleet, one more eventually caught up... so we were 11... then 2 wanted to join at Ash Lock (it's not ideal collecting folks part way), sadly one of them had decided that the polite ask to wear a cycle helmet, meant that he didn't have to wear one... so we have now had to change the website to word it so that is a requirement! Some people just want to push limits! doh!",
+        "So 11 carried on, only to be joined by one more after about 8 miles... BECAUSE DESPITE BEING TOLD TO CHECK START TIMES ON THE WEBSITE, HE ADMITTED THAT HE DIDN'T BOTHER READING THE WEBSITE - again what is wrong with folks that it's too hard to read information from the website! Doh! Doh! We are now 12.",
+        "Shortly after joining, our number 12 had a rear puncture he is running tubeless, has no tools, no pump and no inner tube (someone supplied a tube... remember these cost money!) and appears to have never cleared the old sealant out over several years... so a considerable delay (30+ mins)... AGAIN THE WEBSITE ADVISES WHAT TO CARRY... BUT THIS PERSON DOESN'T READ THE WEBSITE!!!... Doh! Doh! Doh!",
+        "So far number 12... does not bother to read the website for start time, does not bother to read the website for what tools/spares should be carried... and then asks what cafe we going to... as he does not bother to read the website OR the WhatsApp information - Can someone explain how we can get information across to everyone?",
+        "We get to Guildford with no further issues... thankfully!",
+        "Just a few minutes after leaving the cafe... number 12 has a front puncture... in his tubeless tyre... again as they had not been cleaned out regularly... the valve was gummed up with sealant and thus would seal properly after adding air... we had another 15-20 min delay... Doh! Doh! Doh! Doh!... luckily not too far from the Railway Station... so Number 12 headed for the station, we are back to 11",
+        "The route along the Wey Navigation and Basingstoke canal was thankfully uneventful! we did have a nice stop at pub, where we were able to top up bottles with iced water... very welcome!",
+        "We got to the Light Box, Woking only to find the cafe was shut (despite being assured it would be open when checked earlier in the week), so just a mile or so down the road we found a cafe at St John's. Several Ice Creams were consumed!",
+        "No further issues after that... finally back in Fleet arounf 17:50, some 45-60 mins behind schedule.",
+        "The big plus... everyone had taken note and carried enough water... well done! Please can you all ensure that you are carrying tools/spares etc... as per the website as guidance!"
+      ],
+      "photosUrl": [
+        "https://app.box.com/s/gc245750rnjhvd0orhznkxdlr19fs50p"
+      ]
+    },
+    {
+      "id": "city-slickers-2026-06-13",
+      "title": "City Slickers",
+      "date": "2026-06-13",
+      "year": 2026,
+      "startTime": "09:00",
+      "destination": "London - Waterloo Station",
+      "distanceMiles": 57,
+      "overallTime": "9 hours",
+      "routeMapImage": "img/ride-maps/city-slickers.jpg",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",
+        "note": "NOTE EARLIER START"
+      },
+      "guidance": [
+        "Towpath out to Weybridge, Wey navigation to Thames path. Lunch stop at Hampton Court, then into London, the last few miles are slow going and some of there is a very small amount on road. Train back from Waterloo.",
+        "Make sure you have plenty of fluids (2 litres min) and snacks.",
+        "Plenty of opt out points - Brookwood (14 miles), Woking (18 miles), Weybridge (24 Miles), Hampton Court/Surbiton (32 Miles)"
+      ],
+      "notes": [
+        "09:00 Depart!",
+        "15 set out (1 was late as usual), a few were only planning to do part of the route, 1 exited at Bisley, the next at Woking. 2 others had planned to head home from Woking, but got convinced to go to Weybridge... and once at Weybridge, they were persuaded to join us for lunch at the Dish Cafe, Hampton Court! :)",
+        "11:00 Arrived at Woking, a comfort break for anyone who needed it.",
+        "12:45 Arrived at Dish Cafe, Hampton Court... 13 for lunch!",
+        "14:00 Departed Hampton Court, 2 headed to the train station, 11 continued on.",
+        "17:00’ish we arrived at Waterloo Station... much discussion about train tickets and train times... one misunderstanding, but nothing too serious. No direct trains back to Fleet due to Engineering works around the New Malden area, so a very, very slow train to Woking (nearly an hour)... change at Woking, then on to Fleet... finally home about 19:00... somewhat later than expected, but all okay!",
+        "No major mechanicals, no punctures, everyone seemed to be well prepared with food and drink, and generally enjoyed themselves! Well done, everyone!",
+        "NOTE: No matter how polite we were to folks on the towpaths, we still had 2 grumpy walkers (1 male, 1 female) who insisted they had priority and were just rude and awkward! 1 other dog walker shouted that we were going too fast... I think we were doing about 7mph at the time, with plenty of room! There really is no pleasing some folks!"
+      ],
+      "photosUrl": "https://app.box.com/s/5tc7qy9i3ub56gpm6y9gal7x27e8x7at"
+    },
+    {
+      "id": "ddotts-2026-07-04",
+      "title": "DDOTTS - Daft Day Out To The Seaside",
+      "date": "2026-07-04",
+      "year": 2026,
+      "startTime": "08:30",
+      "destination": "Guildford to Shoreham-by-Sea",
+      "distanceMiles": 76,
+      "overallTime": "10 hours",
+      "routeMapImage": "img/ride-maps/DDOTTS.png",
+      "meetPoint": {
+        "name": "Guildford Railway Station, Main entrance",
+        "googleMapsUrl": "https://maps.app.goo.gl/yP8CiCuyrYRzgzus7",
+        "note": "NOTE EARLIER START AND DIFFERENT START POINT"
+      },
+      "guidance": [
+        "Old disused railway line route, minimal tarmac, mainly flat going. ",
+        "Three options for rides:",
+        "  1. Ice Cream Run: Ride to Southwater Country Park Cafe - 21 miles each way (42 total).",
+        "  2. Sails and Rails: Ride to Shoreham by Sea, see the sails/boats and catch the train back, approx 38 miles.",
+        "  3. Full Monty: Guildford to Shoreham-by-sea and return - 76 miles!",
+        "Many options for shorter rides, cafe stop at 21 miles, thus folks can return from there. Various options for trains back to Guildford. All can be catered for!",
+        "Things to note:",
+        "> Ensure that you are carrying enough water, aim for 0.5 litres per hour of riding, ideally have 2 litres of water.",
+        "> Ensure that you have suitable snacks and take them onboard at every opportunity, do not wait until you are hungry!",
+        "> We need to maintain a reasonable pace of 10mph all the way there and back, otherwise we are riding in the dark...and no, we do NOT want to be riding in the dark!",
+        "> The schedule:",
+        "  - Depart 08:30",
+        "  - Approx 10:45 Coffee stop, Southwater Country park (21 miles). Coffee, cake and ensure that you FILL your water bottles",
+        "  - 13:00 Sat on the beach at Shoreham-by-Sea and eating. Please bring picnic lunch, we do not go to a cafe.",
+        "  - 14:00 or earlier, we need to leave the coast and head back",
+        "  - 15:40 Coffee stop, Southwater Country park ..it closes at 16:00! Again FILL your water bottles",
+        "  - 18:30 Fingers crossed we are back in Guildford!",
+        "Be prepared, have plenty of water and snacks. The Full Monty is 8 hours of riding and 10 hours start to finish.",
+        "If you are considering opting out at any point, please ensure you know the nearest Railway stations etc and how to get back to Guildford."
+      ],
+      "notes": [
+        "08:30 Departed… we had received a message at 07:00 that some were due in at 08:28... needless to say, this was late notice, hence we left as planned.",
+        "10 left the station; one more caught up shortly after, making it 11. Then we were joined by one more, so 12 in total - 3 Ebikes, 3 gravel bikes and 6 proper MTBs! :)",
+        "The weather was warm but overcast, so it was pleasant to ride in.",
+        "11:00 An uneventful ride down to the Southwater Country Park Cafe. A welcome intake of coffee and food.",
+        "11:25 Depart... again, good progress.  We had a minor puncture issue with a tubeless set-up, added air and pressed on.",
+        "A few miles from the coast, we stopped and helped a couple of teenagers with a puncture; again, the electric pump was very useful.",
+        "13:15 Arrived at the beach! It was sunny and breezy with some good waves!  A couple of folks went for a paddle, the rest slumped on the shingles and ate their picnic!",
+        "14:00 11 Departed the coast, one headed (Ebike) for a train. No issues as we headed back inland.",
+        "16:00 Arrived back at Southwater Country Park, a welcome relief as the temperature was rising, several folks soaked their heads under the cold water tap. Many of us had Ice Cream and coffee!",
+        "16:25... ish departed Cafe... we came across a family group where the female was sprawled on the floor, a very small child crying.  The team ‘nurse’ checked her over; we fed the kids Jelly Babies, which solved the crying issue (mostly!).  The family group were helped back along the track, and eventually they were escorted home... Well done, all! It did delay us by 30-40 minutes.",
+        "At 'The Hill'... as expected, the 2 remaining Ebikes made it up, and just 2 others completed the challenging climb... 7 of us walked!",
+        "No further issues, although folks were a tad quieter... lol",
+        "19:40 back in Guildford, 11 hours and 10 mins after leaving... tired, dusty and mostly happy to have completed the adventure – Well done everyone!  Great to see everyone was properly prepared with plenty of fluids and food... excellent to see!"
+      ],
+      "photosUrl": "https://app.box.com/s/gfkf8ix5kqwougtlctinz0881o8hoe8i"
+    },
+    {
+      "id": "marmalade-sandwich-2026-08-29",
+      "title": "Marmalade Sandwich",
+      "date": "2026-08-29",
+      "year": 2026,
+      "startTime": "09:30",
+      "destination": "Newbury",
+      "distanceMiles": 42,
+      "overallTime": "6 hours",
+      "routeMapImage": "img/ride-maps/marmalade-sandwich.jpeg",
+      "meetPoint": {
+        "name": "Reading",
+        "googleMapsUrl": "https://maps.app.goo.gl/cXQeQQU3Hvym1SAj9",
+        "note": "Meet in Reading... Details to follow"
+      },
+      "guidance": [
+        "Reading to Newbury along the Kennet and Avon canal - more details to follow",
+        "Setting off through Reading onto the Kennet canal, we follow this out of Reading quickly into open countryside, round sailing lakes, past Theale and Woolhampton before heading into Newbury proper.",
+        "Canal towpath with varied terrain, from tarmac to ungraded bumpy fields, and a mix of landscape from shaded woods to broad open fields, with red kites wheeling round looking for prey.",
+        "It is around 2.5 hours riding to Newbury with no planned cafe stops on the way, with a stop planned at Newbury as we come off the canal, before turning round and heading for home."
+      ],
+      "notes": [
+        "09:30: 9 left on time (just - we had an honorary Steve for the day!) in “damp” conditions.",
+        "Headed out through Reading, no signs of any hungover Reading festival goers, and onto the Kennet.",
+        "A nice easy canal route, narrow in places and made narrower by the explosion of vegetation since even a week ago, the rain mostly let up, and we arrived intact at the cafe just after 12:10.",
+        "The cafe served some very tasty food, super quickly, and we were on our way again just after 13:10, heading back down Newbury High Street and onto the canal.",
+        "Our honorary Steve (aka Peter) managed to miss a turning on the bridge and almost took a dunk in the canal (but from a height, this time), but thankfully caught himself and his bike before the splash.",
+        "We had a nice stop to celebrate Barney not falling off his bike this time, but with about 20km to go, the rain kicked in again, and only let up once we were back in Reading.",
+        "Everyone made it back, mostly intact 😊",
+        "Canal was easy riding, but the puddles were growing by the end, so a perfect muckies day out!"
+      ],
+      "photosUrl": "https://app.box.com/s/23nb4ga0b6r30rw60l1v9tlo3jaj34bb"
+    },
+    {
+      "id": "lunch-at-the-palace-2026-08-01",
+      "title": "Lunch at the Palace",
+      "date": "2026-08-01",
+      "year": 2026,
+      "startTime": "09:00",
+      "destination": "Hampton Court",
+      "distanceMiles": 64,
+      "overallTime": "9 hours",
+      "routeMapImage": "img/ride-maps/lunch-at-the-palace.png",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",
+        "note": "NOTE EARLIER START"
+      },
+      "guidance": [
+        "Towpath out to Weybridge, Wey navigation to Thames path, then to Hampton Court for Lunch and coffee.",
+        "Make sure you have plenty of fluids and snacks.",
+        "Plenty of opt out points - Brookwood (14 miles), Woking (18 miles), Weybridge (24 Miles), Hampton Court/Surbiton (32 Miles)"
+      ],
+      "notes": [
+        "09:00 Departed on time, 8 set out, with one person arriving with seconds to spare!",
+        "The going was very firm, fast and dry!",
+        "The regular drink/snack breaks worked well.",
+        "10:00 a quick comfort break at Mytchett Canal Centre.",
+        "11:00 Arrived at the Light Box, Woking for another comfort break.",
+        "We of course had the mandatory stop to view the graffiti/art works under the M25.",
+        "At the Thames Lock, Weybridge area, 2 folks opted out and headed back to Woking for the train…. and then managed to get on the wrong train and have a tour out to Guildford and back! Doh!",
+        "12:45 - Six arrived at Dish Cafe, Hampton Court. As always, the coffee, food and service were excellent.",
+        "13:45 We started back towards Fleet.",
+        "15:15 Ice cream and coffee at the Light Box cafe, Woking.",
+        "15:50 Exited Woking.",
+        "17:45 Back in Fleet – a great day out, fabulous weather, beautiful scenery and great company.",
+        "Approx 6 hours 15 mins riding time.",
+        "Points to Note: of course we had the odd grumpy person, no matter how nice we try to be... some folks just want to be unpleasant. Sadly, we also saw at least a couple of full-on electric motorbikes (not eBikes… proper motorbike styles) and electric scooters ridden by kids... not good."
+      ],
+      "photosUrl": "https://app.box.com/s/cg0xogfvppq4at6206wz2zwfc9tu1gij"
+    },
+    {
+      "id": "war-of-the-worlds-2026-09-26",
+      "title": "War of the Worlds",
+      "date": "2026-09-26",
+      "year": 2026,
+      "startTime": "09:30",
+      "destination": "Woking",
+      "distanceMiles": 36,
+      "overallTime": "5 hours",
+      "routeMapImage": "img/ride-maps/war-of-the-worlds.jpg",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Easy going along towpath, H.G. Wells statue, Martian Alien Tripod sculpture, Cafe at The Lightbox Art Gallery.",
+      "notes": [],
+      "photosUrl": "https://app.box.com/s/6v8glpyoab278vx16s1v3f3uhjnkb62f"
+    },
+    {
+      "id": "lock-stock-and-barrel-2026-10-17",
+      "title": "Lock, Stock and Barrel",
+      "date": "2026-10-17",
+      "year": 2026,
+      "startTime": "09:30",
+      "destination": "Bisley, National Shooting Centre (NSC)",
+      "distanceMiles": 27,
+      "overallTime": "3.5 hours",
+      "routeMapImage": "img/ride-maps/lock-stock-and-barrel.jpg",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Easy going along towpath, Cafe at NSC, Bisley.",
+      "notes": [],
+      "photosUrl": "https://app.box.com/s/mmbst4de8uo3mu4vex1ntno5j547i8vg"
+    }
+  ],
+  "archivedRides": [
+    {
+      "id": "through-the-looking-glass-2025-09-20",
+      "title": "Through the Looking Glass",
+      "date": "2025-09-20",
+      "year": 2025,
+      "startTime": "09:00",
+      "destination": "Reverse Guildford loop+",
+      "distanceMiles": 53,
+      "overallTime": "8 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",
+        "note": "NOTE EARLIER START"
+      },
+      "guidance": "Mixed riding including Tarmac, a fun challenging ride! Anti-clockwise loop to Guildford, via Caesars Camp, Farnham. Lunch, coffee at Yvonne Arnaud Theatre cafe. Then follow the Wey Navigation (approx 12 miles) towards Weybridge, pick up Basingstoke canal for the return. Make sure you have plenty of fluids and snacks. Opt out points - Guildford (20 miles), Woking (36 miles)",
+      "notes": [
+        "09:00 Depart ...five set out on another challenging adventure, 3 x analogue and 2 x electric bikes.",
+        "The initial challenge was the climb to the top of Beacon Hill/Caesar's camp area. Then a very fast descent down into Farnham, we made good time...about an hour to Farnham Castle.",
+        "Out of Farnham on old tracks/lanes and then picking up some road sections via Seale and Puttenham, then Watts Gallery and the climb up Sandy Lane. A hugely fast down hill in Guildford, arriving at Yvonne Arnaud Theatre Cafe at 12:04 ....pretty much on schedule !....This initial section is 20 miles and very much hard/tough work!",
+        "12:04 At the cafe we got to sit with various well known Actors who would be performing later that day! The food and coffee was very welcome at this stage of the ride!",
+        "Headed out of Guildford around 12:55 and picked up the Wey Navigation, thankfully for us, we have not had too much rain and thus is was reasonable going. Only a minor unplanned dismount and a broken bottle cage to note.",
+        "15:02 Finally at Woking ...again pretty close to being on schedule!....But we were now all flagging, fatigue was setting in, coffee and cake were much appreciated. A couple of folks had found the limits of comfort of their saddles!",
+        "15:20 exited Woking, Basingstoke canal back. The skies greyed over and we had a couple of heavy showers. Several sections of the canal are now completely drained down ahead of the planned towpath repairs.",
+        "17:56 ...phew ....finally back in Fleet!....That is one very gruelling and tiring ride! 9 hours overall with 5.75 Hours ride time...and 53 miles! Fantastic scenery....seeing such things as...Castle, Theatre, Art Gallery, 200 year old Navigation system. No Mechanicals"
+      ],
+      "photosUrl": "https://app.box.com/s/fgr2mlftwqb1ce2ioun3s6djmmjsr9ok"
+    },
+    {
+      "id": "burnt-cakes-2025-08-23",
+      "title": "Burnt Cakes",
+      "date": "2025-08-23",
+      "year": 2025,
+      "startTime": "09:00",
+      "destination": "Winchester",
+      "distanceMiles": 40,
+      "overallTime": "6 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",
+        "note": "NOTE EARLIER START"
+      },
+      "guidance": "Towpath, cross country, some tarmac. Return by train Winchester to Fleet. This is certainly a challenging ride on old drovers tracks. Make sure you have plenty of fluids and snacks",
+      "notes": [
+        "09:00 Depart ...five set out on this epic adventure, 4 x analogue and 1 x electric bikes.",
+        "The towpath surface was as good as it gets and made for a quick pace to Greywell. This was about an hour in and thus we stopped for a longer snack break. We did stop at approx every hour point for a longer break in addition to the quick stops at 15-20 mins",
+        "Once off the towpath the pace slowed.",
+        "At around the 17 mile marker (near Cooper's Farm), we hit the dreaded spot of last years incident! It's a horrible surface, but thankfully no issues... just lots of swearing! lol",
+        "This route has lots of very narrow tracks, only just enough room for bike handlebars. Most of us ended up with lots of bramble scratches and nettle stings on legs and arms.",
+        "At around 4 hours in, one rider had exhausted his very limited supply of water/fluids and had to be helped out ...*again folks*... please check you are carrying enough water, it is your responsibility!",
+        "We travelled on towpath, Three Castle Path, Abbotstone Down cycle trail, Oxdrove Way, Wayfarer's Walk, Allan King Way, South Downs Way. We past Cheesefoot Head where Boomtown festival is held. The scenery is spectacular!",
+        "15:05 We finally arrived in Winchester and saw King Alfred... he wasn't burning any cakes though! lol",
+        "We found a nice independent cafe for a very welcome coffee!",
+        "Off to the train station, staff were excellent ensuring we got on the train in the correct carriages etc... Winchester to Basingstoke, change train, Basingstoke to Fleet. Back in Fleet just after 17:00... a great day out. No Mechanicals.",
+        "Overall journey time 6 hours and 5 mins. Actual travel time was approx 4 hours 40 mins. This is a very challenging ride, narrow paths, lots of climbs and some fun fast downhills. You need to be a competent rider, be comfortable with your gears AND bring plenty of water!"
+      ],
+      "photosUrl": "https://app.box.com/s/sa25qfyzasbu3iiuf7o3ih1vj4y1c9b8"
+    },
+    {
+      "id": "ddotts-2025-08-09",
+      "title": "DDOTTS - Daft Day Out To The Seaside",
+      "date": "2025-08-09",
+      "year": 2025,
+      "startTime": "08:30",
+      "destination": "Guildford to Shoreham-by-Sea",
+      "distanceMiles": 76,
+      "overallTime": "10 hours",
+      "meetPoint": {
+        "name": "Guildford Railway Station, Main entrance",
+        "googleMapsUrl": "https://maps.app.goo.gl/yP8CiCuyrYRzgzus7"
+      },
+      "guidance": "Old disused railway line route, minimal tarmac, mainly flat going. Three options for rides: 1. Ice Cream Run: Ride to Southwater Country Park Cafe - 21 miles each way (42 total). 2. Sails and Rails: Ride to Shoreham by Sea, see the sails/boats and catch the train back, approx 38 miles. 3. Full Monty: Guildford to Shoreham-by-sea and return - 76 miles!",
+      "notes": [
+        "08:35 Depart... five minutes late due to someone not ensuring they had a bike rack correctly installed",
+        "9 folks set off, one person had a cold - folks this is not ideal on such a long ride",
+        "There is always someone that forgets something... lol this time it was me, I left my handlebar bag in the car... containing my sandwiches, crisps and extra energy gels/bars... doh!",
+        "Shortly after getting underway, a longer stop was required to put air in a tyre (not checked before starting out).",
+        "The ride surface was good and quick. Rob opted to take the lead and managed to go the wrong way... lol thankfully only a few metres",
+        "11:10 Arrived at Southwater Country Park cafe.",
+        "Coffee, snacks and loo break, waterbottles were topped up, plus I bought a sandwich to have on the beach!",
+        "11:40 Departed Cafe",
+        "This section proved taxing for two newer riders (one with a cold), so we educated them about 'drafting' which certainly helped a bit! - following closely behind other bike will mean that you use less effort!",
+        "13:35 Finally at Shoreham beach",
+        "A couple of very relieved folks to finally be on the beach. Only one person went for a paddle, the rest fed, chatted and recovered",
+        "14:15 Departed Shoreham - 3 headed off to catch a train, the other 6 headed back to Guildford",
+        "Good steady progress on the return, although it had warmed up!",
+        "16:05 Arrived at Southwater Country Park Cafe",
+        "Fuelled up and topped up waterbottles, icecreams for some and definitely some very weary folks now.",
+        "16:30 Departed Cafe",
+        "We had delights of 'climbing' over the sealed up tunnel near Baynards (Cox Green Road)... most of us trudged up it and gathered our breath at the top... once setting off Rob then went the wrong way again (hopeless as a homing pigeon!)",
+        "I had to quickly hop off the bike to relieve some cramp and an SIS Gel (thanks Rob) helped and longer stop to stretch out... then all good to get back.",
+        "19:05 Back at Guildford Station... slightly later than planned, this is the issue with this ride, all minor delays accumulate... but hey we were back in daylight, so a result. Another terrific DDOTTS event, well done everyone! Overall the riding time gave us an average of about 10mph...which is our standard pace on all longer rides, the delays were due to longer time on stops",
+        "No Mechanical issues, a win!"
+      ],
+      "photosUrl": "https://app.box.com/s/w0kwzcy37fgpcgdplzf0gk5m9ezvb6m8"
+    },
+    {
+      "id": "lunch-at-the-palace-2025-07-05",
+      "title": "Lunch at the Palace",
+      "date": "2025-07-05",
+      "year": 2025,
+      "startTime": "09:00",
+      "destination": "Hampton Court",
+      "distanceMiles": 64,
+      "overallTime": "8 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",
+        "note": "NOTE EARLIER START"
+      },
+      "guidance": "Towpath out to Weybridge, Wey navigation to Thames path, then to Hampton Court for Lunch and coffee. Make sure you have plenty of fluids and snacks. Plenty of opt out points - Brookwood (14 miles), Woking (18 miles), Weybridge (24 Miles), Hampton Court/Surbiton (32 Miles)",
+      "notes": [
+        "09:00 Depart",
+        "Biggest turn out yet! 14 started out! Amazing!",
+        "No issues on the way out.",
+        "11:00 Woking LightBox for a comfort break",
+        "12:40 Hampton Court and Dish Cafe. As usual, excellent menu and brilliant service. Some folks had 2 meals!! ...or a meal and cake! lol",
+        "One person was unlucky enough to have ridden through dog poo and somehow had it on her neck ....yuk...and top...she got cleaned up in the loos!",
+        "13:50 we finally gathered for the return trip. 2 headed off to get the train back (as planned), down to 12. Minor 10 mins delay as people did not stay together and thus we thought one was missing, but was ahead. Please everyone, keep track of everyone...it causes issues otherwise.",
+        "There was a headwind alongside the River Thames, slow progress.",
+        "Another person left us a few miles after the cafe...down to 11",
+        "14:45 at Thames Lock (just before Weybridge) ...so nearly an hour after the cafe to do just 7 miles.",
+        "Around 15:45 we arrived back at Woking, where the one eBike with us had an issue of a loose chainring and had to call for a lift home - SWR refused to let it on the train. We stopped for more coffee and comfort break! Now down to 10",
+        "Approx 16:15 we headed off...Just before Ash Lock ...a left hand Crank Arm fell off a bike...we managed to do a temp repair to get him home."
+      ],
+      "photosUrl": "https://app.box.com/s/o6t5wckuuywuk3kfyloxey8mlzq0w4fl"
+    },
+    {
+      "id": "alice-in-wonderland-2025-06-14",
+      "title": "Alice in Wonderland",
+      "date": "2025-06-14",
+      "year": 2025,
+      "startTime": "09:00",
+      "destination": "Guildford",
+      "distanceMiles": 38,
+      "overallTime": "7 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",
+        "note": "NOTE EARLIER START"
+      },
+      "guidance": "Mixed riding including Tarmac, a fun challenging ride! This is not the usual near flat ride! Clockwise loop to Guildford, via Ash, Pirbright, Guildford. Lunch stop at Watts Gallery. Then onto Farnham and Fleet. Make sure you have plenty of fluids and snacks",
+      "notes": [
+        "09:00 Depart",
+        "A warm overcast day.",
+        "Amazing turn out, 10 folks set out from Fleet.",
+        "At Mytchett ranges, the Red flag was flying, so we skirted the perimeter of the ranges, it was overgrown and not ideal, consider using the road in future",
+        "11:10 at Guildford, where Natalie headed for the train station (as planned)",
+        "As always the climb out of Guildford is tough going!",
+        "We arrived at Watts Gallery for lunch just after Noon (Departed about 12:50), where another joined us for his first ride with us (Simon)",
+        "Lunch was okay, but the menu was limited and also they automatically add a 10% service charge, which is not ideal!",
+        "About 4 miles after leaving Watts Gallery, our new rider Simon had an 'off' and damaged his wrist, Barney played Nurse, Simons' wife was contacted and came to collect him (approx 80 mins delay) and go to Frimley Park Hospital",
+        "A few miles further on and Dave decided to take tree hugging to new levels....on level ground he hit a tree stump, head over the bars and hit the ground face down and spread eagled with legs either side of the stump. Somewhat battered and bruised, with dented pride, he was able to carry on.",
+        "Back in Fleet after 16:00 ..another epic Muckies adventure completed!",
+        "No mechanicals."
+      ],
+      "photosUrl": "https://app.box.com/s/8x8r3uwnpdknokz5fbxnmq03pouj3e9x"
+    },
+    {
+      "id": "city-slickers-2025-05-24",
+      "title": "City Slickers",
+      "date": "2025-05-24",
+      "year": 2025,
+      "startTime": "09:00",
+      "destination": "London",
+      "distanceMiles": 56,
+      "overallTime": "7-8 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",
+        "note": "NOTE EARLIER START"
+      },
+      "guidance": "Towpath out to Weybridge, Wey navigation to Thames path. Lunch stop at Hampton Court, then into London, the last few miles are slow going and some of there is a very small amount on road. Train back from Waterloo. Make sure you have plenty of fluids and snacks. Plenty of opt out points - Brookwood (14 miles), Woking (18 miles), Weybridge (24 Miles), Hampton Court/Surbiton (32 Miles)",
+      "notes": [
+        "09:00 Depart",
+        "A cool, overcast day, it had rained the previous night and thus there were some puddles and mud!",
+        "9 set out from Fleet, a quick comfort break at Mytchett Canal Centre approx 10:00",
+        "Arrived at Woking, approx 11:00, 2 headed to the Railway station as planned. 7 headed onwards.",
+        "12:40 at Hampton Court for lunch at DISH Cafe, excellent food and tables reserved for us. One more joined us, so 8 headed onwards",
+        "A detour was required as the Thames Path is out of action around Kew Gardens",
+        "No major mechanicals, but at least 4 stops to top up the air on one rear tyre! Doh! Then we had a chain off and jammed",
+        "Other points to note...Water bottles! Please have suitable water bottles, both in volume and design and if using hydration packs, please test out before the rides",
+        "17:00 finally at Waterloo and a dash for the train, we got on the 17:12",
+        "Back in Fleet after 18:00 ..another epic Muckies adventure completed!"
+      ],
+      "photosUrl": "https://app.box.com/s/o9qiyb2xk7li8p8qep2t0yd6di2i8tan"
+    },
+    {
+      "id": "one-hell-of-a-ride-2025-05-10",
+      "title": "One Hell of a ride!",
+      "date": "2025-05-10",
+      "year": 2025,
+      "startTime": "09:30",
+      "destination": "Devils Punch Bowl",
+      "distanceMiles": 26,
+      "overallTime": "5.5 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Organiser/leader: Rob. Mixed terrain, off road as much as possible along part of the historic King Alfred's Way. At the end we stop at the Devils punchbowl cafe at the National Trust, Hindhead. Make our way to Haslemere station, to get the train back from Haslemere to Fleet via Woking, this will require a change of trains! Please note: this route has a considerable number of challenging climbs, this is NOT a 'typical' style Mucky Mayhem route. FYI: Please carry enough fluids for 4 hours... the guide is 500ml per hour... hence please carry 2 Litres minimum! There are no known point to fill up along the way, please do not rely on others carry water for you!",
+      "notes": [
+        "Departed 09:31",
+        "A total of 8 started the ride, including 2 ebikes",
+        "The weather was ideal and plenty of stops to allow for fuel and hydration. Stunning views out across the ridge at Frensham, where we found a collection of spent bullet cartridges! Additionally the view across the punchbowl made the roughly 3km long climb absolutely worth it.",
+        "Arriving at Devils Punch Bowl cafe, Hindhead approx 13:00, just under 3 hours ride time.",
+        "5 headed to get the train back from Haselmere, while three Muckies opted to cycle home.",
+        "Arrived back in Fleet (by Train 15:15)",
+        "Only three minor 'offs'."
+      ],
+      "photosUrl": "https://app.box.com/s/5r6ezdrlzju8bdwgwgmll98arzqg2jor"
+    },
+    {
+      "id": "rags-to-riches-2025-04-12",
+      "title": "Rags to Riches",
+      "date": "2025-04-12",
+      "year": 2025,
+      "startTime": "09:30",
+      "destination": "Weybridge",
+      "distanceMiles": 48,
+      "overallTime": "7 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Easy going along towpath. All options for shorter rides and trains from Brookwood (14m), Woking (18m), Weybridge (24m)",
+      "notes": [
+        "5 set out from the meeting point. We collected one more near Sainsburys! Further along we collect 2 more ....so there were 8! At Ash Lock, one departed, back to 7!",
+        "The Aqueduct and the rest of the towpath was all open.",
+        "Arrived in Weybridge at 12:40",
+        "Cafe Enzo was excellent and looked after us, great food and coffee!",
+        "Departed Weybridge at 13:30",
+        "Stop at Mytchett canal cafe for Ice Creams.",
+        "Back in Fleet at 16:40 (Overall time 7 hrs 10 mins, Ride time 4 hrs 45 mins). No mechanicals",
+        "Perfect weather, towpath dry, dusty and fast rolling"
+      ],
+      "photosUrl": "https://app.box.com/s/100h2z8uoaoi5zwrfvu4esx55a1mtacf"
+    },
+    {
+      "id": "war-of-the-worlds-2025-03-15",
+      "title": "War of the Worlds",
+      "date": "2025-03-15",
+      "year": 2025,
+      "startTime": "09:30",
+      "destination": "Woking",
+      "distanceMiles": 36,
+      "overallTime": "4.5 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Easy going along towpath, H.G. Wells statue, Martian Alien Tripod sculpture, Cafe at The Lightbox Art Gallery.",
+      "notes": [
+        "6 out today. A cool start and slight breeze/headwind out. Towpath was very firm/quick going. The Aqueduct over the Blackwater Valley Bypass was closed, so we improvised a detour around to rejoin the canal at Ash.",
+        "Arrived in Woking approx 11:25, usual pics with H.G Wells...a wander the Warhammer shop...lol, then to the Lightbox cafe which has new management and the menu is being revised/added to ...but no breakfast, bacon/sausage sarnies today...apparently they will be added",
+        "Departed Woking 12:30",
+        "Arrived in Fleet approx 14:25 (37 miles)",
+        "Total riding time: 3 hours 30 mins",
+        "Overall time: 5 hours (includes all stops)"
+      ],
+      "photosUrl": "https://app.box.com/s/o6959e72y4g2n62rbuxwj9kalsz1crlj"
+    },
+    {
+      "id": "lock-stock-and-barrel-2025-02-22",
+      "title": "Lock, Stock and Barrel",
+      "date": "2025-02-22",
+      "year": 2025,
+      "startTime": "09:30",
+      "destination": "Bisley, National Shooting Centre (NSC)",
+      "distanceMiles": 27,
+      "overallTime": "3.5 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Easy going along towpath, Cafe at NSC, Bisley.",
+      "notes": [
+        "9 went.",
+        "09:30 Start",
+        "Cool to start, but improved.",
+        "Towpath was wet and muddy, but not too bad, going was medium.",
+        "11:00 - 1 hr 30 mins, arrived at NSC Cafe. Cafe was busy as there was a shooting event on, we were forced to sit outside... but the cafe owners offered us free tea and coffee refills! as always a great breakfast, good price!... uphill on way back! lol",
+        "13:15 - 3 hrs 45 mins, back in Fleet, 27 miles, no issues."
+      ],
+      "photosUrl": "https://app.box.com/s/fbb01vczxd4oplyxle46kcv59qsrqhh2"
+    },
+    {
+      "id": "war-of-the-worlds-2024-10-26",
+      "title": "War of the Worlds",
+      "date": "2024-10-26",
+      "year": 2024,
+      "startTime": "09:30",
+      "destination": "Woking",
+      "distanceMiles": 36,
+      "overallTime": "5 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Easy going along towpath, there is likely to be some mud and puddles. H.G. Wells statue, Martian Alien Tripod sculpture, Cafe at The Lightbox Art Gallery.",
+      "notes": [
+        "09:30 Start...well for 5 of us ...for Steve this proved 'challenging' ..lol....",
+        "We shared our live location as we were also meeting up with a new rider (Hi Jeico). We found Jeico at Ash lock and headed onwards.",
+        "Steve finally caught up with us just after Mytchett Canal boat centre (about 9 miles!)...and seemed a tad out of breath ...lol! he'd been chasing for 50 mins!",
+        "Just before getting to Woking, we had a minor mechanical ....a loose quick release allowed a rear wheel to drop out and lock up!",
+        "The mandatory pic of H.G. Wells taken and then to the Cafe.",
+        "The return journey was uneventful with various folks peeling off at points suitable to them with 4 of us arriving back in Fleet. The weather was ideal and a pleasant temp!"
+      ],
+      "photosUrl": "https://app.box.com/s/uotful1umddlfpp9654yumomua67n7re"
+    },
+    {
+      "id": "through-the-looking-glass-2024-09-28",
+      "title": "Through the Looking-Glass",
+      "date": "2024-09-28",
+      "year": 2024,
+      "startTime": "09:00",
+      "destination": "Reverse Guildford loop+",
+      "distanceMiles": 53,
+      "overallTime": "7.5-8 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Mixed riding including Tarmac, a fun challenging ride! Anti-clockwise loop to Guildford, via Caesars Camp, Farnham. Coffee/food stop: Guildford (Theatre cafe) with optional 2nd coffee/comfort stop at The Lightbox Art Gallery, Woking. Then follow the Wey Navigation towards Weybridge, pick up Basingstoke canal for the return. For any that want to opt out, train stations at Guildford, Woking and Brookwood",
+      "notes": [
+        "09:00 Five started out",
+        "09:15 The first 'fun thing' of the ride…a broken chain (Andy) …quick link snapped and also a plate on another linked broken. No option but to head home ….the rest headed to Poppys Café (lucky them). Replacement bike collected and arranged a meet point…we lost about 45 minutes!",
+        "We lost the route up Caesars camp and ended up climbing Brick Hill….not even Steve could ride it!",
+        "Many of the tracks were wet and muddy, slowing progress.",
+        "It was similar as we headed down Old Park Lane, many muddy patches.",
+        "The situation continued as we climbed and descended, water and mud, making it difficult to maintain any reasonable speed and difficult to get traction on climbs.",
+        "13:00 (20 miles, 4 hours) Arrived in Guildford, where we follow the rules and walked down 'Porridge Pot Alley' only to get shouted at by an older women ….as she was late and in a hurry! …..maybe she was the White Rabbit?",
+        "The Café had a reasonable selection, we all stocked up!",
+        "13:45 Left the café and headed back out on the route. Steve decided to be sensible (very strange …lol) and get the train back and protect his dodgy knee…so then there were 4 of us.",
+        "The Wey navigation track was narrow, rutted, muddy, wet and slow going! Along the route we had a chain off (Neil) …and a fall into nettles (Karen) ….then issues with cramp set in for Spike.",
+        "We stopped at pub in Send (approx 30 miles) and Spike got crisps (for the salt), Neil opted out and headed home by road, then there were THREE! Spike was suffering and we needed frequent breaks.",
+        "Just along from the pub, there was a tree down across the path and we had to clamber over.",
+        "Another few miles on and we found the path blocked by a herd cows …we had to navigate through and around",
+        "16:00 (32 miles, 7 hours) …12 miles from Guildford we finally joined the Basingstoke Canal",
+        "16:55 (36 miles, nearly 8 hours) At Woking we cut our losses and caught a train! …a very eventful day!",
+        "17:25 …ish finally home! Neil had punctured on his road journey home. So we all had had issues on the day! ….but the sun was out, the weather was good, great company and all seemed to enjoy!",
+        "Note for next year…run this event earlier in the year to avoid the mud!",
+        "After the ride we found out that Steve had been busy getting his money's worth out of his train ticket...having got from Guildford to Woking ...he then got on a train back to Guildford.....just to do the Guildford to Woking section again! ...Doh!"
+      ],
+      "photosUrl": "https://app.box.com/s/hd5mqhr6h2n5rn85slw9dbueacf2yeqo"
+    },
+    {
+      "id": "ddotts-2024-08-31",
+      "title": "DDOTTS - Daft Day Out To The Seaside",
+      "date": "2024-08-31",
+      "year": 2024,
+      "startTime": "08:30",
+      "destination": "Guildford to Shoreham-by-Sea",
+      "distanceMiles": 76,
+      "overallTime": "10 hours",
+      "meetPoint": {
+        "name": "Guildford Railway Station, Main entrance",
+        "googleMapsUrl": "https://maps.app.goo.gl/yP8CiCuyrYRzgzus7"
+      },
+      "guidance": "Old disused railway line route, minimal tarmac, mainly flat going. Three options: 1. Ice Cream Run: Ride to Southwater Country Park Cafe - 21 miles each way (42 total). 2. Sails and Rails: Ride to Shoreham by Sea, see the sails/boats and catch the train back, approx 38 miles. 3. Full Monty: Guildford to Shoreham-by-sea and return - 76 miles!",
+      "notes": [
+        "08:30 Eight folks at the start point, although the start was still delayed by a few mins! The weather was pretty much perfect, overcast, but warm enough",
+        "We did the fiddly bit getting out of Guildford. Lots of help given to the tandem to lift and move it up/down steps and over gates.",
+        "George and Pauline (Tandem riders) dropped out for coffee at about 9 mile mark",
+        "The Super Six carried on ...although we had an unscheduled comfort stop at about 10 miles...the clock ticked on... and a few stops for pics ...we had to press on and hence were riding at around 11mph",
+        "10:50 (21 miles) we made it to the coffee stop at Southwater Country park",
+        "We headed to the beach! ...we had the mandatory puncture on the way",
+        "13:10 (38 miles) we arrived on the beach, Rob had a paddle ...the rest of us fed our faces",
+        "13:50 ...ish ...we started back ...after a few miles we turned off the route for an unscheduled coffee stop (maybe 15-20 mins?) ...Pam and Karen wanted to get a head start and carried on ...We did catch up to them within a few miles...we pressed on",
+        "15:40 (55 miles) We rolled into the scheduled Coffee stop at Southwater Country park again...we are all looking dusty! lol",
+        "18:31 ...we were in Guildford...pretty much bang on time! Well done everyone! ...a very fun and dusty ride! :)"
+      ],
+      "photosUrl": "https://app.box.com/s/tg0uryd83iq3pti7fmfygzwzlhy4byg5",
+      "reliveUrl": "https://www.relive.cc/view/vAOZ22x8xoO"
+    },
+    {
+      "id": "lunch-at-the-palace-2024-08-24",
+      "title": "Lunch at the Palace",
+      "date": "2024-08-24",
+      "year": 2024,
+      "startTime": "09:00",
+      "destination": "Hampton Court",
+      "distanceMiles": 64,
+      "overallTime": "7.5-8 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Mainly towpath out to Weybridge, Wey navigation to Thames path, then to Hampton Court for coffee and food. Option of ride back or to catch the train from Surbiton. Also options to get train at Brookwood (14 miles), Woking (18 Miles) and Weybridge (24 miles) for anyone wanting a shorter ride.",
+      "notes": [
+        "Due to a Yellow weather warning for Sat 24/08, this was rescheduled to Sun 25/08.",
+        "09:00 Just one left from Fleet",
+        "09:30 (5.5 miles) A rendezvous at Ash Lock with Ally meant there were 2!"
+      ],
+      "photosUrl": "https://app.box.com/s/onkidr5w34wdoo7si3jca5lyzakz68p0/folder/284986540494"
+    },
+    {
+      "id": "alice-in-wonderland-2024-07-20",
+      "title": "Alice in Wonderland",
+      "date": "2024-07-20",
+      "year": 2024,
+      "startTime": "09:00",
+      "destination": "Guildford",
+      "distanceMiles": 38,
+      "overallTime": "7 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Mixed riding including Tarmac, a fun challenging ride! This is not the usual near flat ride! Clockwise loop to Guildford, via Ash, Pirbright, Guildford. Lunch stop at Watts Gallery. Then onto Farnham and Fleet. Make sure you have plenty of fluids and snacks",
+      "notes": [
+        "No major mechanicals",
+        "It was good to see that folks were taking fuel and fluid onboard at every opportunity and it seemed to help, no one seemed to be suffering at the end - a lovely, challenging ride - thanks all."
+      ],
+      "photosUrl": "https://app.box.com/s/x2u7pwv2zm0lry2x6f2b7ib2iaes2kww"
+    },
+    {
+      "id": "city-slickers-2024-06-08",
+      "title": "City Slickers",
+      "date": "2024-06-08",
+      "year": 2024,
+      "startTime": "09:00",
+      "destination": "London",
+      "distanceMiles": 57,
+      "overallTime": "7-8 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Mainly towpath out to Weybridge, Wey navigation to Thames path, then into London. Train back from Waterloo.",
+      "notes": [
+        "7 went, a good turnout",
+        "09:00 start",
+        "10:55 - 1 hr 55 mins to The Lightbox, Woking (18 miles). Towpath was firm going, stop for food and coffee, approx 35-40 mins stop.",
+        "12:05 - 3 hrs 5 mins to Weybridge (24 miles) averaging 11 mph to this point.",
+        "13:10 - 4 hrs 10 mins saw us at Hampton Court (32 miles), from here the Thames path is generally in good condition and wide, there are occasional pinch points and can be lots of people, especially in areas with Rowing clubs by the river. It felt as if we were in open countryside for the majority of the way.",
+        "Progress slowed in the last 4 miles as the route sometimes left the river side and also the volume of people increased.",
+        "16:15 - 7 hrs 15 mins, we arrived at Waterloo, hopped on a train and headed back to Fleet!",
+        "17:40 - The train had us back in Fleet",
+        "Overall average 10mph, 57 miles logged",
+        "A great adventure for the day!"
+      ],
+      "photosUrl": "https://app.box.com/s/yty6xulhhzsh4300snjrw32q2ryjj197"
+    },
+    {
+      "id": "burnt-cakes-2024-05-11",
+      "title": "Burnt Cakes!",
+      "date": "2024-05-11",
+      "year": 2024,
+      "startTime": "09:00",
+      "destination": "Winchester",
+      "distanceMiles": 40,
+      "overallTime": "6 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Towpath, cross country, some tarmac. Return by train to Fleet.",
+      "notes": [
+        "6 started out, only 5 made it back!",
+        "A lovely sunny day.",
+        "Initial stage out on towpath to Greywell. various off road sections are connected with some road sections.",
+        "The off road sections were 'challenging' and seem to become progressively worse, many sections churned up by 4x4s and off road motorbikes.",
+        "About 17 miles into the ride, on one off road section...downhill, gully like, rock strewn...one of us ...(that'll be me, Andy), lost it and hit the deck hard, slamming into the rock floor. I was then grateful for the first aider training of others and I got the joys of an ambulance ride back to Basingstoke hospital - don't worry my bike was fine! :)",
+        "The original ride was abandoned and the 5 riders made their way back to Fleet on the most direct route with a food stop and just one mechanical."
+      ],
+      "photosUrl": "https://app.box.com/s/aud8hf9piwiuteaba4mcl4w4up7mt56h"
+    },
+    {
+      "id": "rags-to-riches-2024-04-13",
+      "title": "Rags to Riches",
+      "date": "2024-04-13",
+      "year": 2024,
+      "startTime": "09:30",
+      "destination": "Weybridge",
+      "distanceMiles": 48,
+      "overallTime": "7 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Easy going along towpath. All options for shorter rides and trains from Brookwood (14m), Woking (18m), Weybridge (24m)",
+      "notes": [
+        "5 set out, we met one more on the way, 5 and half? :)",
+        "09:30 start",
+        "We had a comfort stop at Mytchett Canal cafe.",
+        "12:30 - 3 hrs to Weybridge, we walked through the High St (traffic was heavy!) to Cafe Enzo, great menu and the food and coffee was very good and reasonably priced!",
+        "On the return, another stop at Mytchett canal cafe for tea and ice cream!",
+        "16:20 - 6 hrs 50 mins, back in Fleet 48 miles in total, approx 4hr 40mins ride time, 10mph average"
+      ],
+      "photosUrl": "https://app.box.com/s/qzlko84svemdp5bps2t8pydq5qmwk5we"
+    },
+    {
+      "id": "war-of-the-worlds-2024-03-09",
+      "title": "War of the Worlds",
+      "date": "2024-03-09",
+      "year": 2024,
+      "startTime": "09:30",
+      "destination": "Woking",
+      "distanceMiles": 34,
+      "overallTime": "5 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Easy going along towpath, H.G. Wells statue, Martian Alien Tripod sculpture, Cafe at The Lightbox Art Gallery.",
+      "notes": [
+        "5 went.",
+        "09:30 start",
+        "The weather was good, but again the towpath was wet and muddy.",
+        "12:20 - 2 hrs 50 mins, arrived at the Lightbox cafe, great coffee and food!",
+        "We had one mechanical which was dealt with whilst at the cafe!",
+        "14:20 - 4 hrs 50 mins back in Fleet, 34 miles, 3hrs 15mins riding time, 10.5 mph average"
+      ],
+      "photosUrl": "https://app.box.com/s/qil8kw6fy0f6xy3cl7nywbtpogqebho3"
+    },
+    {
+      "id": "lock-stock-and-barrel-2024-02-17",
+      "title": "Lock, Stock and Barrel",
+      "date": "2024-02-17",
+      "year": 2024,
+      "startTime": "09:30",
+      "destination": "Bisley, National Shooting Centre (NSC)",
+      "distanceMiles": 27,
+      "overallTime": "3.5 hours",
+      "meetPoint": {
+        "name": "Reading Road Canal Wharf",
+        "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+      },
+      "guidance": "Easy going along towpath, Cafe at NSC.",
+      "notes": [
+        "4 went.",
+        "09:30 Start",
+        "Towpath was wet and muddy, it made for slow going.",
+        "11:00 - 1 hr 30 mins, arrived at NSC Cafe, great breakfast...uphill on way back! lol",
+        "13:00 - 3 hrs 30 mins, back in Fleet, 27 miles"
+      ],
+      "photosUrl": "https://app.box.com/s/pyjj7jaceavybr0tw3ux262y343375as"
+    }
+  ]
+}

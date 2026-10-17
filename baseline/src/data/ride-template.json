@@ -1,0 +1,91 @@
+{
+  "_instructions": {
+    "purpose": "Use this template to create a new Longer Ride entry for rides.json",
+    "howToUse": [
+      "1. Copy the 'newRide' object below",
+      "2. Paste it into the 'longerRides' array in rides.json",
+      "3. Fill in all the fields following the guidance below",
+      "4. Remove any fields marked as OPTIONAL if not needed",
+      "5. Save rides.json and rebuild the site"
+    ],
+    "fieldGuide": {
+      "id": "Lowercase, hyphenated: {title-slug}-{YYYY-MM-DD} e.g. 'lock-stock-and-barrel-2026-02-21' or 'city-slickers-2026-tbd' for TBD dates",
+      "title": "The ride name as it appears in the accordion header",
+      "date": "ISO format YYYY-MM-DD e.g. '2026-02-21', or null for TBD rides",
+      "year": "Four digit year as a number (not string), e.g. 2026",
+      "startTime": "24-hour format HH:MM e.g. '09:30' or '09:00'",
+      "destination": "Where the ride goes to",
+      "distanceMiles": "Total distance as a number (not string), e.g. 27",
+      "overallTime": "Estimated duration e.g. '3.5 hours' or '7-8 hours'",
+      "meetPoint.name": "Meeting location name",
+      "meetPoint.googleMapsUrl": "Google Maps link to meeting point",
+      "meetPoint.note": "OPTIONAL - Extra info like 'NOTE EARLIER START'",
+      "guidance": "Brief route description and tips",
+      "notes": "Array of strings - each string is a separate line. Empty array [] for upcoming rides",
+      "photosUrl": "Box.com link to photos folder"
+    },
+    "sortingNote": "Longer Rides are sorted: dated rides first (chronologically), then TBD rides at the end"
+  },
+
+  "newRide": {
+    "id": "ride-title-here-YYYY-MM-DD",
+    "title": "Ride Title Here",
+    "date": "YYYY-MM-DD",
+    "year": 2026,
+    "startTime": "09:30",
+    "destination": "Destination Name",
+    "distanceMiles": 30,
+    "overallTime": "4 hours",
+    "meetPoint": {
+      "name": "Reading Road Canal Wharf",
+      "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",
+      "note": ""
+    },
+    "guidance": "Brief description of the route and any tips for riders.",
+    "notes": [],
+    "photosUrl": "https://app.box.com/s/YOUR_FOLDER_ID_HERE"
+  },
+
+  "_exampleCompletedRide": {
+    "id": "lock-stock-and-barrel-2026-02-21",
+    "title": "Lock, Stock and Barrel",
+    "date": "2026-02-21",
+    "year": 2026,
+    "startTime": "09:30",
+    "destination": "Bisley, National Shooting Centre (NSC)",
+    "distanceMiles": 27,
+    "overallTime": "3.5 hours",
+    "meetPoint": {
+      "name": "Reading Road Canal Wharf",
+      "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+    },
+    "guidance": "Easy going along towpath, Cafe at NSC, Bisley.",
+    "notes": [
+      "4 went.",
+      "09:30 Start",
+      "Towpath was wet and muddy, it made for slow going.",
+      "11:00 - 1 hr 30 mins, arrived at NSC Cafe, great breakfast...uphill on way back ! lol",
+      "13:00 - 3 hrs 30 mins, back in Fleet, 27 miles"
+    ],
+    "photosUrl": "https://app.box.com/s/mh9gribpzx08fvdjnwrc4d8pmw9uu3o8"
+  },
+
+  "_exampleTBDRide": {
+    "id": "city-slickers-2026-tbd",
+    "title": "City Slickers",
+    "date": null,
+    "year": 2026,
+    "startTime": "09:00",
+    "destination": "London",
+    "distanceMiles": 56,
+    "overallTime": "7-8 hours",
+    "meetPoint": {
+      "name": "Reading Road Canal Wharf",
+      "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",
+      "note": "NOTE EARLIER START"
+    },
+    "guidance": "Towpath out to Weybridge, Wey navigation to Thames path. Train back from Waterloo.",
+    "notes": [],
+    "photosUrl": "https://app.box.com/s/8mqv8gzaw2dbvaxe5l90tkrycbsi3qrv"
+  }
+}

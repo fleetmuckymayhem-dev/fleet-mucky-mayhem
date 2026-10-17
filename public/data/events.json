@@ -1,0 +1,243 @@
+{
+  "_schema": {
+    "version": "1.0",
+    "description": "Lightweight event index for calendar display. Full details in type-specific files."
+  },
+  "events": [
+    {
+      "id": "sunday-social-ride",
+      "title": "Sunday Social Ride",
+      "daysOfWeek": [0],
+      "startTime": "10:00",
+      "startRecur": "2026-01-01",
+      "endRecur": "2026-12-31",
+      "duration": "03:00",
+      "eventType": "Regular-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "lock-stock-and-barrel-2026-10-17",
+      "title": "Lock, Stock and Barrel",
+      "date": "2026-10-17",
+      "startTime": "09:30",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "war-of-the-worlds-2026-03-14",
+      "title": "War of the Worlds",
+      "date": "2026-03-14",
+      "startTime": "09:30",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "rags-to-riches-2026-04-04",
+      "title": "Rags to Riches",
+      "date": "2026-04-04",
+      "startTime": "09:30",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "burnt-cakes-2026-05-02",
+      "title": "Burnt Cakes",
+      "date": "2026-05-02",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "city-slickers-2026-06-13",
+      "title": "City Slickers",
+      "date": "2026-06-13",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "ddotts-2026-07-04",
+      "title": "DDOTTS - Daft Day Out To The Seaside",
+      "date": "2026-07-04",
+      "startTime": "08:30",
+      "eventType": "Longer-Ride",
+      "location": "Guildford Railway Station"
+    },
+    {
+      "id": "lunch-at-the-palace-2026-08-01",
+      "title": "Lunch at the Palace",
+      "date": "2026-08-01",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+        {
+      "id": "marmalade-sandwich-2026-08-29",
+      "title": "Marmalade Sandwich",
+      "date": "2026-08-29",
+      "startTime": "09:30",
+      "eventType": "Longer-Ride",
+      "location": "Meet in Reading"
+    },
+    {
+      "id": "through-the-looking-glass-2025-09-20",
+      "title": "Through the Looking Glass",
+      "date": "2025-09-20",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "burnt-cakes-2025-08-23",
+      "title": "Burnt Cakes",
+      "date": "2025-08-23",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "ddotts-2025-08-09",
+      "title": "DDOTTS - Daft Day Out To The Seaside",
+      "date": "2025-08-09",
+      "startTime": "08:30",
+      "eventType": "Longer-Ride",
+      "location": "Guildford Railway Station"
+    },
+    {
+      "id": "lunch-at-the-palace-2025-07-05",
+      "title": "Lunch at the Palace",
+      "date": "2025-07-05",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "alice-in-wonderland-2025-06-14",
+      "title": "Alice in Wonderland",
+      "date": "2025-06-14",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "city-slickers-2025-05-24",
+      "title": "City Slickers",
+      "date": "2025-05-24",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "one-hell-of-a-ride-2025-05-10",
+      "title": "One Hell of a ride!",
+      "date": "2025-05-10",
+      "startTime": "09:30",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "rags-to-riches-2025-04-12",
+      "title": "Rags to Riches",
+      "date": "2025-04-12",
+      "startTime": "09:30",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "war-of-the-worlds-2025-03-15",
+      "title": "War of the Worlds",
+      "date": "2025-03-15",
+      "startTime": "09:30",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "lock-stock-and-barrel-2025-02-22",
+      "title": "Lock, Stock and Barrel",
+      "date": "2025-02-22",
+      "startTime": "09:30",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "war-of-the-worlds-2024-10-26",
+      "title": "War of the Worlds",
+      "date": "2024-10-26",
+      "startTime": "09:30",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "through-the-looking-glass-2024-09-28",
+      "title": "Through the Looking-Glass",
+      "date": "2024-09-28",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "ddotts-2024-08-31",
+      "title": "DDOTTS - Daft Day Out To The Seaside",
+      "date": "2024-08-31",
+      "startTime": "08:30",
+      "eventType": "Longer-Ride",
+      "location": "Guildford Railway Station"
+    },
+    {
+      "id": "lunch-at-the-palace-2024-08-24",
+      "title": "Lunch at the Palace",
+      "date": "2024-08-24",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "alice-in-wonderland-2024-07-20",
+      "title": "Alice in Wonderland",
+      "date": "2024-07-20",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "city-slickers-2024-06-08",
+      "title": "City Slickers",
+      "date": "2024-06-08",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "burnt-cakes-2024-05-11",
+      "title": "Burnt Cakes!",
+      "date": "2024-05-11",
+      "startTime": "09:00",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "rags-to-riches-2024-04-13",
+      "title": "Rags to Riches",
+      "date": "2024-04-13",
+      "startTime": "09:30",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "war-of-the-worlds-2024-03-09",
+      "title": "War of the Worlds",
+      "date": "2024-03-09",
+      "startTime": "09:30",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    },
+    {
+      "id": "lock-stock-and-barrel-2024-02-17",
+      "title": "Lock, Stock and Barrel",
+      "date": "2024-02-17",
+      "startTime": "09:30",
+      "eventType": "Longer-Ride",
+      "location": "Reading Road Canal Wharf"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "fleet-mucky-mayhem-astro",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "check": "astro check",
+    "build": "npm run validate:data && astro build",
+    "validate:data": "node scripts/validate-data.ts",
+    "test": "node --test tests/*.test.ts",
+    "preview": "astro preview --host 127.0.0.1 --port 4321",
+    "baseline:build": "node node_modules/vite-baseline/bin/vite.js build --config baseline/vite.config.mjs",
+    "baseline:preview": "node node_modules/vite-baseline/bin/vite.js preview --config baseline/vite.config.mjs --host 127.0.0.1 --port 4322"
+  },
+  "dependencies": {
+    "@fullcalendar/core": "6.1.20",
+    "@fullcalendar/daygrid": "6.1.20",
+    "@fullcalendar/multimonth": "6.1.20",
+    "@popperjs/core": "2.11.8",
+    "astro": "7.4.0",
+    "bootstrap": "5.3.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@types/bootstrap": "5.2.11",
+    "@types/node": "24.19.2",
+    "sass": "1.105.2",
+    "typescript": "6.0.3",
+    "vite-baseline": "npm:vite@5.4.21"
+  }
+}

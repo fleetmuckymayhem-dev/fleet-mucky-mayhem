@@ -1,0 +1,43 @@
+/* Snowfall overlay styles */
+#snowfall-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none; /* allow interactions through the overlay */
+  z-index: 1040; /* keep above most UI but below critical modals if any */
+}
+
+#snowfall-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.snowfall-dismiss {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto; /* must be clickable */
+  backdrop-filter: blur(2px);
+}
+
+.snowfall-dismiss:focus {
+  outline: 2px solid var(--bs-warning);
+  outline-offset: 2px;
+}
+
+/* Reduce density/visibility on small screens */
+@media (max-width: 768px) {
+  .snowfall-dismiss { right: 0.5rem; top: 0.5rem; width: 30px; height: 30px; }
+}

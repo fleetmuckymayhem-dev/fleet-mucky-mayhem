@@ -1,0 +1,234 @@
+<section id="ride-diary" class="odd-sections">
+    <div class="container-fluid d-flex align-items-center justify-content-center">
+      <div class="container text-center">
+        <h2 class="brand-text display-2 mb-4 text-center">Ride Diary</h2>
+        <p class="lead text-start">On ALL rides we stop every 15-20 mins, so folks can grab a drink, a quick bite,
+          adjust clothing etc.</p>
+
+        <!-- Toggle Buttons -->
+        <div class="text-center mb-4">
+          <button id="showRegular" class="btn btn-secondary btn-lg me-2">Regular Rides</button>
+          <button id="showLonger" class="btn btn-secondary btn-lg me-2">Longer Rides</button>
+          <!-- Archived Rides Dropdown -->
+          <div class="btn-group">
+            <button id="archivedDropdownBtn" type="button" class="btn btn-secondary btn-lg dropdown-toggle"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Archived Rides
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#" id="showArchived2025">2025</a></li>
+              <li><a class="dropdown-item" href="#" id="showArchived2024">2024</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2026 Longer Rides Group - Content dynamically loaded from longer-rides.json via ride-diary.js -->
+        <div id="accordion2026" class="accordion accordion-flush text-dark text-start d-none">
+        </div>
+        <!-- End of 2026 Group-->
+
+        <!-- 2025 Archived Rides Group - Content dynamically loaded from longer-rides.json via ride-diary.js -->
+        <div id="accordion2025" class="accordion accordion-flush text-dark text-start d-none">
+        </div>
+        <!-- End of 2025 Group-->
+
+        <!-- 2024 Archived Rides Group - Content dynamically loaded from longer-rides.json via ride-diary.js -->
+        <div id="accordion2024" class="accordion accordion-flush text-dark text-start d-none">
+        </div>
+        <!-- End of 2024 Group-->
+
+        <!-- End of Archived Rides Group-->
+
+        <!-- Regular Rides Group -->
+
+        <div id="accordionRegular" class="accordion accordion-flush text-dark text-start">
+          <!-- General Information -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingRegular-1">
+              <button class="accordion-button collapsed ridesRegular lead brand-text" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseRegular-1" aria-expanded="false"
+                aria-controls="collapseRegular-1">
+                General Information - Please read - this applies to ALL rides listed below
+              </button>
+            </h2>
+            <div id="collapseRegular-1" class="accordion-collapse collapse" aria-labelledby="headingRegular-1">
+              <div class="accordion-body body-text">
+                <p>All dates for these rides are ONLY available via the <a
+                    href="https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD" target="_blank" role="button"
+                    class="brand-text">WhatsApp Group <i class="bi bi-box-arrow-up-right brand-text link-icon">
+                    </i></a>.</p>
+                <p>Regular Meet Point: <a href="https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA" target="_blank"
+                    class="brand-text">Google Maps <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>.
+                </p>
+                <p>Depart promptly at 09:30.</p>
+                <p>Ride Time : 90-120 minutes, 8-10mph.</p>
+                <p>If driving to Meet Point, the car park is a pay car park. Alternatively park for free on Dinorben
+                  Avenue (1 minute from start): <a href="https://maps.app.goo.gl/N667QXAJJztYRDLq9" target="_blank"
+                    class="brand-text">Free Parking <i class="bi bi-box-arrow-up-right brand-text link-icon">
+                    </i></a>.
+                </p>
+                <p>All easy going routes.</p>
+                <p>Aim to be back in Fleet around Noon.</p>
+                <p>All of these routes offer the option of a shorter ride, please ask for advice.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ash Vale Cafe -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingRegular-7">
+              <button class="accordion-button collapsed ridesRegular lead brand-text" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseRegular-7" aria-expanded="false"
+                aria-controls="collapseRegular-7">
+                Ash Vale Cafe
+              </button>
+            </h2>
+            <div id="collapseRegular-7" class="accordion-collapse collapse" aria-labelledby="headingRegular-7">
+              <div class="accordion-body body-text">
+                <p>ROUTE: Ash Vale Cafe</p>
+                <p>DISTANCE: Approx 18 miles</p>
+                <p>DEPART: 09:30 prompt (allow extra time for parking etc)</p>
+                <p>REGULAR MEET POINT: <a href="https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA" target="_blank"
+                    class="brand-text">Google Maps <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
+                </p>
+                <p>GUIDANCE:</p>
+                <p>Out along the canal, around Fleet Pond, section of canal, then through to North Camp, on to Ash Vale
+                  Cafe (approx 2/3rd of ride). Return via canal.</p>
+                <p>Additionally, please see "<em class="brand-text">General Information</em>" above</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Caesars Camp -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingRegular-2">
+              <button class="accordion-button collapsed ridesRegular lead brand-text" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseRegular-2" aria-expanded="false"
+                aria-controls="collapseRegular-2">
+                Caesars Camp
+              </button>
+            </h2>
+            <div id="collapseRegular-2" class="accordion-collapse collapse" aria-labelledby="headingRegular-2">
+              <div class="accordion-body body-text">
+                <p>ROUTE: Caesars Camp</p>
+                <p>DISTANCE: Approx 15 miles</p>
+                <p>DEPART: 09:30 prompt (allow extra time for parking etc)</p>
+                <p>REGULAR MEET POINT: <a href="https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA" target="_blank"
+                    class="brand-text">Google Maps <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
+                </p>
+                <p>GUIDANCE:</p>
+                <p>Out along the canal, then across to Caesars Camp, to the viewpoint, then down to cafe stop towards
+                  end of ride.</p>
+                <p>Additionally, please see "<em class="brand-text">General Information</em>" above</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Minley -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingRegular-4">
+              <button class="accordion-button collapsed ridesRegular lead brand-text" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseRegular-4" aria-expanded="false"
+                aria-controls="collapseRegular-4">
+                Minley
+              </button>
+            </h2>
+            <div id="collapseRegular-4" class="accordion-collapse collapse" aria-labelledby="headingRegular-4">
+              <div class="accordion-body body-text">
+                <p>ROUTE: Minley</p>
+                <p>DISTANCE: Approx 16 miles</p>
+                <p>DEPART: 09:30 prompt (allow extra time for parking etc)</p>
+                <p>REGULAR MEET POINT: <a href="https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA" target="_blank"
+                    class="brand-text">Google Maps <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
+                </p>
+                <p>GUIDANCE:</p>
+                <p>Out along the canal, around Fleet Pond, cross over to Minley area, Back via Hawley Lake. Cafe stop
+                  towards the end.</p>
+                <p>Additionally, please see "<em class="brand-text">General Information</em>" above</p>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Mytchett -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingRegular-5">
+              <button class="accordion-button collapsed ridesRegular lead brand-text" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseRegular-5" aria-expanded="false"
+                aria-controls="collapseRegular-5">
+                Mytchett
+              </button>
+            </h2>
+            <div id="collapseRegular-5" class="accordion-collapse collapse" aria-labelledby="headingRegular-5">
+              <div class="accordion-body body-text">
+                <p>ROUTE: Mytchett</p>
+                <p>DISTANCE: Approx 17 miles</p>
+                <p>DEPART: 09:30 prompt (allow extra time for parking etc)</p>
+                <p>REGULAR MEET POINT: <a href="https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA" target="_blank"
+                    class="brand-text">Google Maps <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
+                </p>
+                <p>GUIDANCE:</p>
+                <p>Out along the canal to Mytchett Canal Centre cafe (Mid point). Return via Canal and a short cut via
+                  North Camp.</p>
+                <p>Additionally, please see "<em class="brand-text">General Information</em>" above</p>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Odiham -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingRegular-6">
+              <button class="accordion-button collapsed ridesRegular lead brand-text" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseRegular-6" aria-expanded="false"
+                aria-controls="collapseRegular-6">
+                Odiham
+              </button>
+            </h2>
+            <div id="collapseRegular-6" class="accordion-collapse collapse" aria-labelledby="headingRegular-6">
+              <div class="accordion-body body-text">
+                <p>ROUTE: Odiham</p>
+                <p>DISTANCE: Approx 18 miles</p>
+                <p>DEPART: 09:30 prompt (allow extra time for parking etc)</p>
+                <p>REGULAR MEET POINT: <a href="https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA" target="_blank"
+                    class="brand-text">Google Maps <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
+                </p>
+                <p>GUIDANCE:</p>
+                <p>Out along the canal to Odiham, stop at Cafe in Odiham high street (Mid point). Return via section of
+                  King Alfreds Way (KAW) and canal.</p>
+                <p>Additionally, please see "<em class="brand-text">General Information</em>" above</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Roller Coaster -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingRegular-8">
+              <button class="accordion-button collapsed ridesRegular lead brand-text" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseRegular-8" aria-expanded="false"
+                aria-controls="collapseRegular-7">
+                Roller Coaster
+              </button>
+            </h2>
+            <div id="collapseRegular-8" class="accordion-collapse collapse" aria-labelledby="headingRegular-8">
+              <div class="accordion-body body-text">
+                <p>ROUTE: Farnham</p>
+                <p>DISTANCE: Approx 13 miles</p>
+                <p>DEPART: 09:30 prompt (allow extra time for parking etc)</p>
+                <p>REGULAR MEET POINT: <a href="https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA" target="_blank"
+                    class="brand-text">Google Maps <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
+                </p>
+                <p>GUIDANCE:</p>
+                <p>We climb to the top of Caesar's Camp, then fast down to Farnham, Cafe stop... then return... climb out of Farnham, then down from Caesar's Camp.</p>
+                <p>Additionally, please see "<em class="brand-text">General Information</em>" above</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- End of Regular Rides-->
+
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,59 @@
+{
+  "_instructions": {
+    "purpose": "Use this template to create a new Regular Ride entry for regular-rides.json",
+    "howToUse": [
+      "1. Copy the 'newRide' object below",
+      "2. Paste it into the 'events' array in regular-rides.json",
+      "3. Fill in all the fields following the guidance below",
+      "4. Remove any fields marked as OPTIONAL if not needed",
+      "5. Save regular-rides.json and rebuild the site"
+    ],
+    "fieldGuide": {
+      "id": "Lowercase, hyphenated descriptor e.g. 'sunday-social-ride', 'wednesday-evening-ride'",
+      "title": "The ride name as it appears in the calendar",
+      "daysOfWeek": "Array of day numbers: 0=Sunday, 1=Monday, 2=Tuesday, 3=Wednesday, 4=Thursday, 5=Friday, 6=Saturday. Use [0] for Sunday only, [0,6] for weekends, etc.",
+      "startTime": "24-hour format HH:MM e.g. '10:00'",
+      "duration": "OPTIONAL - Estimated duration e.g. '2-3 hours'",
+      "meetPoint.name": "Meeting location name",
+      "meetPoint.googleMapsUrl": "Google Maps link to meeting point",
+      "meetPoint.note": "OPTIONAL - Extra info about meeting point",
+      "guidance": "Brief description of the ride - typical distance, terrain, pace, who it's for"
+    },
+    "dayOfWeekReference": {
+      "0": "Sunday",
+      "1": "Monday",
+      "2": "Tuesday",
+      "3": "Wednesday",
+      "4": "Thursday",
+      "5": "Friday",
+      "6": "Saturday"
+    }
+  },
+
+  "newRide": {
+    "id": "day-ride-type",
+    "title": "Ride Title Here",
+    "daysOfWeek": [0],
+    "startTime": "10:00",
+    "duration": "2-3 hours",
+    "meetPoint": {
+      "name": "Reading Road Canal Wharf",
+      "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",
+      "note": ""
+    },
+    "guidance": "Brief description of the ride and who it's suited for."
+  },
+
+  "_exampleRide": {
+    "id": "sunday-social-ride",
+    "title": "Sunday Social Ride",
+    "daysOfWeek": [0],
+    "startTime": "10:00",
+    "duration": "2-3 hours",
+    "meetPoint": {
+      "name": "Reading Road Canal Wharf",
+      "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+    },
+    "guidance": "Weekly social ride. Route varies—typically 15-20 miles on towpaths and quiet lanes. All abilities welcome."
+  }
+}

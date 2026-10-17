@@ -1,0 +1,46 @@
+// NavBar Custom CSS Styling
+
+.navbar-nav {
+  // align-content: center;
+  margin: 0 auto;
+}
+
+.nav-link {
+  position: relative;
+}
+  
+.navbar-brand {
+  font-size: 2rem;
+}
+  
+.nav-link.active {
+  font-weight: 700;
+  color: var(--bs-warning) !important;
+}
+    
+.nav-link::after {
+  opacity: 0;
+  transition: all 0.2s;
+  height: 2px;
+  width: 100%;
+  background-color: var(--bs-warning);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+    
+.nav-link:hover::after {
+  content: '';
+  opacity: 1;
+}
+
+.nav-item {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.nav-item a:hover,
+.nav-item a:active {
+  font-weight: 700;
+  color: var(--bs-warning);
+}

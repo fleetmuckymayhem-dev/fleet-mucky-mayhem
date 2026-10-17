@@ -1,0 +1,32 @@
+.hero-section {
+    // background-image: url('../img/dark-small.png') !important; 
+    // background-size: cover;
+    // background-position: center;
+    background: #485563;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+  }
+
+  .hero-welcome {
+    margin-top: 10px;  
+    font-family: "Urbanist", sans;
+    // font-style: italic;
+    font-weight: 600;
+    // font-size: 4rem !important;
+    padding-bottom: 0 !important;
+  }
+
+  .hero-title {
+    margin-top: 75px;
+  }
+
+  .hero-text > p,
+  .hero-text > a {
+    font-size: 1.6rem !important;
+  }
