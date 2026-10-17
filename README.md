@@ -1,65 +1,287 @@
-# Fleet Mucky Mayhem — Astro migration
+# Fleet Mucky Mayhem
 
-Version **2.0.0**. This project has its own Git repository and starts from one new root commit; no Git history from the original repository is imported. The `baseline/` directory contains comparison source files only, not the original `.git` directory or its commits.
+Fleet Mucky Mayhem is a website for a social cycling group in Fleet, Hampshire, and the surrounding area. It includes information about the group, Regular and Longer Rides, past adventures, photos, and frequently asked questions.
 
-Local component migration of the original single-page site, without a redesign. Source snapshot: `Martin-Ferrero-Thompson/fleet-mucky-mayhem`, commit `7c284bb` (v1.11.2). The original checkout and deployment are untouched.
+This is version **2.0.0**, built with Astro and Bootstrap. It keeps the familiar website layout and styling while using a newer build system. This private GitHub repository has its own history, separate from the original website repository.
 
-## Run
+This guide is for Andy and anyone else who needs to update Longer Rides. You do not need to edit the website layout or learn programming for routine ride updates.
 
-Requires a Node version supported by the locked Astro release (verified with Node 24.14.1).
+## The file you will normally edit
+
+Open **[public/data/longer-rides.json](public/data/longer-rides.json)**.
+
+This file holds the ride details shown in the Ride Diary and supplies the next upcoming ride in **Where To Next**. JSON is simply a structured text format: labels such as `"title"` identify the information that follows.
+
+There are two lists inside the file:
+
+| List | What it contains |
+| --- | --- |
+| `"longerRides"` | The main 2026 Longer Rides programme, including rides that have already happened. |
+| `"archivedRides"` | Older rides, currently displayed under the 2025 and 2024 archive choices. |
+
+**Important:** the diary currently supports 2026 in the main list and 2025/2024 in the archive. Ask the project maintainer to add support before starting a new year or moving the 2026 programme into the archive. A different `year` value alone will not create a new diary section, even if the data check passes.
+
+Regular Rides are maintained separately in the website templates. Changing this JSON file does not change Regular Rides.
+
+## Before you start
+
+1. Open the project folder in your editor. On the current computer it is `P:\bootstraprefactor\astro-prototype`; another computer may use a different location.
+2. Make sure you have the latest version from GitHub. If you use GitHub Desktop, click **Fetch origin**, then **Pull origin** if offered. If you already have unfinished changes, ask the maintainer for help before pulling.
+3. Open `public`, then `data`, then `longer-rides.json`.
+4. Make one small change at a time. Save and check it before continuing.
+
+Use a plain-text code editor, such as the editor already used for this project. Do not use Word or another word processor, which may replace ordinary quotation marks with curly ones.
+
+## Change an existing ride
+
+1. Use the editor’s Find command (**Ctrl+F** on Windows) to find the ride title.
+2. Check the date as well: some titles appear more than once.
+3. Change only the values you need. Leave the labels on the left unchanged.
+4. Save the file with **Ctrl+S**.
+5. Follow **Check your changes** below before saving the change to GitHub.
+
+For example, to change a departure to 09:00, edit:
+
+```json
+"startTime": "09:00"
+```
+
+For an earlier or different meeting point, also update the meeting-point name, map link, and optional note where appropriate.
+
+### What each field means
+
+| Field | What to enter |
+| --- | --- |
+| `id` | A unique internal name, for example `canal-cafe-2026-11-14`. Use lowercase letters and hyphens. Do not reuse another ride’s ID, including archived rides. Leave it unchanged for routine edits; when copying a ride, give the copy a new ID. |
+| `title` | The ride name visitors see, for example `"Canal Café"`. |
+| `date` | A date in year-month-day order: `"2026-11-14"` means 14 November 2026. Use `null` without quotation marks when the date is undecided. |
+| `year` | The programme year as a number, for example `2026`. It must match the year in the date; for an undecided date, use the intended programme year. |
+| `startTime` | Departure time using a 24-hour clock, such as `"09:30"` or `"08:30"`. Times are UK local time, including summer time. Always supply this for the diary. |
+| `destination` | Where the ride goes. |
+| `distanceMiles` | A number only, such as `36` or `36.5`. The website adds “miles”. |
+| `overallTime` | The whole outing, including stops, for example `"5.5 hours"`. |
+| `rideTime` | Time spent cycling, excluding café stops and other breaks, for example `"4 hours"`. Use `"TBC"` if unknown; leaving this field out also displays TBC. |
+| `meetPoint.name` | The meeting location, inside the `meetPoint` block. |
+| `meetPoint.googleMapsUrl` | The Google Maps link to that meeting location. Check it opens the right place. |
+| `meetPoint.note` | Optional extra instruction, such as `"NOTE EARLIER START"`. Delete this whole field when there is no note; do not leave an empty string. Keep a map link if using a meeting-point note: the current diary displays the note alongside that link. |
+| `guidance` | Route advice, train arrangements, food/water requirements, or other information for riders. |
+| `notes` | An account of the ride afterwards. Use `[]` when there are no notes. |
+| `photosUrl` | The shared photos-folder link. Keep a valid, usable link; the diary currently renders a Photos link even if this field is missing. Ask the maintainer if no folder is available. |
+| `routeMapImage` | Optional route-map picture for Where To Next. See **Route maps and photos** below. |
+| `reliveUrl` | Optional link to a Relive recording. Delete the whole field if there is no recording. |
+
+Keep Destination, Distance, Departure Time, Overall Time, Guidance, and the photo link filled in. Although the automatic check permits some missing fields, the diary needs these details to display useful information.
+
+The website supplies headings, the “Timings below are for guidance only!” message, and units such as “miles”. Do not add those labels to the values yourself.
+
+## Add a Longer Ride
+
+The simplest method is to copy an existing ride in the correct list, then change its details.
+
+1. In `"longerRides"`, select one complete ride, from its opening `{` to its matching closing `}`. A ride includes a smaller `meetPoint` block, so do not stop at that block’s closing brace.
+2. Copy and paste the complete ride into the same list.
+3. Put a comma **between** the old ride and the new one. There must be no comma after the final ride in a list.
+4. Give the new ride a unique `id`, then update the title, date, year, times, destination, distance, meeting point, guidance, and links.
+5. Clear copied reports by setting `"notes": []`. Remove any copied Relive link or meeting-point note that does not apply.
+6. Check any copied map or photo link belongs to the new ride.
+7. Save, validate, and preview as described below.
+
+Here is an example of one complete ride. It is an illustration, **not a scheduled event**. Replace its details and supply the real photos-folder link before using it.
+
+```json
+{
+  "id": "canal-cafe-2026-11-14",
+  "title": "Canal Café",
+  "date": "2026-11-14",
+  "year": 2026,
+  "startTime": "09:30",
+  "destination": "Woking",
+  "distanceMiles": 36,
+  "overallTime": "5.5 hours",
+  "rideTime": "4 hours",
+  "meetPoint": {
+    "name": "Reading Road Canal Wharf",
+    "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA"
+  },
+  "guidance": "Towpath ride to Woking. Bring water and check the train arrangements.",
+  "notes": [],
+  "photosUrl": "REPLACE_WITH_THE_REAL_SHARED_PHOTOS_LINK"
+}
+```
+
+The file must keep this overall structure. The words below are an explanation, not text to paste into the JSON:
+
+```text
+{
+  "_schema": { ...leave this existing block unchanged... },
+  "longerRides": [
+    { ...first complete ride... },
+    { ...next complete ride... }
+  ],
+  "archivedRides": [
+    { ...first archived ride... },
+    { ...next archived ride... }
+  ]
+}
+```
+
+Rides are displayed in date order within each supported year, with undecided dates at the end. You do not need to move entries around to change their displayed order.
+
+An additional reference is [public/data/ride-template.json](public/data/ride-template.json). Copy only the ride object inside `newRide`, not the whole template file or its instructions. Replace every placeholder. The template contains `"note": ""`: remove that field unless you enter a real note, because empty notes fail validation.
+
+### A date that is not yet confirmed
+
+Set the date to `null`, keep the intended `year`, and use a unique ID such as `"canal-cafe-2026-tbd"`:
+
+```json
+"date": null,
+"year": 2026
+```
+
+The diary displays **TBD**. Undated rides are excluded from the next-ride countdown. When the date is agreed, change `date` and check `year`; you can also update the ID to match, provided it remains unique.
+
+## Add guidance or notes after a ride
+
+Keep guidance about the planned route in `guidance`. Put the account of what actually happened in `notes`.
+
+For several notes, use a list of quoted entries:
+
+```json
+"notes": [
+  "09:30 Ten riders set off in excellent weather.",
+  "11:20 Food at the café was excellent.",
+  "14:20 Arrived back in Fleet."
+]
+```
+
+The site separates entries with line breaks or paragraphs, depending on their length. Guidance can also be a list of quoted entries when you want separate paragraphs.
+
+Use ordinary text rather than HTML tags. If your text needs double quotation marks, put a backslash before each one: `"We used the \"broom wagon\" for the return."` Apostrophes, such as in `"Andy's ride"`, do not need a backslash.
+
+## Remove a ride or keep it as history
+
+To remove an entry completely:
+
+1. Find the correct title **and date**.
+2. Delete the entire ride from its opening `{` to its matching closing `}`, including its meeting point, guidance, notes, and links.
+3. Repair the comma between neighbouring rides. If you deleted the last ride, remove the comma after the ride that is now last. If a list becomes empty, leave it as `[]`.
+4. Keep the outer `"longerRides"` and `"archivedRides"` lists and the `_schema` block.
+5. Save, validate, and preview.
+
+Deleting a future ride may change Where To Next and its countdown. Deleting an archived ride removes its diary entry and links, but does not delete its external photo folder.
+
+If you want to preserve a ride’s history, leave it in the programme after it has happened and add notes/photos. It will automatically stop being eligible for Where To Next at its departure time. Moving a ride into the archive is a manual action, and the destination year must already be supported. Ask the maintainer to handle the annual rollover.
+
+Do not delete image files as part of a routine ride removal: another ride may share the same map.
+
+## Route maps and photos
+
+- **Meeting-point map:** paste the Google Maps share link into `meetPoint.googleMapsUrl`. This is separate from the route-map picture.
+- **Route-map picture:** place the image in `public/img/ride-maps/`. Use a simple filename with lowercase letters and hyphens, such as `canal-cafe.png`. Set `"routeMapImage": "img/ride-maps/canal-cafe.png"` in the ride. Notice that the data path starts with `img/`, **not** `public/`. Match the filename and capital letters exactly.
+- **No route map:** omit `routeMapImage`; Where To Next uses the existing “no map provided” picture.
+- **Photos:** paste the shared folder’s full URL into `photosUrl`. Check the folder’s sharing settings and test the link as a visitor, ideally while signed out.
+- **Relive:** add `"reliveUrl": "YOUR_REAL_RELIVE_LINK"` only when there is a recording.
+
+Route-map pictures are used by Where To Next; they are not currently displayed inside the Longer Ride’s General Info table. Add any new image to the same GitHub commit as the data change.
+
+## Check your changes
+
+These instructions use Windows PowerShell and the local project setup. The maintainer should help with the initial installation of Node.js, GitHub access, and the editor. This project has been verified with Node.js 24.14.1.
+
+Open the editor’s terminal in the project folder—the folder containing `package.json`. If it opens somewhere else, on the current computer enter:
+
+```powershell
+Set-Location 'P:\bootstraprefactor\astro-prototype'
+```
+
+On the first setup only, install the project dependencies:
 
 ```powershell
 npm.cmd ci
-$env:ASTRO_TELEMETRY_DISABLED='1'
-npm.cmd run dev
 ```
 
-Open http://127.0.0.1:4321/. For a production preview, run `npm.cmd run build` then `npm.cmd run preview`. `npm.cmd run check` runs Astro/TypeScript diagnostics. On other platforms use `npm` rather than `npm.cmd` and your shell's environment-variable syntax.
+After every ride edit, save the file and run:
 
-## Migration boundaries
+```powershell
+npm.cmd run validate:data
+```
 
-- Every visible section, navigation, and footer is now an Astro template under `src/components/`, composed by `src/pages/index.astro`, with no additional DOM wrappers.
-- `src/layouts/SiteLayout.astro` preserves the metadata, external fonts/icons, dark theme, and global stylesheet order: Bootstrap first, original Sass second.
-- No raw HTML snapshots or `set:html` fragments remain in the page. The abandoned calendar, modal, navigation placeholder, and calendar-only assets/data have been removed.
-- Existing browser modules remain under `src/js/`; countdown ownership is in `src/scripts/where-to-next.ts`. All load from `src/scripts/site.ts`, which imports Bootstrap directly to preserve dropdowns, accordions, the carousel, and navigation. Data/date modules are type checked; legacy JavaScript is not yet fully type checked. CSS is imported by the layout.
-- Bootstrap remains locked to 5.3.8. FullCalendar and its unused Preact dependency have been removed. Package installation is reproducible with `npm ci`.
-- Images retain their original bytes. Runtime/static images are under `public/img`; `src/img/Featured-DDOTTS-30.jpg` is retained for the Sass background reference. Unreferenced public images and duplicate source images have been removed; the migration comparison copy retains its own images under `baseline/src/img`.
-- No calendar code is shipped in the current application. Removing this previously hidden feature does not change the visible navigation or page sections.
-- Astro requires valid template syntax. Existing malformed tags were expressed as explicit browser-equivalent markup: line breaks, empty paragraphs surrounding block headings, misnested anchor/icon closing tags, missing list-item/container closings, and a stray footer span closing tag. Empty photo list items are deliberately retained because browsers render them in the original dropdowns. Section DOM structure and geometry are compared with the baseline.
-- Analytics scripts and the tracking noscript iframe are omitted from the prototype so local review does not send production page views. Restore the agreed production analytics setup during the full migration.
-- `src/lib/data.ts` defines runtime-validated ride types and a shared request cache. The diary and countdown share one ride-data request. Calendar-only event models, loaders, recurrence validation, and tests were removed; Longer Ride validation is retained.
-- `src/lib/dates.ts` formats calendar dates without viewer-timezone drift, sorts dates, converts departures in Europe/London, selects the next ride, and calculates elapsed countdown time.
-- The fixed February timer has been removed from `utils.js`, which retains only theme behavior. The new countdown uses one interval, reselects at departure, and catches up on visibility/pageshow events. Departure means strictly future: at the exact start instant, it selects the next dated ride or shows TBD/zeros. Missing start times default to 09:30. Spring-skipped London times are rejected; autumn-repeated times use the first occurrence.
-- `npm.cmd run validate:data` validates all current and archived entries in `public/data/longer-rides.json`. Production builds run it automatically. Regular Rides remain defined directly in `RideDiary.astro`; their calendar-only JSON was not used by the visible diary and has been removed. The Longer Ride entry template remains. `npm.cmd test` exercises schema and date logic using Node's test runner (Node 24 recommended).
+Success looks like `Validated site data: { rides: 31 }`. The number changes when rides are added or removed. If an error appears, fix it before continuing.
 
-## Verification
-
-See [VERIFICATION.md](VERIFICATION.md) for the latest complete-page comparison results and limits.
-
-`baseline/src/` is a migration comparison copy based on the original source. The abandoned calendar has also been removed from this copy so it can still build without FullCalendar. The remaining comparison copy uses Vite 5.4.21, Bootstrap 5.3.8, and the same Sass compiler as the Astro project. Its configuration copies runtime assets and skips imagemin optimization to compare original image bytes. It is not an untouched original archive or a verified copy of the deployed live site; the original repository is separate and unchanged.
-
-To reproduce browser checks:
+Then build the website:
 
 ```powershell
 $env:ASTRO_TELEMETRY_DISABLED='1'
-npm.cmd run baseline:build
 npm.cmd run build
-# Start these in separate terminals:
-npm.cmd run baseline:preview
-npm.cmd run preview
-# With Playwright available (and Edge installed):
-node scripts/verify-full-browser.mjs
-node scripts/verify-countdown.mjs
-# With Python and Pillow available:
-python scripts/compare-screenshots.py
 ```
 
-`QA_PACKAGE_ROOT` can point to an existing node_modules directory containing Playwright. Otherwise the browser script resolves a locally installed Playwright package. Install Playwright separately if needed. Full-page screenshots and JSON results are written to ignored `artifacts/parity/`; the earlier prototype evidence remains under `artifacts/`. Browser checks use isolated headless Edge profiles and block Google Tag Manager requests. They do not interact with a personal browser profile. Use `scripts/verify-full-browser.mjs` for complete-page browser checks.
+The build repeats the data check. Once it succeeds, start a preview:
 
-## Next stage
+```powershell
+npm.cmd run preview
+```
 
-Longer Rides now group Destination, Distance, and Departure Time above the guidance-only timing note, followed by Overall Time and Ride Time. Optional `rideTime` is a readable cycling-time estimate excluding stops (for example `"2-3 hours"`) in `public/data/longer-rides.json`; omitted values display **TBC**. The layout applies to current and archived Longer Rides, and leaves Regular Rides, Where To Next, and calendar displays unchanged. See LONGER-RIDES-LAYOUT.md for validation and the updated comparison workflow.
+Open the local address printed in the terminal, normally [http://127.0.0.1:4321/](http://127.0.0.1:4321/). If another copy is already running, stop it with **Ctrl+C** in its terminal or use the different address printed by the new preview.
 
-The typed data/shared date layer and countdown fix are implemented, and the abandoned calendar has been removed. Next prepare release configuration: production metadata/static verification files, analytics, repository-prefix deployment, and a live-site comparison. Further legacy-module conversion and other audited cleanup items remain separate milestones. See DATA-AND-DATES.md for the earlier behavior-change evidence.
+Check:
 
-Calendar-removal checks: all 13 unit tests, ride validation, Astro diagnostics, production build, and comparison-copy build passed. The complete pre-cleanup comparison covered all 213 screenshots at five widths without layout exclusions (195 exact, 18 differing by at most one 8-bit colour level per channel). Navigation, carousel/autoplay, FAQ/overview accordions, ride groups/archives, photo dropdowns, and three-timezone countdown/error handling passed. Generated evidence is under `artifacts/calendar-removal/` and `artifacts/countdown/`. Built JavaScript reduced from 296,084 to 93,160 bytes; actual ride data and templates were preserved. Historical evidence in ignored artifacts and the separate original repository are not deleted by this cleanup.
+- Ride Diary → Longer Rides, or the appropriate archive year: title, date, all General Info values, guidance, and notes.
+- Google Maps, Photos, and Relive links, where supplied.
+- Where To Next if the change affects the next future ride. It selects the earliest future dated ride from `longerRides`, based on UK departure time; it does not select archived or undated rides.
+- The layout on a narrow browser window as well as a wide one.
+
+Stop the preview with **Ctrl+C** when finished. After further edits, stop the preview, rebuild, then start it again. A production preview does not rebuild your changes automatically.
+
+If a previously deleted ride still appears, refresh the page. If needed, use **Ctrl+F5** to refresh without using the browser’s cached copy.
+
+### Common problems
+
+| Problem | What to check |
+| --- | --- |
+| An error mentioning JSON, a comma, or an unexpected character | Check the edited area and the line before it. Use double quotation marks, commas between entries, and no trailing comma before `}` or `]`. Do not add comments to JSON. |
+| `duplicate IDs` | Two rides share an `id`. Give the copied/new ride a unique ID. |
+| `year/date mismatch`, invalid date, or invalid time | Use a real date in `YYYY-MM-DD` format, a matching numeric year, and a 24-hour time in `HH:MM` format. |
+| `expected nonempty text` | A field was left as `""`. Fill it in, or remove the whole field if it is optional. For an unknown ride time use `"TBC"`. |
+| The error names `longerRides[2]` | Entries are counted from zero: `[0]` is the first ride, `[1]` the second, `[2]` the third. |
+| A new year does not appear | The diary needs code support for that year. Ask the maintainer; the data check does not test year-section availability. |
+| A map is missing or a link opens the wrong place | Check the filename/path and open the actual URL. Data validation does not check image existence, link destinations, or photo-folder permissions. |
+| The data check passes but a value is missing or says `undefined` | Restore the display fields listed above. Some fields are technically optional but still needed by the diary layout. |
+| `npm` is not recognised, or installation/build fails | Ask the maintainer to check Node.js and the local setup. Keep the full error message. |
+
+For JSON, remember: text is quoted (`"Woking"`); numbers are not (`36`); an undecided date is `null`; an empty notes list is `[]`. Do not leave out a required field just because its value is not known.
+
+## Save the checked update to GitHub
+
+A **commit** is a saved checkpoint with a short description. **Push** uploads that checkpoint to the shared GitHub repository.
+
+If using GitHub Desktop:
+
+1. Select the `fleet-mucky-mayhem-astro` repository.
+2. Review **Changes**. Select only the files for this update—usually `public/data/longer-rides.json` and any new route-map images.
+3. Enter a clear summary, such as `Update Canal Café departure time`.
+4. Click **Commit to main**, then **Push origin**. If you are working on another branch, follow the maintainer’s agreed review process instead.
+5. Open GitHub and confirm the update is there.
+
+If GitHub reports conflicting changes, ask the maintainer for help rather than overwriting somebody else’s work.
+
+**Pushing to GitHub saves the project; it does not by itself guarantee the public website has been updated.** The live site needs the agreed build/deployment process. Confirm with the maintainer when the checked update should go live.
+
+If you spot a mistake after committing, make a correcting edit, repeat the checks, and create another commit. The maintainer can also recover earlier versions from Git history.
+
+## Project reference for the maintainer
+
+| Location | Purpose |
+| --- | --- |
+| `src/components/` | Website sections and layout content. |
+| `src/layouts/`, `src/pages/` | Shared page layout and homepage. |
+| `src/scss/` | Website styling. |
+| `src/js/`, `src/scripts/`, `src/lib/` | Browser interactions, ride rendering, countdown, validation, and date handling. |
+| `public/data/` | Longer Ride programme and authoring template. |
+| `public/img/` | Static images and route maps. |
+| `tests/`, `scripts/` | Unit tests, data validation, and browser/visual verification tools. |
+| `baseline/` | Historical migration comparison copy; not the active content to edit. |
+| `dist/`, `.astro/`, `node_modules/`, `artifacts/` | Generated builds, cache, installed dependencies, and local test evidence. Do not edit these to change a ride. |
+
+Useful commands: `npm.cmd run dev` for a development server, `npm.cmd run check` for Astro/TypeScript diagnostics, and `npm.cmd test` for the unit tests. `npm.cmd run build` validates ride data and builds the static site; `npm.cmd run preview` serves that build locally.
+
+The full browser check is `scripts/verify-full-browser.mjs`; countdown and populated General Info checks are in `scripts/verify-countdown.mjs` and `scripts/verify-general-info.mjs`. These need a separately available Playwright installation and Edge. Screenshot comparison uses `scripts/compare-screenshots.py` with Python/Pillow. See [VERIFICATION.md](VERIFICATION.md) for historical migration evidence and its limits.
