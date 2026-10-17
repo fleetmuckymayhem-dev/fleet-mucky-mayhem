@@ -51,6 +51,7 @@
       "destination": "Weybridge",
       "distanceMiles": 48,
       "overallTime": "7 hours",
+      "rideTime": "5 hours",
       "routeMapImage": "img/ride-maps/no-map-provided.png",
       "meetPoint": {
         "name": "Reading Road Canal Wharf",
