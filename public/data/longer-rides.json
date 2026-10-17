@@ -108,6 +108,7 @@
       "destination": "Guildford and Wey Navigation",
       "distanceMiles": 50,
       "overallTime": "8 hours",
+      "rideTime": "5.5 hours",
       "routeMapImage": ["img/ride-maps/jabberwocky.jpeg"],
       "meetPoint": {
         "name": "Reading Road Canal Wharf",
