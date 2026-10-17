@@ -12,7 +12,7 @@ Open **[public/data/longer-rides.json](public/data/longer-rides.json)**.
 
 This file holds the ride details shown in the Ride Diary and supplies the next upcoming ride in **Where To Next**. JSON is simply a structured text format: labels such as `"title"` identify the information that follows.
 
-When there are no future dated Longer Rides, Where To Next displays the festive image and details for **The Muckies Midwinter Celebration — 1st December 2026, 19:00, The Prince of Wales**. It hides the ride countdown, introduction, start point, distance, duration, and route-map caption. Adding a future dated ride restores the normal ride display after refreshing. The celebration is a fixed fallback in the website code, not an entry in this ride file; it stays until a future ride is available or the maintainer updates it. A data-loading error still uses the existing TBD display.
+When there are no future dated Longer Rides, Where To Next displays only the festive **Muckies Midwinter Celebration** image alongside the section heading. All separate event details, the ride countdown, introduction, and route-map caption are hidden. Adding a future dated ride restores the normal ride display after refreshing. The celebration is a fixed fallback in the website code, not an entry in this ride file; it stays until a future ride is available or the maintainer updates it. A data-loading error still uses the existing TBD display.
 
 There are two lists inside the file:
 

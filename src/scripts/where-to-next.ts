@@ -5,7 +5,7 @@ let stop: (() => void) | undefined;
 let generation = 0;
 function text(id: string, value: string | number) { const el = document.getElementById(id); if (el) el.textContent = String(value); }
 function celebrationMode(enabled: boolean) {
-  for (const id of ['next-countdown', 'next-intro', 'next-start-point-row', 'next-distance-row', 'next-overall-time-row', 'next-route-caption']) {
+  for (const id of ['next-countdown', 'next-intro', 'next-details', 'next-start-point-row', 'next-distance-row', 'next-overall-time-row', 'next-route-caption']) {
     const el = document.getElementById(id);
     if (el) el.hidden = enabled;
   }

@@ -52,6 +52,7 @@ try {
     assert.equal(before.date, '17-Oct-26'); assert.equal(before.time, '09:30');
     assert.deepEqual(before.clock, ['00', '00', '00', '02']);
     assert.equal(await page.locator('#next-countdown').isVisible(), true);
+    assert.equal(await page.locator('#next-details').isVisible(), true);
     assert.equal(await page.locator('#next-start-point-row').isVisible(), true);
     assert.equal(await page.locator('#next-route-caption').isVisible(), true);
     assert.equal(before.timers, 1); assert.equal(requests(), 1);
@@ -113,10 +114,10 @@ async function checkCelebration(page) {
   assert.equal(await page.locator('#next-date').textContent(), '1st December 2026');
   assert.equal(await page.locator('#next-start-time').textContent(), '19:00');
   assert.equal(await page.locator('#next-destination').textContent(), 'The Prince of Wales');
-  for (const id of ['next-countdown', 'next-intro', 'next-start-point-row', 'next-distance-row', 'next-overall-time-row', 'next-route-caption']) {
+  for (const id of ['next-countdown', 'next-intro', 'next-details', 'next-start-point-row', 'next-distance-row', 'next-overall-time-row', 'next-route-caption']) {
     assert.equal(await page.locator(`#${id}`).isVisible(), false, `${id} should be hidden`);
   }
-  assert.equal(await page.locator('#where-to-next h5:visible').count(), 4);
+  assert.equal(await page.locator('#where-to-next h5:visible').count(), 0);
   assert.match(await page.locator('#next-route-map').getAttribute('src'), /muckies-midwinter-celebration-2026\.png$/);
   await page.waitForFunction(() => {
     const image = document.getElementById('next-route-map');
