@@ -148,6 +148,7 @@
       "destination": "London - Waterloo Station",
       "distanceMiles": 57,
       "overallTime": "9 hours",
+      "rideTime": "6 hours",
       "routeMapImage": "img/ride-maps/city-slickers.jpg",
       "meetPoint": {
         "name": "Reading Road Canal Wharf",
