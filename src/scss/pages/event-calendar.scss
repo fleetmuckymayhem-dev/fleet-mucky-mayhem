@@ -1,5 +1,6 @@
 // filepath: src/scss/pages/event-calendar.scss
 // Event Calendar Section Styles
+@use 'sass:color';
 
 // Calendar Legend
 .calendar-legend {
@@ -166,7 +167,7 @@
     color: #D4AF37;
 
     &:hover {
-      color: lighten(#D4AF37, 10%);
+      color: color.adjust(#D4AF37, $lightness: 10%, $space: hsl);
     }
   }
 
@@ -182,8 +183,8 @@
     color: #000;
     
     &:hover {
-      background-color: darken(#D4AF37, 10%);
-      border-color: darken(#D4AF37, 10%);
+      background-color: color.adjust(#D4AF37, $lightness: -10%, $space: hsl);
+      border-color: color.adjust(#D4AF37, $lightness: -10%, $space: hsl);
     }
     
     &:disabled {
