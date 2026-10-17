@@ -1,5 +1,7 @@
 # Typed content and countdown milestone
 
+Historical milestone record: the later calendar cleanup removed the calendar-only models, data, loaders, dependencies, and event-index validation described below. Current runtime data validation covers the 31 Longer Rides; see README.md for the current architecture.
+
 Implemented 17 October 2026. No HTML, Sass, fonts, content files, or original-repository files were changed.
 
 ## Changes

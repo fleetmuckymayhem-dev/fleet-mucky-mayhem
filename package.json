@@ -14,9 +14,6 @@
     "baseline:preview": "node node_modules/vite-baseline/bin/vite.js preview --config baseline/vite.config.mjs --host 127.0.0.1 --port 4322"
   },
   "dependencies": {
-    "@fullcalendar/core": "6.1.20",
-    "@fullcalendar/daygrid": "6.1.20",
-    "@fullcalendar/multimonth": "6.1.20",
     "@popperjs/core": "2.11.8",
     "astro": "7.4.0",
     "bootstrap": "5.3.8"

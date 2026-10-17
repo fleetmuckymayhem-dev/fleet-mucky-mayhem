@@ -6,7 +6,6 @@
  * 2. Toggling between different accordion views (Regular, Longer, Archived)
  *
  * Phase 1: JSON → Accordion rendering
- * Phase 2 (future): FullCalendar integration
  */
 
 // ============================================================================

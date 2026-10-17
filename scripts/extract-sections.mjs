@@ -20,7 +20,5 @@ for (const [name, id] of Object.entries(sections)) {
   writeFileSync(`src/components/${name}.astro`, markup + '\n');
 }
 writeFileSync('src/components/Footer.astro', html.match(/<footer\b[\s\S]*?<\/footer>/)[0].replace('Fleet Mucky Mayhem</span>', 'Fleet Mucky Mayhem').replace('v1.11.2', 'v2.0.0') + '\n');
-// Keep the calendar and its modal as one disabled source comment.
-writeFileSync('src/components/EventCalendar.astro', html.match(/<!-- EVENT CALENDAR SECTION - TEMPORARILY DISABLED[\s\S]*?-->/)[0] + '\n');
-const components = ['Navigation', 'Hero', 'AboutUs', 'WhatWeDo', 'WhereToNext', 'Sponsors', 'EventCalendar', 'RideDiary', 'Photos', 'Faq', 'ContactUs', 'Disclaimer', 'Footer'];
+const components = ['Navigation', 'Hero', 'AboutUs', 'WhatWeDo', 'WhereToNext', 'Sponsors', 'RideDiary', 'Photos', 'Faq', 'ContactUs', 'Disclaimer', 'Footer'];
 writeFileSync('src/pages/index.astro', `---\nimport SiteLayout from '../layouts/SiteLayout.astro';\n${components.map(name => `import ${name} from '../components/${name}.astro';`).join('\n')}\n---\n<SiteLayout>\n${components.map(name => `  <${name} />`).join('\n')}\n</SiteLayout>\n`);

@@ -2,6 +2,8 @@
 
 This records the component-extraction milestone. The subsequent typed-content/countdown changes and latest test results are recorded in [DATA-AND-DATES.md](DATA-AND-DATES.md).
 
+Later cleanup: the abandoned calendar was removed from both the application and migration comparison copy. Calendar and untouched-baseline statements below describe the earlier milestone, not the current code.
+
 The page now composes every visible section, navigation, and footer from Astro templates. Raw HTML fragment imports have been removed. Styles, assets, browser behavior, and the original disabled calendar are preserved.
 
 ## Results

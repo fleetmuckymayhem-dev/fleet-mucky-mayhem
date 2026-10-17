@@ -38,4 +38,6 @@ Before making a later layout change, save the current build into an ignored refe
 
 Only the specific General Info tables are normalized out of the initial structural comparison; surrounding ride content and every other section remain compared. Only the fifteen named expanded Longer Ride screenshots are excluded from pixel equality; their field order/data and responsive layout receive the separate browser checks above. Raw paired screenshots remain available for review.
 
+Later cleanup: comparisons now include the General Info tables and all 213 states by default. Set `QA_GENERAL_INFO_CHANGE=1` only to reproduce the historical pre-redesign comparison described above. The abandoned calendar has since been removed; current cleanup comparisons use an up-to-date pre-cleanup Astro build as the reference.
+
 The TypeScript configuration excludes generated `artifacts/` so saved compiled bundles do not enter source diagnostics. Reference PNGs supplied by the user are left untracked and unchanged.

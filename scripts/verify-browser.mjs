@@ -25,7 +25,7 @@ try {
       const hero = await page.locator('#home').evaluate(el => ({ html: el.innerHTML.replace(/\s+/g, ' ').trim(), height: el.getBoundingClientRect().height, width: el.getBoundingClientRect().width, font: getComputedStyle(el.querySelector('h2')).fontFamily }));
       const links = await page.locator('.navbar-nav .nav-link').evaluateAll(els => els.map(el => ({ text: el.textContent.trim(), targetExists: !!document.querySelector(el.getAttribute('href')) })));
       assert(links.every(link => link.targetExists), `${name}: missing navigation target`);
-      // Calendar markup is currently commented out in the original source.
+      // The site has ten visible sections.
       assert.equal(await page.locator('section').count(), 10);
       assert.deepEqual(failures, [], `${name}: local resource failures`);
       if (width < 1400) {

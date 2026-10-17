@@ -6,6 +6,8 @@ const require = createRequire(process.env.QA_PACKAGE_ROOT ? `${process.env.QA_PA
 const { chromium } = require('playwright');
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
 const directory = process.env.QA_ARTIFACT_DIR || 'artifacts/parity';
+// Enable only when comparing against the older, intentionally different info table.
+const generalInfoRedesign = process.env.QA_GENERAL_INFO_CHANGE === '1';
 mkdirSync(directory, { recursive: true });
 const widths = [390, 768, 1399, 1400, 1440];
 const results = [], captures = [];
@@ -55,13 +57,13 @@ try {
       await page.waitForFunction(() => document.querySelector('#accordion2026 .accordion-item') && !document.querySelector('#next-title').textContent.includes('Loading'));
       await settleImages(page);
       await page.addStyleTag({ content: '*,*::before,*::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }' });
-      const inventory = await page.evaluate(() => {
+      const inventory = await page.evaluate(generalInfoRedesign => {
         const tidy = text => text.replace(/\s+/g, ' ').trim();
         return [...document.querySelectorAll('section, footer')].map(original => {
           const section = original.cloneNode(true);
           // Explicit redesign boundary: verify these tables separately, preserving
           // comparison of every surrounding element and all other page sections.
-          for (const table of section.querySelectorAll('#accordion2026 .accordion-body > table, #accordion2025 .accordion-body > table, #accordion2024 .accordion-body > table')) {
+          for (const table of generalInfoRedesign ? section.querySelectorAll('#accordion2026 .accordion-body > table, #accordion2025 .accordion-body > table, #accordion2024 .accordion-body > table') : []) {
             const marker = document.createElement('div');
             marker.setAttribute('data-comparison-region', 'longer-ride-general-info');
             table.replaceWith(marker);
@@ -73,8 +75,9 @@ try {
           links: [...section.querySelectorAll('a')].map(el => ({ href: el.getAttribute('href'), text: tidy(el.textContent), target: el.target })),
           images: [...original.querySelectorAll('img')].map(el => ({ alt: el.alt, loaded: el.complete && el.naturalWidth > 0, width: el.width, height: el.height, naturalWidth: el.naturalWidth })),
         }; });
-      });
+      }, generalInfoRedesign);
       assert.deepEqual(inventory.map(item => item.id), [...sections, 'footer']);
+      assert.equal(await page.locator('#calendar-mount, #eventModal, #event-calendar').count(), 0);
       assert(inventory.every(item => item.images.every(image => image.loaded)), `${name}: missing images`);
       if (name === 'astro') {
         const tables = page.locator('.ride-general-info');
@@ -189,7 +192,7 @@ try {
   }
   writeFileSync(`${directory}/browser-results.json`, JSON.stringify(results, null, 2));
   writeFileSync(`${directory}/captures.json`, JSON.stringify(captures, null, 2));
-  const expectedChanges = captures.filter(capture => [2026, 2025, 2024].some(year => capture.endsWith(`rides-accordion${year}-expanded`)));
+  const expectedChanges = generalInfoRedesign ? captures.filter(capture => [2026, 2025, 2024].some(year => capture.endsWith(`rides-accordion${year}-expanded`))) : [];
   writeFileSync(`${directory}/expected-changes.json`, JSON.stringify(expectedChanges, null, 2));
   console.log(`PASS: ${captures.length} paired captures; autoplay passed for both builds.`);
 } finally { await browser.close(); }

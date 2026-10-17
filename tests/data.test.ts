@@ -1,14 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { loadRideData, parseDetails, parseEventIndex, parseRideData } from '../src/lib/data.ts';
+import { loadRideData, parseRideData } from '../src/lib/data.ts';
 const read = (file: string): unknown => JSON.parse(readFileSync(new URL(`../public/data/${file}`, import.meta.url), 'utf8'));
 const fixture = () => structuredClone(parseRideData(read('longer-rides.json')));
 test('all current data files satisfy the runtime schemas', () => {
   assert.equal(fixture().longerRides.length, 11);
   assert.equal(fixture().archivedRides.length, 20);
-  assert.equal(parseEventIndex(read('events.json')).events.length, 29);
-  for (const file of ['regular-rides.json', 'social-events.json', 'introductory-rides.json']) parseDetails(read(file));
 });
 test('ride schema rejects malformed dates, IDs, years, times, fields, and distance', () => {
   for (const corrupt of [
@@ -27,6 +25,7 @@ test('TBD dates and missing start times are accepted explicitly', () => {
 });
 test('cycling-time estimates are optional and must be nonempty text when supplied', () => {
   const data = fixture();
+  delete data.longerRides[0]!.rideTime;
   assert.equal(parseRideData(data).longerRides[0]!.rideTime, undefined);
   data.longerRides[0]!.rideTime = '2-3 hours';
   assert.equal(parseRideData(data).longerRides[0]!.rideTime, '2-3 hours');
@@ -36,13 +35,15 @@ test('cycling-time estimates are optional and must be nonempty text when supplie
     assert.throws(() => parseRideData(malformed), /rideTime/);
   }
 });
-test('event schema rejects unknown types and malformed recurring events', () => {
-  const sample = () => structuredClone(parseEventIndex(read('events.json')));
-  const invalidType = sample(); (invalidType.events[0] as unknown as Record<string, unknown>).eventType = 'unknown';
-  assert.throws(() => parseEventIndex(invalidType));
-  for (const daysOfWeek of [[], [7], [-1], ['0']]) {
-    const data = sample(); (data.events[0] as unknown as Record<string, unknown>).daysOfWeek = daysOfWeek;
-    assert.throws(() => parseEventIndex(data));
+test('ride schema still rejects missing dates, meet points, and malformed notes', () => {
+  for (const corrupt of [
+    (ride: Record<string, unknown>) => { delete ride.date; },
+    (ride: Record<string, unknown>) => { delete ride.meetPoint; },
+    (ride: Record<string, unknown>) => { ride.notes = [42]; },
+  ]) {
+    const data = fixture() as unknown as { longerRides: Record<string, unknown>[] };
+    corrupt(data.longerRides[0]!);
+    assert.throws(() => parseRideData(data));
   }
 });
 test('historical single-item URL arrays normalize without mutating source JSON', () => {
