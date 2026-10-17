@@ -181,6 +181,7 @@
       "destination": "Guildford to Shoreham-by-Sea",
       "distanceMiles": 76,
       "overallTime": "10 hours",
+      "rideTime": "8 hours",
       "routeMapImage": "img/ride-maps/DDOTTS.png",
       "meetPoint": {
         "name": "Guildford Railway Station, Main entrance",
