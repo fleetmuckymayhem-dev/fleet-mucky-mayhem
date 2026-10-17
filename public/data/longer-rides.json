@@ -307,7 +307,8 @@
       "startTime": "09:30",
       "destination": "Woking",
       "distanceMiles": 36,
-      "overallTime": "5 hours",
+      "overallTime": "5.5 hours",
+      "rideTime": "4 hours",
       "routeMapImage": "img/ride-maps/war-of-the-worlds.jpg",
       "meetPoint": {
         "name": "Reading Road Canal Wharf",
