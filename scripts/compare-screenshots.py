@@ -1,13 +1,19 @@
 """Compare paired browser screenshots; requires Pillow."""
 import json
+import os
 from pathlib import Path
 from PIL import Image, ImageChops
 
-root = Path('artifacts/parity')
+root = Path(os.environ.get('QA_ARTIFACT_DIR', 'artifacts/parity'))
 results = []
 captures = json.loads((root / 'captures.json').read_text())
+expected_file = root / 'expected-changes.json'
+expected_changes = set(json.loads(expected_file.read_text())) if expected_file.exists() else set()
 assert captures, 'No captures recorded by the browser checks'
 for capture in captures:
+    # These fifteen expanded screenshots intentionally change for the new layout.
+    if capture in expected_changes:
+        continue
     baseline = root / f'baseline-{capture}.png'
     candidate = root / baseline.name.replace('baseline-', 'astro-', 1)
     original = Image.open(baseline).convert('RGB')
@@ -29,6 +35,7 @@ for capture in captures:
 print(f"Compared {len(results)} screenshot pairs; "
       f"{sum(result.get('changed_pixels') == 0 for result in results)} are exact; "
       f"{sum(not result['same_size'] or result.get('pixels_over_one_level', 0) > 0 for result in results)} exceed one colour level.")
+print(f'{len(expected_changes)} expanded Longer Ride states are intentionally redesigned and checked separately.')
 for result in results:
     if not result['same_size'] or result.get('pixels_over_one_level', 0):
         print(json.dumps(result))

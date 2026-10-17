@@ -1,16 +1,19 @@
 import { createRequire } from 'node:module';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { formatRideDate } from '../src/lib/dates.ts';
 import assert from 'node:assert/strict';
 const require = createRequire(process.env.QA_PACKAGE_ROOT ? `${process.env.QA_PACKAGE_ROOT}/package.json` : import.meta.url);
 const { chromium } = require('playwright');
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
-const directory = 'artifacts/parity';
+const directory = process.env.QA_ARTIFACT_DIR || 'artifacts/parity';
 mkdirSync(directory, { recursive: true });
 const widths = [390, 768, 1399, 1400, 1440];
 const results = [], captures = [];
 const astroPort = Number(new URL(process.env.ASTRO_QA_URL || 'http://127.0.0.1:4321/').port);
 const baselinePort = Number(new URL(process.env.BASELINE_QA_URL || 'http://127.0.0.1:4322/').port);
 const sections = ['home', 'about-us', 'what-we-do', 'where-to-next', 'sponsors', 'ride-diary', 'photos', 'faq', 'contact-us', 'group-ride-disclaimer'];
+const rideData = JSON.parse(readFileSync('public/data/longer-rides.json', 'utf8'));
+const expectedRideTimes = new Map([...rideData.longerRides, ...rideData.archivedRides].map(ride => [`${formatRideDate(ride.date)} | ${ride.title}`, ride.rideTime ?? 'TBC']));
 async function waitCollapse(page, selector, open) {
   await page.waitForFunction(({ selector, open }) => {
     const el = document.querySelector(selector);
@@ -54,16 +57,36 @@ try {
       await page.addStyleTag({ content: '*,*::before,*::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }' });
       const inventory = await page.evaluate(() => {
         const tidy = text => text.replace(/\s+/g, ' ').trim();
-        return [...document.querySelectorAll('section, footer')].map(section => ({
-          id: section.id || 'footer', height: section.getBoundingClientRect().height,
-          width: section.getBoundingClientRect().width, text: tidy(section.textContent),
+        return [...document.querySelectorAll('section, footer')].map(original => {
+          const section = original.cloneNode(true);
+          // Explicit redesign boundary: verify these tables separately, preserving
+          // comparison of every surrounding element and all other page sections.
+          for (const table of section.querySelectorAll('#accordion2026 .accordion-body > table, #accordion2025 .accordion-body > table, #accordion2024 .accordion-body > table')) {
+            const marker = document.createElement('div');
+            marker.setAttribute('data-comparison-region', 'longer-ride-general-info');
+            table.replaceWith(marker);
+          }
+          return {
+          id: section.id || 'footer', height: original.getBoundingClientRect().height,
+          width: original.getBoundingClientRect().width, text: tidy(section.textContent),
           structure: [...section.querySelectorAll('*')].map(el => ({ tag: el.tagName, id: el.id, class: el.className })),
           links: [...section.querySelectorAll('a')].map(el => ({ href: el.getAttribute('href'), text: tidy(el.textContent), target: el.target })),
-          images: [...section.querySelectorAll('img')].map(el => ({ alt: el.alt, loaded: el.complete && el.naturalWidth > 0, width: el.width, height: el.height, naturalWidth: el.naturalWidth })),
-        }));
+          images: [...original.querySelectorAll('img')].map(el => ({ alt: el.alt, loaded: el.complete && el.naturalWidth > 0, width: el.width, height: el.height, naturalWidth: el.naturalWidth })),
+        }; });
       });
       assert.deepEqual(inventory.map(item => item.id), [...sections, 'footer']);
       assert(inventory.every(item => item.images.every(image => image.loaded)), `${name}: missing images`);
+      if (name === 'astro') {
+        const tables = page.locator('.ride-general-info');
+        assert.equal(await tables.count(), 31);
+        for (const table of await tables.all()) {
+          assert.deepEqual(await table.locator('th').allTextContents(), ['DESTINATION:', 'DISTANCE:', 'DEPARTURE TIME:', 'OVERALL TIME:', 'RIDE TIME:']);
+          assert.equal((await table.locator('tr').nth(3).textContent()).trim(), 'Timings below are for guidance only!');
+          const heading = await table.evaluate(el => el.closest('.accordion-item').querySelector('.accordion-button').textContent.trim().replace(/\s+/g, ' '));
+          assert(expectedRideTimes.has(heading), `Unknown ride header: ${heading}`);
+          assert.equal((await table.locator('tr').last().locator('td').textContent()).trim(), expectedRideTimes.get(heading));
+        }
+      }
       await capture(page, name, width, 'hero');
       await capture(page, name, width, 'full-page');
       for (const id of sections.slice(1)) await capture(page, name, width, id, `#${id}`);
@@ -166,5 +189,7 @@ try {
   }
   writeFileSync(`${directory}/browser-results.json`, JSON.stringify(results, null, 2));
   writeFileSync(`${directory}/captures.json`, JSON.stringify(captures, null, 2));
+  const expectedChanges = captures.filter(capture => [2026, 2025, 2024].some(year => capture.endsWith(`rides-accordion${year}-expanded`)));
+  writeFileSync(`${directory}/expected-changes.json`, JSON.stringify(expectedChanges, null, 2));
   console.log(`PASS: ${captures.length} paired captures; autoplay passed for both builds.`);
 } finally { await browser.close(); }

@@ -1,12 +1,12 @@
 {
   "_instructions": {
-    "purpose": "Use this template to create a new Longer Ride entry for rides.json",
+    "purpose": "Use this template to create a new Longer Ride entry in public/data/longer-rides.json",
     "howToUse": [
       "1. Copy the 'newRide' object below",
-      "2. Paste it into the 'longerRides' array in rides.json",
+      "2. Paste it into the 'longerRides' array in public/data/longer-rides.json",
       "3. Fill in all the fields following the guidance below",
       "4. Remove any fields marked as OPTIONAL if not needed",
-      "5. Save rides.json and rebuild the site"
+      "5. Save public/data/longer-rides.json and rebuild the site"
     ],
     "fieldGuide": {
       "id": "Lowercase, hyphenated: {title-slug}-{YYYY-MM-DD} e.g. 'lock-stock-and-barrel-2026-02-21' or 'city-slickers-2026-tbd' for TBD dates",
@@ -16,7 +16,8 @@
       "startTime": "24-hour format HH:MM e.g. '09:30' or '09:00'",
       "destination": "Where the ride goes to",
       "distanceMiles": "Total distance as a number (not string), e.g. 27",
-      "overallTime": "Estimated duration e.g. '3.5 hours' or '7-8 hours'",
+      "overallTime": "Estimated overall outing duration including stops, e.g. '3.5 hours' or '7-8 hours'",
+      "rideTime": "OPTIONAL - Estimated cycling time excluding stops, e.g. '2-3 hours'. Omit if unknown; the site displays TBC. Estimates are for guidance only.",
       "meetPoint.name": "Meeting location name",
       "meetPoint.googleMapsUrl": "Google Maps link to meeting point",
       "meetPoint.note": "OPTIONAL - Extra info like 'NOTE EARLIER START'",
@@ -36,6 +37,7 @@
     "destination": "Destination Name",
     "distanceMiles": 30,
     "overallTime": "4 hours",
+    "rideTime": "TBC",
     "meetPoint": {
       "name": "Reading Road Canal Wharf",
       "googleMapsUrl": "https://maps.app.goo.gl/Rz6o6LjYwvr6974ZA",

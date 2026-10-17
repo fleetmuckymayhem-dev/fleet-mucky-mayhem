@@ -25,6 +25,17 @@ test('TBD dates and missing start times are accepted explicitly', () => {
   const data = fixture(); data.longerRides[0]!.date = null; delete data.longerRides[0]!.startTime;
   assert.equal(parseRideData(data).longerRides[0]!.date, null);
 });
+test('cycling-time estimates are optional and must be nonempty text when supplied', () => {
+  const data = fixture();
+  assert.equal(parseRideData(data).longerRides[0]!.rideTime, undefined);
+  data.longerRides[0]!.rideTime = '2-3 hours';
+  assert.equal(parseRideData(data).longerRides[0]!.rideTime, '2-3 hours');
+  for (const invalid of ['', '   ', null, 3, ['2 hours']]) {
+    const malformed = structuredClone(data) as unknown as { longerRides: Record<string, unknown>[] };
+    malformed.longerRides[0]!.rideTime = invalid;
+    assert.throws(() => parseRideData(malformed), /rideTime/);
+  }
+});
 test('event schema rejects unknown types and malformed recurring events', () => {
   const sample = () => structuredClone(parseEventIndex(read('events.json')));
   const invalidType = sample(); (invalidType.events[0] as unknown as Record<string, unknown>).eventType = 'unknown';

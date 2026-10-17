@@ -49,7 +49,7 @@ function createGeneralInfoTable(ride) {
     : ride.meetPoint.name;
 
   return `
-    <table class="table table-borderless table-dark">
+    <table class="table table-borderless table-dark ride-general-info">
       <tbody class="text-start">
         <tr>
           <th scope="row" style="width: 20%;">DESTINATION:</th>
@@ -60,12 +60,19 @@ function createGeneralInfoTable(ride) {
           <td class="text-start" style="width: 80%;">${ride.distanceMiles} miles</td>
         </tr>
         <tr>
+          <th scope="row" style="width: 20%;">DEPARTURE TIME:</th>
+          <td class="text-start" style="width: 80%;">${ride.startTime} ${meetPointHtml}</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="pt-4">Timings below are for guidance only!</td>
+        </tr>
+        <tr>
           <th scope="row" style="width: 20%;">OVERALL TIME:</th>
           <td class="text-start" style="width: 80%;">${ride.overallTime}</td>
         </tr>
         <tr>
-          <th scope="row" style="width: 20%;">DEPARTURE TIME:</th>
-          <td class="text-start" style="width: 80%;">${ride.startTime} ${meetPointHtml}</td>
+          <th scope="row" style="width: 20%;">RIDE TIME:</th>
+          <td class="text-start" style="width: 80%;">${(ride.rideTime ?? 'TBC').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</td>
         </tr>
       </tbody>
     </table>

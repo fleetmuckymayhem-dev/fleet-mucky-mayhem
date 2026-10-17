@@ -58,4 +58,6 @@ python scripts/compare-screenshots.py
 
 ## Next stage
 
+Longer Rides now group Destination, Distance, and Departure Time above the guidance-only timing note, followed by Overall Time and Ride Time. Optional `rideTime` is a readable cycling-time estimate excluding stops (for example `"2-3 hours"`) in `public/data/longer-rides.json`; omitted values display **TBC**. The layout applies to current and archived Longer Rides, and leaves Regular Rides, Where To Next, and calendar displays unchanged. See LONGER-RIDES-LAYOUT.md for validation and the updated comparison workflow.
+
 The typed data/shared date layer and countdown fix are implemented. Next prepare release configuration: production metadata/static verification files, analytics, repository-prefix deployment, and a live-site comparison. Further legacy-module conversion and calendar re-enablement should be separate milestones. See DATA-AND-DATES.md for the behavior change and evidence.

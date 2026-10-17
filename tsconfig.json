@@ -6,7 +6,8 @@
   ],
   "exclude": [
     "dist",
-    "baseline"
+    "baseline",
+    "artifacts"
   ],
   "compilerOptions": {
     "allowJs": true,

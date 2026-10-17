@@ -5,7 +5,7 @@ export interface MeetPoint { name: string; googleMapsUrl?: string; note?: string
 export interface EventDetail {
   id: string; title: string; date?: string | null; startTime?: string;
   daysOfWeek?: number[]; startRecur?: string; endRecur?: string; duration?: string;
-  meetPoint?: MeetPoint; destination?: string; distanceMiles?: number; overallTime?: string;
+  meetPoint?: MeetPoint; destination?: string; distanceMiles?: number; overallTime?: string; rideTime?: string;
   routeMapImage?: string; guidance?: string | string[]; notes?: string[];
   photosUrl?: string; reliveUrl?: string; description?: string;
 }
@@ -47,7 +47,7 @@ function detail(value: unknown, label: string): asserts value is EventDetail {
     object(value.meetPoint, `${label}.meetPoint`); text(value.meetPoint.name, `${label}.meetPoint.name`);
     for (const key of ['googleMapsUrl', 'note']) if (value.meetPoint[key] !== undefined) text(value.meetPoint[key], `${label}.meetPoint.${key}`);
   }
-  for (const key of ['destination', 'overallTime', 'routeMapImage', 'photosUrl', 'reliveUrl', 'description']) if (value[key] !== undefined) {
+  for (const key of ['destination', 'overallTime', 'rideTime', 'routeMapImage', 'photosUrl', 'reliveUrl', 'description']) if (value[key] !== undefined) {
     // Historical JSON has some URL fields wrapped in a single-item array.
     if (['routeMapImage', 'photosUrl', 'reliveUrl'].includes(key) && Array.isArray(value[key]) && value[key].length === 1) value[key] = value[key][0];
     text(value[key], `${label}.${key}`);
