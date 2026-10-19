@@ -306,6 +306,22 @@ If you spot a mistake after committing, make a correcting edit, repeat the check
 
 ## Project reference for the maintainer
 
+### Client staging preview
+
+The client preview is **[staging-fleet-mucky-mayhem](https://martin-ferrero-thompson.github.io/staging-fleet-mucky-mayhem/)**. The source repository stays private. A separate public repository holds only the generated website files, published through GitHub Pages from its `main` branch. The preview is publicly accessible; its indexing tag asks search engines not to index it.
+
+To update the preview from this Windows checkout, run:
+
+```powershell
+./scripts/publish-staging.ps1
+```
+
+This builds and validates the staging version, copies only its output into an isolated staging checkout, commits that output and pushes it. It uses your existing GitHub sign-in; no token is stored in the project. The command deliberately does not commit or push changes in the private source repository. Only run it when the source changes are ready for the client to see. GitHub Pages may take a few minutes to publish an update.
+
+`npm.cmd run build:staging` prepares the files without publishing them. It uses the Pages subdirectory and writes to `artifacts/staging-site/`, leaving the normal `dist/` build separate. Ordinary `npm.cmd run build` continues to target the main website. Nothing is automatically published to staging when you push source changes; use the publishing command above.
+
+`scripts/verify-staging.mjs` checks the preview with Playwright/Edge at mobile and desktop widths. Set `STAGING_QA_URL` to the live preview URL to verify an actual deployment, or serve the staging build locally under `/staging-fleet-mucky-mayhem/` first. Like the other browser scripts, it accepts `QA_PACKAGE_ROOT` for an externally installed Playwright package.
+
 | Location | Purpose |
 | --- | --- |
 | `src/components/` | Website sections and layout content. |
