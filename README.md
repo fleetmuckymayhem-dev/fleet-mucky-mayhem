@@ -254,12 +254,37 @@ If a previously deleted ride still appears, refresh the page. If needed, use **C
 | `year/date mismatch`, invalid date, or invalid time | Use a real date in `YYYY-MM-DD` format, a matching numeric year, and a 24-hour time in `HH:MM` format. |
 | `expected nonempty text` | A field was left as `""`. Fill it in, or remove the whole field if it is optional. For an unknown ride time use `"TBC"`. |
 | The error names `longerRides[2]` | Entries are counted from zero: `[0]` is the first ride, `[1]` the second, `[2]` the third. |
-| A new year does not appear | The diary needs code support for that year. Ask the maintainer; the data check does not test year-section availability. |
+| A new year does not appear | For the Ride Diary, check that rides are in the intended active/archive list with the correct year. For Photos, years follow the current UK date. Future years stay hidden; an archive year needs at least one real link. Rebuild after editing the links, then refresh. |
 | A map is missing or a link opens the wrong place | Check the filename/path and open the actual URL. Data validation does not check image existence, link destinations, or photo-folder permissions. |
 | The data check passes but a value is missing or says `undefined` | Restore the display fields listed above. Some fields are technically optional but still needed by the diary layout. |
 | `npm` is not recognised, or installation/build fails | Ask the maintainer to check Node.js and the local setup. Keep the full error message. |
 
 For JSON, remember: text is quoted (`"Woking"`); numbers are not (`36`); an undecided date is `null`; an empty notes list is `[]`. Do not leave out a required field just because its value is not known.
+
+## Update Photos and add a new photo year
+
+Edit **[public/data/photos.json](public/data/photos.json)**. The Photos section has three controls: Loan Bikes, Photos (the selected current year), and Archive Photos (older years). Archive years expand on click/tap or Enter/Space to show their links inside the same scrollable menu. They are generated from this file, newest first, independently of the Longer Rides programme.
+
+The Photos year is determined when the page loads, using the UK calendar date (Europe/London), consistently for all visitors. There is no year setting to maintain. On 1 January, the previous year automatically moves into Archive Photos, without a rebuild. The Ride Diary programme remains independent.
+- `loanBikesUrl` is the year-independent Loan Bikes folder.
+- `years` holds one object per year. Each object has a numeric `year`, optional `regularRidesUrl` and `statisticsUrl`, and an `albums` list.
+- Each album has a `label` (the complete button-menu text, including its date if wanted) and a shared HTTPS `url`. Albums appear in the order entered; keep them in calendar order.
+- Omit an optional folder URL until it is available. Empty archive years stay hidden. An empty or missing current year displays a coming-soon message. Years later than the current UK year stay hidden while you prepare their links. Do not add placeholder URLs. Existing links, including prepared seasonal folders, remain visible until you remove them.
+
+To add 2027, add an object to `years`, separated from its neighbour by a comma. This is a draft you can paste as a starting point:
+
+```json
+{
+  "year": 2027,
+  "albums": []
+}
+```
+
+When a real collection is ready, add `regularRidesUrl`, `statisticsUrl`, or an album object such as `{ "label": "20 Feb : Ride name", "url": "https://app.box.com/s/YOUR_REAL_SHARED_LINK" }`. Replace the example link with the actual shared link before publishing. The links automatically appear in Photos when their year begins. If no links are ready, Photos displays a short coming-soon message for that year. Keep previous years in the list; they automatically appear under Archive Photos. Repeat the same steps for 2028 and later; no year setting or page-template changes are required.
+
+Run `npm.cmd run validate:data`, then rebuild and preview as described above. Photos are rendered during the build, so changing this JSON requires a rebuild before publishing. Check every year dropdown and verify the changed links open the intended shared folders. Validation checks the structure and HTTPS URLs, but cannot confirm folder contents or sharing permissions.
+
+Photos data is maintained separately from ride data: changing a ride's `photosUrl` does not update the Photos section. If the same album is linked in both places, update both when its URL changes.
 
 ## Save the checked update to GitHub
 
@@ -287,7 +312,7 @@ If you spot a mistake after committing, make a correcting edit, repeat the check
 | `src/layouts/`, `src/pages/` | Shared page layout and homepage. |
 | `src/scss/` | Website styling. |
 | `src/js/`, `src/scripts/`, `src/lib/` | Browser interactions, ride rendering, countdown, validation, and date handling. |
-| `public/data/` | Longer Ride programme and authoring template. |
+| `public/data/` | Longer Ride programme, authoring template, and yearly Photos links. |
 | `public/img/` | Static images and route maps. |
 | `tests/`, `scripts/` | Unit tests, data validation, and browser/visual verification tools. |
 | `baseline/` | Historical migration comparison copy; not the active content to edit. |

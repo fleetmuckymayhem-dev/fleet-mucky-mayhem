@@ -1,0 +1,26 @@
+---
+import type { PhotoYear } from '../lib/photos.ts';
+interface Props { collection: PhotoYear }
+const { year, regularRidesUrl, statisticsUrl, albums } = Astro.props.collection;
+---
+{regularRidesUrl && (
+  <>
+    <li><a class="dropdown-item" href={regularRidesUrl} target="_blank" rel="noopener noreferrer">
+      {year} Regular Rides <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i>
+    </a></li>
+    {(statisticsUrl || albums.length > 0) && <li><hr class="dropdown-divider" /></li>}
+  </>
+)}
+{statisticsUrl && (
+  <>
+    <li><a class="dropdown-item" href={statisticsUrl} target="_blank" rel="noopener noreferrer">
+      {year} Ride Statistics <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i>
+    </a></li>
+    {albums.length > 0 && <li><hr class="dropdown-divider" /></li>}
+  </>
+)}
+{albums.map(({ label, url }) => (
+  <li><a class="dropdown-item" href={url} target="_blank" rel="noopener noreferrer">
+    {label} <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i>
+  </a></li>
+))}

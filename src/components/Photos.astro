@@ -1,215 +1,63 @@
+---
+import rawPhotos from '../../public/data/photos.json';
+import { parsePhotoData, visiblePhotoYears } from '../lib/photos.ts';
+import PhotoLinks from './PhotoLinks.astro';
+const photos = parsePhotoData(rawPhotos);
+const years = visiblePhotoYears(photos);
+---
 <section id="photos" class="even-sections">
-    <div class="container-fluid d-flex align-items-center justify-content-center">
-      <div class="container text-center">
-        <h2 class="brand-text display-2 mb-4 text-center">Photos</h2>
-
-        <!-- Loan Bikes -->
-        <a href="https://app.box.com/s/yg7tl246oz2p3kvby9ugw5jj5yu1gced" target="_blank"
+  <div class="container-fluid d-flex align-items-center justify-content-center">
+    <div class="container text-center">
+      <h2 class="brand-text display-2 mb-4 text-center">Photos</h2>
+      <div class="d-flex flex-wrap justify-content-center gap-2">
+        <a href={photos.loanBikesUrl} target="_blank" rel="noopener noreferrer"
           class="btn btn-lg btn-warning">Loan Bikes <i class="bi bi-box-arrow-up-right link-icon"> </i></a>
-
-        <!-- 2026 -->
         <div class="btn-group">
-          <button type="button" class="btn btn-lg btn-warning dropdown-toggle" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            2026
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://app.box.com/s/8mqv8gzaw2dbvaxe5l90tkrycbsi3qrv"
-                target="_blank">2026 Regular Rides <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/wyoa7e4tru3j6bem3drywgan7h2m7ul4"
-                target="_blank">2026 Ride Statistics <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/mh9gribpzx08fvdjnwrc4d8pmw9uu3o8"
-                target="_blank">21 Feb : Lock, Stock and Barrel <i
-                  class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/u5sz0hy6c6au68ssj1w5k81o2ckj5sdh"
-                target="_blank">14 Mar : War of the Worlds <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/g11rapmp6fh8z6isod45wjmofxb6incf"
-                target="_blank">04 Apr : Rags to Riches <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/96w2tcq1fze7g8pzi2tti4us1w4q17x3"
-                target="_blank">02-May : Burnt Cakes <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/gc245750rnjhvd0orhznkxdlr19fs50p"
-                target="_blank">23-May : Jabberwocky <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/5tc7qy9i3ub56gpm6y9gal7x27e8x7at"
-                target="_blank">13-Jun : City Slickers <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/gfkf8ix5kqwougtlctinz0881o8hoe8i"
-                target="_blank">04-Jul : DDOTTS <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/cg0xogfvppq4at6206wz2zwfc9tu1gij"
-                target="_blank">01-Aug : Lunch at the Palace <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-                        <li><a class="dropdown-item" href="https://app.box.com/s/23nb4ga0b6r30rw60l1v9tlo3jaj34bb"
-                target="_blank">29-Aug : Marmalade Sandwich <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/6v8glpyoab278vx16s1v3f3uhjnkb62f"
-                target="_blank">26-Sep : War of the Worlds <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/mmbst4de8uo3mu4vex1ntno5j547i8vg"
-                target="_blank">17-Oct : Lock, Stock and Barrel <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/x0a8vbl4n74n335wz60h0pygmj1g2wbr"
-                target="_blank">01 Dec : 2026 Xmas Awards <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/w4rk37a3x6l9u2gd3ovu6ve7j3bflutn"
-                target="_blank">19 Dec : Xmas Ride <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-          </ul>
+          <button type="button" id="currentPhotosBtn" class="btn btn-lg btn-warning dropdown-toggle"
+            data-bs-toggle="dropdown" aria-expanded="false" disabled>Photos<span id="currentPhotosYear" class="visually-hidden"></span></button>
+          <ul id="currentPhotosMenu" class="dropdown-menu photo-menu" aria-labelledby="currentPhotosBtn"></ul>
         </div>
-
-        <!-- 2025 -->
         <div class="btn-group">
-          <button type="button" class="btn btn-lg btn-warning dropdown-toggle" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            2025
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://app.box.com/s/tr4kih7u7bv0oc77j676uyo8yym2ui29"
-                target="_blank">2025 Regular Rides <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/wyoa7e4tru3j6bem3drywgan7h2m7ul4"
-                target="_blank">2025 Ride Statistics <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/fbb01vczxd4oplyxle46kcv59qsrqhh2"
-                target="_blank">22 Feb : Lock, Stock and Barrel <i
-                  class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/o6959e72y4g2n62rbuxwj9kalsz1crlj"
-                target="_blank">15 Mar : War of the Worlds <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/100h2z8uoaoi5zwrfvu4esx55a1mtacf"
-                target="_blank">12 Apr : Rags to Riches <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/5r6ezdrlzju8bdwgwgmll98arzqg2jor"
-                target="_blank">10 May : One Hell of a ride! <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/o9qiyb2xk7li8p8qep2t0yd6di2i8tan"
-                target="_blank">24 May : City Slickers <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/8x8r3uwnpdknokz5fbxnmq03pouj3e9x"
-                target="_blank">14 Jun : Alice in Wonderland <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/o6t5wckuuywuk3kfyloxey8mlzq0w4fl"
-                target="_blank">05 Jul : Lunch at the Palace <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/w0kwzcy37fgpcgdplzf0gk5m9ezvb6m8"
-                target="_blank">09 Aug : DDOTTS <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/sa25qfyzasbu3iiuf7o3ih1vj4y1c9b8"
-                target="_blank">23 Aug : Burnt Cakes! <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/fgr2mlftwqb1ce2ioun3s6djmmjsr9ok"
-                target="_blank">20 Sep : Through the Looking Glass <i
-                  class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/aadz9ukflz87007kbyqs0lkeaktjkbua"
-                target="_blank">09 Dec : 2025 Xmas Awards <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/rus4slg4qrpl93jxuybv18t5oh6pjleb"
-                target="_blank">20 Dec : Xmas Ride <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-          </li></ul>
+          <button type="button" id="archivePhotosBtn" class="btn btn-lg btn-secondary dropdown-toggle"
+            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
+            disabled>Archive Photos</button>
+          <ul id="archivePhotosMenu" class="dropdown-menu photo-menu" aria-labelledby="archivePhotosBtn"></ul>
         </div>
-
-        <!-- 2024 -->
-        <div class="btn-group">
-          <button type="button" class="btn btn-lg btn-warning dropdown-toggle" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            2024
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://app.box.com/s/b8yenw53hvckgvfw16194qaksmtla7te"
-                target="_blank">2024 Regular Rides <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/hsibez1hhnnpy0rgzip6dy1ktsi7wqhb"
-                target="_blank">2024 Ride Statistics <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/pyjj7jaceavybr0tw3ux262y343375as"
-                target="_blank">17 Feb : Lock, Stock and Barrel <i
-                  class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a></li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/qil8kw6fy0f6xy3cl7nywbtpogqebho3"
-                target="_blank">09 Mar : War of the Worlds <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a></li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/qzlko84svemdp5bps2t8pydq5qmwk5we"
-                target="_blank">13 Apr : Rags to Riches <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a></li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/aud8hf9piwiuteaba4mcl4w4up7mt56h"
-                target="_blank">11 May : Burnt Cakes! <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a></li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/yty6xulhhzsh4300snjrw32q2ryjj197"
-                target="_blank">08 Jun : City Slickers <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a></li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/x2u7pwv2zm0lry2x6f2b7ib2iaes2kww"
-                target="_blank">20 Jul : Alice in Wonderland <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a></li>
-            <li><a class="dropdown-item"
-                href="https://app.box.com/s/onkidr5w34wdoo7si3jca5lyzakz68p0/folder/284986540494" target="_blank">24
-                Aug : Lunch at the Palace <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a></li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/tg0uryd83iq3pti7fmfygzwzlhy4byg5"
-                target="_blank">31 Aug : DDOTTS <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/hd5mqhr6h2n5rn85slw9dbueacf2yeqo"
-                target="_blank">28 Sep : Through the Looking Glass <i
-                  class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a></li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/uotful1umddlfpp9654yumomua67n7re"
-                target="_blank">26 Oct : War of the Worlds <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a></li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/73dmhqp1o2oq05apc6vd31uw6aeddbub"
-                target="_blank">03 Dec : 2024 Xmas Awards <i class="bi bi-box-arrow-up-right brand-text link-icon">
-                </i></a></li>
-            <li><a class="dropdown-item" href="https://app.box.com/s/j0nzlny1es0kieym1nj27wgo5pdzfe57"
-                target="_blank">21 Dec : Xmas Ride <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- FMM Flyer image -->
-        <div class="w-100">
-          <img src="img/fmm-flyer.png" alt="FMM Flyer" class="img-fluid mt-4" style="height: 500px; width: auto;"
-            loading="lazy">
-        </div>
-
-
+      </div>
+      <template id="photoCollections">
+            {years.map(collection => (
+              <li data-photo-year={collection.year} data-has-links="true">
+                <details name="photo-archive-year" class="photo-archive-year">
+                  <summary class="dropdown-item" id={'photo-year-' + collection.year}>
+                    {collection.year}<span aria-hidden="true" class="photo-year-arrow">▾</span>
+                  </summary>
+                  <ul class="list-unstyled photo-year-links" aria-labelledby={'photo-year-' + collection.year}>
+                    <PhotoLinks collection={collection} />
+                  </ul>
+                </details>
+              </li>
+            ))}
+      </template>
+      <div class="w-100">
+        <img src="img/fmm-flyer.png" alt="FMM Flyer" class="img-fluid mt-4" style="height: 500px; width: auto;" loading="lazy" />
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<script src="../scripts/photos.ts"></script>
+
+<style>
+  .photo-menu {
+    width: min(24rem, calc(100vw - 2rem));
+    max-height: min(65vh, 32rem);
+    overflow-y: auto;
+  }
+  .photo-menu :global(.dropdown-item) { white-space: normal; }
+  .photo-archive-year summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; list-style: none; }
+  .photo-archive-year summary::-webkit-details-marker { display: none; }
+  .photo-archive-year[open] summary { color: #000; background: #ffc107; }
+  .photo-year-arrow { transition: transform .15s; }
+  .photo-archive-year[open] .photo-year-arrow { transform: rotate(180deg); }
+  .photo-year-links { padding-block: .5rem; margin-left: .5rem; border-left: 2px solid #ffc107; }
+</style>
