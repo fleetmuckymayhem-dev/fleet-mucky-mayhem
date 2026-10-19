@@ -18,10 +18,10 @@ There are two lists inside the file:
 
 | List | What it contains |
 | --- | --- |
-| `"longerRides"` | The main 2026 Longer Rides programme, including rides that have already happened. |
-| `"archivedRides"` | Older rides, currently displayed under the 2025 and 2024 archive choices. |
+| `"longerRides"` | The active Longer Rides programme, now 2027, including rides that have already happened. |
+| `"archivedRides"` | Past programmes, currently displayed under the 2026, 2025 and 2024 archive choices. |
 
-**Important:** the diary currently supports 2026 in the main list and 2025/2024 in the archive. Ask the project maintainer to add support before starting a new year or moving the 2026 programme into the archive. A different `year` value alone will not create a new diary section, even if the data check passes.
+The top-level `"programmeYear": 2027` identifies the programme being prepared. While `longerRides` is empty, the diary displays “The 2027 Longer Rides programme will be published here soon.” Adding rides replaces that message automatically. Archive choices are generated from the years present in `archivedRides`, newest year first; no template or JavaScript changes are needed when another year is added. Rides within each programme stay in calendar order, with undecided dates last.
 
 Regular Rides are maintained separately in the website templates. Changing this JSON file does not change Regular Rides.
 
@@ -54,10 +54,10 @@ For an earlier or different meeting point, also update the meeting-point name, m
 
 | Field | What to enter |
 | --- | --- |
-| `id` | A unique internal name, for example `canal-cafe-2026-11-14`. Use lowercase letters and hyphens. Do not reuse another ride’s ID, including archived rides. Leave it unchanged for routine edits; when copying a ride, give the copy a new ID. |
+| `id` | A unique internal name, for example `canal-cafe-2027-11-14`. Use lowercase letters and hyphens. Do not reuse another ride’s ID, including archived rides. Leave it unchanged for routine edits; when copying a ride, give the copy a new ID. |
 | `title` | The ride name visitors see, for example `"Canal Café"`. |
-| `date` | A date in year-month-day order: `"2026-11-14"` means 14 November 2026. Use `null` without quotation marks when the date is undecided. |
-| `year` | The programme year as a number, for example `2026`. It must match the year in the date; for an undecided date, use the intended programme year. |
+| `date` | A date in year-month-day order: `"2027-11-14"` means 14 November 2027. Use `null` without quotation marks when the date is undecided. |
+| `year` | The programme year as a number, for example `2027`. It must match the year in the date; for an undecided date, use the intended programme year. |
 | `startTime` | Departure time using a 24-hour clock, such as `"09:30"` or `"08:30"`. Times are UK local time, including summer time. Always supply this for the diary. |
 | `destination` | Where the ride goes. |
 | `distanceMiles` | A number only, such as `36` or `36.5`. The website adds “miles”. |
@@ -92,10 +92,10 @@ Here is an example of one complete ride. It is an illustration, **not a schedule
 
 ```json
 {
-  "id": "canal-cafe-2026-11-14",
+  "id": "canal-cafe-2027-11-14",
   "title": "Canal Café",
-  "date": "2026-11-14",
-  "year": 2026,
+  "date": "2027-11-14",
+  "year": 2027,
   "startTime": "09:30",
   "destination": "Woking",
   "distanceMiles": 36,
@@ -133,11 +133,11 @@ An additional reference is [public/data/ride-template.json](public/data/ride-tem
 
 ### A date that is not yet confirmed
 
-Set the date to `null`, keep the intended `year`, and use a unique ID such as `"canal-cafe-2026-tbd"`:
+Set the date to `null`, keep the intended `year`, and use a unique ID such as `"canal-cafe-2027-tbd"`:
 
 ```json
 "date": null,
-"year": 2026
+"year": 2027
 ```
 
 The diary displays **TBD**. Undated rides are excluded from the next-ride countdown. When the date is agreed, change `date` and check `year`; you can also update the ID to match, provided it remains unique.
@@ -172,9 +172,18 @@ To remove an entry completely:
 
 Deleting a future ride may change Where To Next and its countdown. Deleting an archived ride removes its diary entry and links, but does not delete its external photo folder.
 
-If you want to preserve a ride’s history, leave it in the programme after it has happened and add notes/photos. It will automatically stop being eligible for Where To Next at its departure time. Moving a ride into the archive is a manual action, and the destination year must already be supported. Ask the maintainer to handle the annual rollover.
+If you want to preserve a ride’s history, leave it in the programme after it has happened and add notes/photos. It will automatically stop being eligible for Where To Next at its departure time. Moving a ride into the archive is a manual action when the client closes the programme; it does not depend on the calendar date.
 
 Do not delete image files as part of a routine ride removal: another ride may share the same map.
+
+## Start a new annual programme
+
+1. Move the completed programme’s entire ride entries from `longerRides` to `archivedRides`. Preserve their IDs, dates, years, notes and links, and keep the older archive entries.
+2. Set the top-level `programmeYear` to the next programme year. Leave `longerRides` as `[]` until the new schedule is available.
+3. Add the new schedule to `longerRides`, with new unique IDs and matching dates/years. Do not change an archived ride’s year to reuse it.
+4. Validate and preview Longer Rides, each archive year, and Where To Next before publishing.
+
+The archive dropdown updates automatically. Where To Next only selects future dated entries from `longerRides`; archived rides never become upcoming rides. While the new list is empty, the existing Midwinter Celebration fallback remains in place. That seasonal image is maintained separately from the programme rollover.
 
 ## Route maps and photos
 

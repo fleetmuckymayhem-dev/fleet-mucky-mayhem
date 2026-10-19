@@ -143,10 +143,10 @@ function createPhotosHtml(ride) {
  * 🟡 Intermediate: This combines all the helper functions to build
  * the full accordion structure matching the existing HTML pattern
  */
-function createAccordionItem(ride, index, year) {
-  const headingId = `heading${year}-${index}`;
-  const collapseId = `collapse${year}-${index}`;
-  const cssClass = `rides${String(year).slice(-2)}`;
+function createAccordionItem(ride, index, group) {
+  const headingId = `heading${group}-${index}`;
+  const collapseId = `collapse${group}-${index}`;
+  const cssClass = `rides${String(ride.year).slice(-2)}`;
 
   const notesHtml = createNotesHtml(ride.notes);
   const guidanceHtml = createGuidanceHtml(ride.guidance);
@@ -192,107 +192,60 @@ function groupRidesByYear(rides) {
   }, {});
 }
 
-/**
- * Sort rides by date for archived rides (newest first)
- *
- * 🟢 Beginner: Archived rides show most recent at the top
- */
-function sortRidesNewestFirst(rides) {
-  return [...rides].sort((a, b) => {
-    // Both have dates - sort descending (newest first)
-    if (a.date && b.date) {
-      return compareRideDates(a.date, b.date, true);
-    }
-    // TBD rides go last for archived
-    if (!a.date) return 1;
-    if (!b.date) return -1;
-    return 0;
-  });
+/** Render each programme in calendar order, with undecided dates last. */
+function renderRides(rides, group, container) {
+  container.innerHTML = [...rides]
+    .sort((a, b) => compareRideDates(a.date, b.date))
+    .map((ride, index) => createAccordionItem(ride, index + 1, group))
+    .join('');
 }
 
-/**
- * Sort rides by date for longer/upcoming rides (chronological order)
- * Dated rides first (oldest to newest), then TBD rides
- *
- * 🟢 Beginner: Upcoming rides show in calendar order (Feb, Mar, Apr...)
- * with TBD rides at the end
- */
-function sortRidesChronological(rides) {
-  return [...rides].sort((a, b) => {
-    // Both have dates - sort ascending (oldest first)
-    if (a.date && b.date) {
-      return compareRideDates(a.date, b.date);
-    }
-    // TBD rides (null date) go last
-    if (!a.date) return 1;
-    if (!b.date) return -1;
-    return 0;
-  });
+function showMessage(container, message) {
+  const paragraph = document.createElement('p');
+  paragraph.className = 'body-text text-light';
+  paragraph.setAttribute('role', 'status');
+  paragraph.textContent = message;
+  container.replaceChildren(paragraph);
 }
 
-/**
- * Render rides for a specific year into an accordion container
- *
- * @param {Array} rides - Array of ride objects
- * @param {number} year - The year for IDs
- * @param {string} containerId - The DOM container ID
- * @param {string} sortOrder - 'chronological' for upcoming rides, 'newest' for archived
- */
-function renderYearAccordion(rides, year, containerId, sortOrder = "newest") {
-  const container = document.getElementById(containerId);
-  if (!container) {
-    console.warn(`Container ${containerId} not found`);
-    return;
-  }
-
-  const sortedRides =
-    sortOrder === "chronological"
-      ? sortRidesChronological(rides)
-      : sortRidesNewestFirst(rides);
-
-  const accordionHtml = sortedRides
-    .map((ride, index) => createAccordionItem(ride, index + 1, year))
-    .join("");
-
-  container.innerHTML = accordionHtml;
-}
-
-/**
- * Load JSON and render all accordions
- *
- * 🟢 Beginner: This loads the ride data and generates the HTML
- */
 async function loadRidesFromJson() {
+  const longer = document.getElementById('accordionLonger');
+  const menu = document.getElementById('archivedRidesMenu');
+  const archives = document.getElementById('archivedRidesGroups');
+  const archiveButton = document.getElementById('archivedDropdownBtn');
+  archiveButton.disabled = true;
   try {
     const data = await loadRideData();
-
-    // Render 2026 longer rides (chronological order: Feb, Mar, Apr, then TBDs)
-    if (data.longerRides) {
-      const rides2026 = data.longerRides.filter((r) => r.year === 2026);
-      if (rides2026.length > 0) {
-        renderYearAccordion(rides2026, 2026, "accordion2026", "chronological");
-      }
+    renderRides(data.longerRides, 'Longer', longer);
+    if (!data.longerRides.length) {
+      const programme = data.programmeYear ? 'The ' + data.programmeYear : 'The next';
+      showMessage(longer, programme + ' Longer Rides programme will be published here soon.');
     }
 
-    // Render archived rides by year (chronological order)
-    if (data.archivedRides) {
-      const rides2025 = data.archivedRides.filter((r) => r.year === 2025);
-      const rides2024 = data.archivedRides.filter((r) => r.year === 2024);
+    menu.replaceChildren();
+    archives.replaceChildren();
+    const groups = groupRidesByYear(data.archivedRides);
+    for (const year of Object.keys(groups).map(Number).sort((a, b) => b - a)) {
+      const accordion = document.createElement('div');
+      accordion.id = 'accordion' + year;
+      accordion.className = 'accordion accordion-flush text-dark text-start d-none';
+      renderRides(groups[year], year, accordion);
+      archives.append(accordion);
 
-      if (rides2025.length > 0) {
-        renderYearAccordion(rides2025, 2025, "accordion2025", "chronological");
-      }
-      if (rides2024.length > 0) {
-        renderYearAccordion(rides2024, 2024, "accordion2024", "chronological");
-      }
+      const item = document.createElement('li');
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.id = 'showArchived' + year;
+      button.className = 'dropdown-item';
+      button.textContent = String(year);
+      button.addEventListener('click', () => showAccordion(accordion.id, button.id));
+      item.append(button);
+      menu.append(item);
     }
-
-    console.log("Ride Diary loaded from JSON successfully");
-    return true;
+    archiveButton.disabled = !menu.children.length;
   } catch (error) {
-    console.error("Error loading Ride Diary:", error);
-    // Fallback: Leave existing static HTML in place
-    return false;
+    console.error('Error loading Ride Diary:', error);
+    showMessage(longer, 'Unable to load Longer Rides. Please try refreshing the page.');
   }
 }
 
@@ -301,10 +254,8 @@ async function loadRidesFromJson() {
 // ============================================================================
 
 function showAccordion(targetAccordionIds, activeButtonId) {
-  // Hide all accordions (now includes accordion2024)
-  const accordions = ['accordion2025', 'accordion2026', 'accordion2024', 'accordionRegular'];
-  accordions.forEach((id) => {
-    document.getElementById(id).classList.add('d-none');
+  document.querySelectorAll('#ride-diary .accordion').forEach((accordion) => {
+    accordion.classList.add('d-none');
   });
 
   // Show the target accordion(s)
@@ -331,7 +282,7 @@ function showAccordion(targetAccordionIds, activeButtonId) {
   // Update archived dropdown button style
   const archivedDropdownBtn = document.getElementById('archivedDropdownBtn');
   if (archivedDropdownBtn) {
-    if (activeButtonId === 'showArchived2025' || activeButtonId === 'showArchived2024') {
+    if (activeButtonId.startsWith('showArchived')) {
       archivedDropdownBtn.classList.add('btn-warning');
       archivedDropdownBtn.classList.remove('btn-secondary');
     } else {
@@ -344,12 +295,6 @@ function showAccordion(targetAccordionIds, activeButtonId) {
   idsToShow.forEach((id) => {
     collapseAllAccordionItems(id);
   });
-}
-
-// This function is no longer needed as we removed the dropdown structure
-// Keeping it as a no-op function in case it's referenced elsewhere
-function updateLongerDropdownActive(selectedYear) {
-  // No-op: dropdown structure has been removed
 }
 
 function collapseAllAccordionItems(accordionId) {
@@ -373,18 +318,7 @@ document.getElementById('showRegular').addEventListener('click', function () {
 });
 
 document.getElementById('showLonger').addEventListener('click', function () {
-  showAccordion('accordion2026', 'showLonger');
-});
-
-// Add event listeners for archived rides dropdown items
-document.getElementById('showArchived2025').addEventListener('click', function (e) {
-  e.preventDefault(); // Prevent default anchor behavior
-  showAccordion('accordion2025', 'showArchived2025');
-});
-
-document.getElementById('showArchived2024').addEventListener('click', function (e) {
-  e.preventDefault(); // Prevent default anchor behavior
-  showAccordion('accordion2024', 'showArchived2024');
+  showAccordion('accordionLonger', 'showLonger');
 });
 
 // Ensure only one accordion item is expanded at a time
@@ -413,35 +347,17 @@ function handleAccordionToggle(accordionId) {
   });
 }
 
-// Apply the toggle handler to all accordions
-handleAccordionToggle('accordion2026');
-handleAccordionToggle('accordion2025');
-handleAccordionToggle('accordion2024');
-handleAccordionToggle('accordionRegular');
-
-// ============================================================================
-// INITIALIZATION
-// ============================================================================
-
-/**
- * Initialize the Ride Diary
- * 1. Load rides from JSON and render accordions
- * 2. Re-apply accordion toggle handlers after content is loaded
- * 3. Show the default view (Regular Rides)
- */
+/** Initialize controls once the ride groups have been rendered. */
 async function initRideDiary() {
-  // Load and render rides from JSON
   await loadRidesFromJson();
-
-  // Re-apply toggle handlers after dynamic content is loaded
-  handleAccordionToggle('accordion2026');
-  handleAccordionToggle('accordion2025');
-  handleAccordionToggle('accordion2024');
-  handleAccordionToggle('accordionRegular');
-
-  // Initial state: Show the Regular Rides accordion
+  document.querySelectorAll('#ride-diary .accordion').forEach((accordion) => {
+    handleAccordionToggle(accordion.id);
+  });
   showAccordion('accordionRegular', 'showRegular');
 }
 
-// Initialize when DOM is ready
-document.addEventListener("DOMContentLoaded", initRideDiary);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initRideDiary, { once: true });
+} else {
+  void initRideDiary();
+}

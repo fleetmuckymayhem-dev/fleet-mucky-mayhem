@@ -9,10 +9,10 @@
       "5. Save public/data/longer-rides.json and rebuild the site"
     ],
     "fieldGuide": {
-      "id": "Lowercase, hyphenated: {title-slug}-{YYYY-MM-DD} e.g. 'lock-stock-and-barrel-2026-02-21' or 'city-slickers-2026-tbd' for TBD dates",
+      "id": "Lowercase, hyphenated: {title-slug}-{YYYY-MM-DD} e.g. 'lock-stock-and-barrel-2027-02-21' or 'city-slickers-2027-tbd' for TBD dates",
       "title": "The ride name as it appears in the accordion header",
-      "date": "ISO format YYYY-MM-DD e.g. '2026-02-21', or null for TBD rides",
-      "year": "Four digit year as a number (not string), e.g. 2026",
+      "date": "ISO format YYYY-MM-DD e.g. '2027-02-21', or null for TBD rides",
+      "year": "Four digit year as a number (not string), e.g. 2027",
       "startTime": "24-hour format HH:MM e.g. '09:30' or '09:00'",
       "destination": "Where the ride goes to",
       "distanceMiles": "Total distance as a number (not string), e.g. 27",
@@ -32,7 +32,7 @@
     "id": "ride-title-here-YYYY-MM-DD",
     "title": "Ride Title Here",
     "date": "YYYY-MM-DD",
-    "year": 2026,
+    "year": 2027,
     "startTime": "09:30",
     "destination": "Destination Name",
     "distanceMiles": 30,
@@ -49,10 +49,10 @@
   },
 
   "_exampleCompletedRide": {
-    "id": "lock-stock-and-barrel-2026-02-21",
+    "id": "lock-stock-and-barrel-2027-02-21",
     "title": "Lock, Stock and Barrel",
-    "date": "2026-02-21",
-    "year": 2026,
+    "date": "2027-02-21",
+    "year": 2027,
     "startTime": "09:30",
     "destination": "Bisley, National Shooting Centre (NSC)",
     "distanceMiles": 27,
@@ -73,10 +73,10 @@
   },
 
   "_exampleTBDRide": {
-    "id": "city-slickers-2026-tbd",
+    "id": "city-slickers-2027-tbd",
     "title": "City Slickers",
     "date": null,
-    "year": 2026,
+    "year": 2027,
     "startTime": "09:00",
     "destination": "London",
     "distanceMiles": 56,

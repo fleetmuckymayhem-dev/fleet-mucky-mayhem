@@ -15,29 +15,17 @@
               data-bs-toggle="dropdown" aria-expanded="false">
               Archived Rides
             </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#" id="showArchived2025">2025</a></li>
-              <li><a class="dropdown-item" href="#" id="showArchived2024">2024</a></li>
+            <ul id="archivedRidesMenu" class="dropdown-menu dropdown-menu-dark">
+              <!-- Archive years are populated from the ride data. -->
             </ul>
           </div>
         </div>
 
-        <!-- 2026 Longer Rides Group - Content dynamically loaded from longer-rides.json via ride-diary.js -->
-        <div id="accordion2026" class="accordion accordion-flush text-dark text-start d-none">
+        <!-- Active programme and archive groups are loaded from longer-rides.json. -->
+        <div id="accordionLonger" class="accordion accordion-flush text-dark text-start d-none">
+          <p class="body-text text-light" role="status">Loading Longer Rides…</p>
         </div>
-        <!-- End of 2026 Group-->
-
-        <!-- 2025 Archived Rides Group - Content dynamically loaded from longer-rides.json via ride-diary.js -->
-        <div id="accordion2025" class="accordion accordion-flush text-dark text-start d-none">
-        </div>
-        <!-- End of 2025 Group-->
-
-        <!-- 2024 Archived Rides Group - Content dynamically loaded from longer-rides.json via ride-diary.js -->
-        <div id="accordion2024" class="accordion accordion-flush text-dark text-start d-none">
-        </div>
-        <!-- End of 2024 Group-->
-
-        <!-- End of Archived Rides Group-->
+        <div id="archivedRidesGroups"></div>
 
         <!-- Regular Rides Group -->
 

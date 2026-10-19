@@ -7,7 +7,7 @@ export interface Ride {
   overallTime?: string; rideTime?: string; routeMapImage?: string;
   guidance?: string | string[]; notes?: string[]; photosUrl?: string; reliveUrl?: string;
 }
-export interface RideData { longerRides: Ride[]; archivedRides: Ride[] }
+export interface RideData { programmeYear?: number; longerRides: Ride[]; archivedRides: Ride[] }
 type RecordValue = Record<string, unknown>;
 function object(value: unknown, label: string): asserts value is RecordValue {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error(`${label}: expected object`);
@@ -43,6 +43,9 @@ function validateRide(value: unknown, label: string): asserts value is Ride {
 export function parseRideData(value: unknown): RideData {
   value = structuredClone(value);
   object(value, 'rides');
+  if (value.programmeYear !== undefined && (!Number.isInteger(value.programmeYear) || Number(value.programmeYear) < 1)) {
+    throw new Error('rides: invalid programmeYear');
+  }
   for (const key of ['longerRides', 'archivedRides']) {
     list(value[key], key);
     value[key].forEach((ride, index) => validateRide(ride, `${key}[${index}]`));

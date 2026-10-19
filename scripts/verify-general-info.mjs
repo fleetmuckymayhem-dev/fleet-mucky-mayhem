@@ -5,6 +5,8 @@ const require = createRequire(process.env.QA_PACKAGE_ROOT ? `${process.env.QA_PA
 const { chromium } = require('playwright');
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
 const original = JSON.parse(readFileSync('public/data/longer-rides.json', 'utf8'));
+original.longerRides = original.archivedRides.filter(ride => ride.year === 2026);
+original.archivedRides = original.archivedRides.filter(ride => ride.year !== 2026);
 const results = [];
 mkdirSync('artifacts/longer-rides', { recursive: true });
 try {
@@ -21,12 +23,12 @@ try {
     await page.waitForFunction(() => document.querySelectorAll('.ride-general-info').length === 31);
     await page.evaluate(() => document.fonts.ready);
     await page.locator('#showLonger').click();
-    await page.locator('#accordion2026 .accordion-button').first().click();
+    await page.locator('#accordionLonger .accordion-button').first().click();
     await page.waitForFunction(() => {
-      const panel = document.querySelector('#accordion2026 .accordion-collapse');
+      const panel = document.querySelector('#accordionLonger .accordion-collapse');
       return panel.classList.contains('show') && !panel.classList.contains('collapsing');
     });
-    const table = page.locator('#accordion2026 .ride-general-info').first();
+    const table = page.locator('#accordionLonger .ride-general-info').first();
     await table.waitFor({ state: 'visible' });
     assert.deepEqual(await table.locator('th').allTextContents(), ['DESTINATION:', 'DISTANCE:', 'DEPARTURE TIME:', 'OVERALL TIME:', 'RIDE TIME:']);
     assert.equal((await table.locator('tr').last().locator('td').textContent()).trim(), '2-3 hours');
@@ -34,7 +36,7 @@ try {
     const departure = await table.locator('tr').nth(2).textContent();
     assert(departure.includes('09:30') && departure.includes(payload.longerRides[0].meetPoint.name) && departure.includes('NOTE EARLIER START'));
     assert.equal(await table.locator('a').getAttribute('href'), payload.longerRides[0].meetPoint.googleMapsUrl);
-    const escaped = page.locator('#accordion2026 .ride-general-info').nth(1).locator('tr').last().locator('td');
+    const escaped = page.locator('#accordionLonger .ride-general-info').nth(1).locator('tr').last().locator('td');
     assert.equal((await escaped.textContent()).trim(), '<b>3 hours</b>');
     assert.equal(await escaped.locator('b').count(), 0);
     assert.equal(await page.locator('#accordionRegular .ride-general-info').count(), 0);

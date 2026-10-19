@@ -5,6 +5,9 @@ const require = createRequire(process.env.QA_PACKAGE_ROOT ? `${process.env.QA_PA
 const { chromium } = require('playwright');
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
 const data = JSON.parse(readFileSync('public/data/longer-rides.json', 'utf8'));
+// Use the completed 2026 schedule as a fixture for live departure boundaries.
+data.longerRides = data.archivedRides.filter(ride => ride.year === 2026);
+data.archivedRides = data.archivedRides.filter(ride => ride.year !== 2026);
 const records = [];
 const url = process.env.ASTRO_QA_URL || 'http://127.0.0.1:4321/';
 async function open(timezoneId, now, payload = data, status = 200) {

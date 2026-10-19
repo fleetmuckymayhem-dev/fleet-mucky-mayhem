@@ -3,10 +3,17 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { loadRideData, parseRideData } from '../src/lib/data.ts';
 const read = (file: string): unknown => JSON.parse(readFileSync(new URL(`../public/data/${file}`, import.meta.url), 'utf8'));
-const fixture = () => structuredClone(parseRideData(read('longer-rides.json')));
+// Keep populated validation fixtures independent of the published programme being empty.
+const fixture = () => {
+  const data = parseRideData(read('longer-rides.json'));
+  return { ...data, longerRides: data.archivedRides.filter(ride => ride.year === 2026), archivedRides: data.archivedRides.filter(ride => ride.year !== 2026) };
+};
 test('all current data files satisfy the runtime schemas', () => {
-  assert.equal(fixture().longerRides.length, 11);
-  assert.equal(fixture().archivedRides.length, 20);
+  const data = parseRideData(read('longer-rides.json'));
+  assert.equal(data.programmeYear, 2027);
+  assert.equal(data.longerRides.length, 0);
+  assert.equal(data.archivedRides.length, 31);
+  assert.equal(data.archivedRides.filter(ride => ride.year === 2026).length, 11);
 });
 test('ride schema rejects malformed dates, IDs, years, times, fields, and distance', () => {
   for (const corrupt of [
@@ -49,8 +56,8 @@ test('ride schema still rejects missing dates, meet points, and malformed notes'
 test('historical single-item URL arrays normalize without mutating source JSON', () => {
   const source = read('longer-rides.json');
   const parsed = parseRideData(source);
-  assert.equal(parsed.longerRides[4]!.routeMapImage, 'img/ride-maps/jabberwocky.jpeg');
-  assert(Array.isArray((source as { longerRides: Record<string, unknown>[] }).longerRides[4]!.routeMapImage));
+  assert.equal(parsed.archivedRides[4]!.routeMapImage, 'img/ride-maps/jabberwocky.jpeg');
+  assert(Array.isArray((source as { archivedRides: Record<string, unknown>[] }).archivedRides[4]!.routeMapImage));
   const invalid = fixture() as unknown as { longerRides: Record<string, unknown>[] };
   invalid.longerRides[0]!.photosUrl = ['one', 'two'];
   assert.throws(() => parseRideData(invalid));
@@ -66,4 +73,11 @@ test('concurrent ride consumers share a validated request; failed requests can r
     const [first, second] = await Promise.all([loadRideData(), loadRideData()]);
     assert.equal(calls, 2); assert.equal(first, second);
   } finally { globalThis.fetch = original; }
+});
+
+test('programme year is optional for legacy data and validated when supplied', () => {
+  assert.doesNotThrow(() => parseRideData({ longerRides: [], archivedRides: [] }));
+  for (const programmeYear of ['2027', null, 0, -1, 2027.5]) {
+    assert.throws(() => parseRideData({ programmeYear, longerRides: [], archivedRides: [] }), /programmeYear/);
+  }
 });

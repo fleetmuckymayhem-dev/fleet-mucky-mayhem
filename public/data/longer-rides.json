@@ -3,7 +3,9 @@
     "version": "1.0",
     "eventType": "Longer-Ride"
   },
-  "longerRides": [
+  "programmeYear": 2027,
+  "longerRides": [],
+  "archivedRides": [
     {
       "id": "lock-stock-and-barrel-2026-02-21",
       "title": "Lock, Stock and Barrel",
@@ -347,9 +349,7 @@
         "No incidents on the ride, we were back in Fleet around 13:20."
       ],
       "photosUrl": "https://app.box.com/s/mmbst4de8uo3mu4vex1ntno5j547i8vg"
-    }
-  ],
-  "archivedRides": [
+    },
     {
       "id": "through-the-looking-glass-2025-09-20",
       "title": "Through the Looking Glass",
