@@ -3,6 +3,7 @@ dist/
 .astro/
 baseline/dist/
 artifacts/
+output/imagegen/
 .env
 .env.*
 !.env.example
