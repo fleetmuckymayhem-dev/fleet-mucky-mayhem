@@ -1,0 +1,32 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { parseRideData } from '../../src/lib/data.ts';
+const root = path.resolve(import.meta.dirname, '../..');
+const content = JSON.parse(fs.readFileSync(path.join(import.meta.dirname,'walkthrough-content.json'),'utf8'));
+if(content.slides.length !== 27) throw new Error('Expected 27 slides');
+if(content.slides.some(slide=>slide.title==='The 90-minute session'||slide.title.startsWith('Guided edit '))) throw new Error('Removed slide remains');
+if(content.slides[0].body.length) throw new Error('Cover session details remain');
+if(content.slides.at(-1).body.includes('Which part would you like to walk through again?')) throw new Error('Closing question remains');
+const guide=fs.readFileSync(path.join(import.meta.dirname,'presenter-guide.md'),'utf8');
+const headings=[...guide.matchAll(/^### (\d+)\. (.+)$/gm)];
+if(headings.length!==content.slides.length || headings.some((heading,index)=>Number(heading[1])!==index+1||heading[2]!==content.slides[index].title)) throw new Error('Presenter guide differs from slide order');
+let last=0;
+for (const slide of content.slides) {
+  const match=slide.notes.match(/TIME (\d+):(\d+)–(\d+):(\d+)/);
+  if(!match) throw new Error('Missing timing: '+slide.title);
+  const start=Number(match[1])*60+Number(match[2]), end=Number(match[3])*60+Number(match[4]);
+  if(start!==last || end<=start) throw new Error('Timing gap: '+slide.title);
+  last=end;
+  for(const file of slide.source) if(!fs.existsSync(path.join(root,file))) throw new Error('Missing source '+file);
+}
+if(last!==90*60) throw new Error('Not 90 minutes');
+const handout=fs.readFileSync(path.join(import.meta.dirname,'learner-reference.md'),'utf8');
+const match=handout.match(/```json\n([\s\S]*?)\n```/);
+if(!match) throw new Error('No practice JSON');
+const practice=JSON.parse(match[1]);
+parseRideData({programmeYear:2027,longerRides:[practice],archivedRides:[]});
+const live=JSON.parse(fs.readFileSync(path.join(root,'public/data/longer-rides.json'),'utf8'));
+const ride=live.archivedRides.find(ride=>ride.id==='war-of-the-worlds-2026-03-14');
+if(ride?.distanceMiles!==36) throw new Error('Practice starting distance differs');
+if(live.programmeYear!==2027 || live.longerRides.length!==0) throw new Error('Programme state differs');
+console.log(JSON.stringify({slides:content.slides.length,timingMinutes:last/60,allSourcePathsExist:true,practiceRecordValid:true,exampleMatchesSource:true,presenterGuideMatches:true}));

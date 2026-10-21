@@ -4,7 +4,53 @@ Fleet Mucky Mayhem is a website for a social cycling group in Fleet, Hampshire, 
 
 This is version **2.0.0**, built with Astro and Bootstrap. It keeps the familiar website layout and styling while using a newer build system. This private GitHub repository has its own history, separate from the original website repository.
 
-This guide is for Andy and anyone else who needs to update Longer Rides. You do not need to edit the website layout or learn programming for routine ride updates.
+This guide is for Andy, the client's developer, and anyone else who needs to maintain the website. For routine ride updates, start with **The file you will normally edit** below. For a first introduction to the website code, start with the walkthrough and file guide here.
+
+## Beginner website code walkthrough
+
+The client presentation, **Fleet Mucky Mayhem: A beginner's guide to the website code**, covers this Astro project. It assumes no previous web development experience and explains the code using examples from the actual website. Build, publishing and deployment are outside the presentation's scope; their maintenance instructions remain later in this README.
+
+The current presentation has **27 slides**, numbered consecutively. The latest revision removes the session-agenda slide and both dedicated Guided edit slides. The cover contains only the website name and presentation subtitle. The final **The file choices to remember** slide contains the file reference list, without the closing question. Small code examples remain in the walkthrough.
+
+Allow up to 90 minutes for explanation, demonstrations and discussion. The supporting presenter guide suggests pacing; there is no timed agenda slide or dedicated exercise section in the presentation.
+
+The editable presentation remains attached to the Codex chat where it was prepared. Downloadable PowerPoint and PDF copies, together with the supporting materials, are also included in [docs/website-code-walkthrough/](docs/website-code-walkthrough/):
+
+| File | Purpose |
+| --- | --- |
+| [PowerPoint presentation](docs/website-code-walkthrough/fleet-mucky-mayhem-code-walkthrough.pptx) | Editable 27-slide deck with speaker notes. |
+| [PDF presentation](docs/website-code-walkthrough/fleet-mucky-mayhem-code-walkthrough.pdf) | The same 27 slides for viewing or printing. |
+| [presenter-guide.md](docs/website-code-walkthrough/presenter-guide.md) | Notes matching the current 27-slide order, explanation prompts and suggested pacing. |
+| [learner-reference.md](docs/website-code-walkthrough/learner-reference.md) | A beginner's file guide, code explanations and glossary. |
+| [walkthrough-content.json](docs/website-code-walkthrough/walkthrough-content.json) | The current slide text and speaker notes for maintaining the presentation. |
+| [verify-walkthrough.mjs](docs/website-code-walkthrough/verify-walkthrough.mjs) | Checks the presentation content, source references and example ride data. Run `node docs/website-code-walkthrough/verify-walkthrough.mjs` from the project folder. |
+
+These handover files are included when cloning this repository. The presentation materials describe the code and do not change the website. After revising the live deck, refresh both exported formats, the slide source and the supporting notes together.
+
+### Which file controls which part of the website?
+
+All paths below start inside `astro-prototype/`.
+
+| Change or question | Where to begin |
+| --- | --- |
+| Homepage section order | [src/pages/index.astro](src/pages/index.astro) lists the components in page order. |
+| Browser tab title and shared page structure | [src/layouts/SiteLayout.astro](src/layouts/SiteLayout.astro) wraps the sections, loads styles and starts the main browser scripts. |
+| Welcome, About Us, FAQ, contact details or other section wording | [src/components/](src/components/) contains the matching named section files. |
+| Navigation links | [src/components/Navigation.astro](src/components/Navigation.astro). Links such as `#contact-us` must match the destination section's `id`. |
+| Regular ride wording | [src/components/RideDiary.astro](src/components/RideDiary.astro). |
+| Longer and archived ride information | [public/data/longer-rides.json](public/data/longer-rides.json). |
+| Photo menu links | [public/data/photos.json](public/data/photos.json), independently of each ride's `photosUrl`. |
+| Shared colours, fonts and spacing | [src/scss/styles.scss](src/scss/styles.scss) and the stylesheets it loads. Some components also have their own `<style>` block. |
+| Navigation and Ride Diary interactions | [src/js/](src/js/); the main imports are in [src/scripts/site.ts](src/scripts/site.ts). |
+| Upcoming ride/countdown or photo-year menu behaviour | [src/scripts/where-to-next.ts](src/scripts/where-to-next.ts) and [src/scripts/photos.ts](src/scripts/photos.ts). |
+| Shared data checks and date calculations | [src/lib/](src/lib/). |
+| Pictures and route maps | [public/img/](public/img/). A page reference such as `img/mm-qr-code.jpg` omits the `public/` folder name. |
+
+HTML describes the content and structure. CSS/SCSS controls appearance. JavaScript/TypeScript handles behaviour. JSON stores structured information such as ride details. Bootstrap supplies shared styles and interactive controls. A component is a named piece of the page.
+
+The homepage assembles the components inside the shared layout. Longer rides load from JSON through `src/lib/data.ts`; `src/js/ride-diary.js` creates their displayed entries. Regular rides remain directly in `RideDiary.astro`. Photos uses its own JSON file, component and browser script, so its year menus are independent of the ride programme.
+
+Use `src/` and `public/` for source changes. `baseline/` is a historical comparison copy; `dist/`, `.astro/` and `node_modules/` are generated output, cache or installed dependencies. The sibling `fleet-mucky-mayhem/` folder contains the original website rather than this refactored site.
 
 ## The file you will normally edit
 
