@@ -6,6 +6,19 @@ This is version **2.0.0**, built with Astro and Bootstrap. It keeps the familiar
 
 This guide is for Andy, the client's developer, and anyone else who needs to maintain the website. For routine ride updates, start with **The file you will normally edit** below. For a first introduction to the website code, start with the walkthrough and file guide here.
 
+## Client update and release guides
+
+The client has approved a public source repository and confirmed **fleetmuckymayhem.com** as the production domain, managed through IONOS. The planned client setup uses a client representative's GitHub account, individual collaborators, `main` and `staging` source branches, and a separate staging publishing repository.
+
+| Guide | Purpose | Printable copy |
+| --- | --- | --- |
+| [Update, preview and publish](docs/client-handover/update-preview-publish.md) | Who requests, develops, tests, approves and publishes a change, including our support team's role throughout. | [PDF](docs/client-handover/update-preview-publish.pdf) |
+| [Undo a release](docs/client-handover/undo-release.md) | Reporting a problem, authorising a reversal, publishing it and keeping staging aligned. | [PDF](docs/client-handover/undo-release.pdf) |
+
+**Setup status:** these guides describe the planned handover process, not an already active client deployment. The client account/repository links, staging URL, support contact and release approver still need recording. Branch protection, PR checks and automatic staging/production deployment must be configured and rehearsed, including an undo, before using the release instructions. Use merge commits for release PRs so the documented Revert procedure can be rehearsed, and retain the permanent `main` and `staging` branches. The existing manual preview on Martin's account remains the current staging mechanism. The current maintainer repository remains private until a separate visibility change or client repository migration is agreed and performed.
+
+For supported updates, the client requests the work and tests the staging version. We handle development, checks, staging publication and preparation of the release PR. The client approves the tested version and merges the release PR into `main` to trigger automatic production deployment, then tells us so we can verify the live result. Any required GitHub approving review is completed before merging. The same ownership applies to an undo: we prepare and check the reversal PR; the client merges it to publish the reversal.
+
 ## Beginner website code walkthrough
 
 The client presentation, **Fleet Mucky Mayhem: A beginner's guide to the website code**, covers this Astro project. It assumes no previous web development experience and explains the code using examples from the actual website. Build, publishing and deployment are outside the presentation's scope; their maintenance instructions remain later in this README.
