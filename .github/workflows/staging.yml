@@ -1,0 +1,43 @@
+name: Publish staging
+
+on:
+  push:
+    branches: [staging]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: client-staging
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'fleetmuckymayhem-dev/fleet-mucky-mayhem' && github.ref == 'refs/heads/staging'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+      - run: npm run build:staging
+        env:
+          FMM_STAGING_SITE: https://fleetmuckymayhem-dev.github.io
+      - name: Record the source version
+        run: node -e 'require("node:fs").writeFileSync("artifacts/staging-site/staging-version.json", JSON.stringify({commit:process.env.GITHUB_SHA, run:process.env.GITHUB_RUN_ID}) + "\n")'
+      - name: Publish built files to the staging repository
+        env:
+          FMM_STAGING_DEPLOY_KEY: ${{ secrets.FMM_STAGING_DEPLOY_KEY }}
+        run: bash scripts/publish-client-staging.sh
+      - name: Preview link
+        run: |
+          echo 'Staging files published. Once GitHub Pages finishes deploying, preview at https://fleetmuckymayhem-dev.github.io/staging-fleet-mucky-mayhem/' >> "$GITHUB_STEP_SUMMARY"
+          echo "Source version: $GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
