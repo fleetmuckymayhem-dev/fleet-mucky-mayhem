@@ -15,9 +15,11 @@ The client has approved a public source repository and confirmed **fleetmuckymay
 | [Update, preview and publish](docs/client-handover/update-preview-publish.md) | Who requests, develops, tests, approves and publishes a change, including our support team's role throughout. | [PDF](docs/client-handover/update-preview-publish.pdf) |
 | [Undo a release](docs/client-handover/undo-release.md) | Reporting a problem, authorising a reversal, publishing it and keeping staging aligned. | [PDF](docs/client-handover/undo-release.pdf) |
 
-**Setup status:** the public client source repository has `main` and `staging` branches. The client has also created [staging-fleet-mucky-mayhem](https://github.com/fleetmuckymayhem-dev/staging-fleet-mucky-mayhem) for generated preview files and added Martin as a collaborator. The staging automation in this change is prepared for installation; its deployment key and GitHub Pages settings still need configuring and its first deployment needs verifying. Follow [Connect the client staging preview](docs/client-handover/staging-setup.md). The intended preview address is https://fleetmuckymayhem-dev.github.io/staging-fleet-mucky-mayhem/; it is not confirmed live yet.
+**Setup status, 23 October 2026:** the public client source repository has `main` and `staging` branches. Automatic staging publication is installed on `staging`, its dedicated deployment key is configured, and GitHub Pages is enabled in [staging-fleet-mucky-mayhem](https://github.com/fleetmuckymayhem-dev/staging-fleet-mucky-mayhem). The first build, tests, file publication and Pages deployment succeeded. The [client staging preview](https://fleetmuckymayhem-dev.github.io/staging-fleet-mucky-mayhem/) is available. See [staging setup](docs/client-handover/staging-setup.md) and the [readiness checklist](docs/client-handover/readiness-checklist.md) for evidence and outstanding work.
 
-Production deployment, branch protection and an undo rehearsal are still pending. The support contact and named client release approver also need recording. Use merge commits for release PRs so the documented Revert procedure can be rehearsed, and retain the permanent `main` and `staging` branches. The existing manual preview on Martin's account remains available during setup. No production domain or IONOS DNS changes are included in this staging setup.
+**Production is on hold.** The existing IONOS-hosted website, hosting configuration, domain, DNS, redirects, email records and certificates must remain untouched while we finish building, testing and documenting the replacement. No production deployment workflow has been installed. Production cutover requires a separate agreed plan and explicit client authorisation after readiness review. The client controls the eventual production release.
+
+Branch protection, the remaining testing and an isolated release/undo rehearsal are still pending. The support contact and named client release approver also need recording. Use merge commits for release PRs so the documented Revert procedure can be rehearsed, and retain the permanent `main` and `staging` branches. The printable release and undo guides describe the future production process; they do not authorise publication now.
 
 For supported updates, the client requests the work and tests the staging version. We handle development, checks, staging publication and preparation of the release PR. The client approves the tested version and merges the release PR into `main` to trigger automatic production deployment, then tells us so we can verify the live result. Any required GitHub approving review is completed before merging. The same ownership applies to an undo: we prepare and check the reversal PR; the client merges it to publish the reversal.
 
@@ -44,7 +46,7 @@ These handover files are included when cloning this repository. The presentation
 
 ### Which file controls which part of the website?
 
-All paths below start inside `astro-prototype/`.
+All paths below start at the project root, the folder containing `package.json`. The client's clone is named `fleet-mucky-mayhem`; the maintainer's original checkout is named `astro-prototype`.
 
 | Change or question | Where to begin |
 | --- | --- |
@@ -88,8 +90,8 @@ Regular Rides are maintained separately in the website templates. Changing this 
 
 ## Before you start
 
-1. Open the project folder in your editor. On the current computer it is `P:\bootstraprefactor\astro-prototype`; another computer may use a different location.
-2. Make sure you have the latest version from GitHub. If you use GitHub Desktop, click **Fetch origin**, then **Pull origin** if offered. If you already have unfinished changes, ask the maintainer for help before pulling.
+1. Open the client project in Windows VS Code through WSL. In Ubuntu, run `cd ~/projects/fleet-mucky-mayhem`, then `code .`. VS Code should show **WSL: Ubuntu-24.04** in the bottom-left corner.
+2. Make sure you have the latest agreed working branch from GitHub. Work on a separate change branch based on `staging`, then open a PR into `staging`. If you already have unfinished changes, ask the maintainer for help before switching branches or pulling.
 3. Open `public`, then `data`, then `longer-rides.json`.
 4. Make one small change at a time. Save and check it before continuing.
 
@@ -258,39 +260,40 @@ Route-map pictures are used by Where To Next; they are not currently displayed i
 
 ## Check your changes
 
-These instructions use Windows PowerShell and the local project setup. The maintainer should help with the initial installation of Node.js, GitHub access, and the editor. This project has been verified with Node.js 24.14.1.
+The client setup uses Windows VS Code connected to Ubuntu 24.04 through WSL. Run these commands in the **Ubuntu terminal**, using `npm`, not `npm.cmd`. Node.js 24.22.1 and npm 11.19.1 have passed the code check, all 18 tests and the production build there. Keep the project and its installed dependencies in Ubuntu's filesystem. Windows Smart App Control blocked Astro's native Windows compiler; the Ubuntu setup works with that protection left enabled.
 
-Open the editor’s terminal in the project folder—the folder containing `package.json`. If it opens somewhere else, on the current computer enter:
+Open the editor's terminal in the project folder containing `package.json`:
 
-```powershell
-Set-Location 'P:\bootstraprefactor\astro-prototype'
+```bash
+cd ~/projects/fleet-mucky-mayhem
 ```
 
 On the first setup only, install the project dependencies:
 
-```powershell
-npm.cmd ci
+```bash
+npm ci
 ```
 
 After every ride edit, save the file and run:
 
-```powershell
-npm.cmd run validate:data
+```bash
+npm run validate:data
 ```
 
-Success looks like `Validated site data: { rides: 31 }`. The number changes when rides are added or removed. If an error appears, fix it before continuing.
+Success looks like `Validated site data: { rides: 31, photoYears: 3 }`. The counts change when the data changes. If an error appears, fix it before continuing.
 
 Then build the website:
 
-```powershell
-$env:ASTRO_TELEMETRY_DISABLED='1'
-npm.cmd run build
+```bash
+npm run check
+npm test
+npm run build
 ```
 
 The build repeats the data check. Once it succeeds, start a preview:
 
-```powershell
-npm.cmd run preview
+```bash
+npm run preview
 ```
 
 Open the local address printed in the terminal, normally [http://127.0.0.1:4321/](http://127.0.0.1:4321/). If another copy is already running, stop it with **Ctrl+C** in its terminal or use the different address printed by the new preview.
@@ -343,7 +346,7 @@ To add 2027, add an object to `years`, separated from its neighbour by a comma. 
 
 When a real collection is ready, add `regularRidesUrl`, `statisticsUrl`, or an album object such as `{ "label": "20 Feb : Ride name", "url": "https://app.box.com/s/YOUR_REAL_SHARED_LINK" }`. Replace the example link with the actual shared link before publishing. The links automatically appear in Photos when their year begins. If no links are ready, Photos displays a short coming-soon message for that year. Keep previous years in the list; they automatically appear under Archive Photos. Repeat the same steps for 2028 and later; no year setting or page-template changes are required.
 
-Run `npm.cmd run validate:data`, then rebuild and preview as described above. Photos are rendered during the build, so changing this JSON requires a rebuild before publishing. Check every year dropdown and verify the changed links open the intended shared folders. Validation checks the structure and HTTPS URLs, but cannot confirm folder contents or sharing permissions.
+Run `npm run validate:data`, then rebuild and preview as described above. Photos are rendered during the build, so changing this JSON requires a rebuild before publishing. Check every year dropdown and verify the changed links open the intended shared folders. Validation checks the structure and HTTPS URLs, but cannot confirm folder contents or sharing permissions.
 
 Photos data is maintained separately from ride data: changing a ride's `photosUrl` does not update the Photos section. If the same album is linked in both places, update both when its URL changes.
 
@@ -351,17 +354,18 @@ Photos data is maintained separately from ride data: changing a ride's `photosUr
 
 A **commit** is a saved checkpoint with a short description. **Push** uploads that checkpoint to the shared GitHub repository.
 
-If using GitHub Desktop:
+In the client's WSL-connected VS Code project:
 
-1. Select the `fleet-mucky-mayhem-astro` repository.
-2. Review **Changes**. Select only the files for this update—usually `public/data/longer-rides.json` and any new route-map images.
-3. Enter a clear summary, such as `Update Canal Café departure time`.
-4. Click **Commit to main**, then **Push origin**. If you are working on another branch, follow the maintainer’s agreed review process instead.
-5. Open GitHub and confirm the update is there.
+1. Confirm you are on the agreed change branch based on `staging`.
+2. Open **Source Control** and review the changes. Stage only files for this update, usually `public/data/longer-rides.json` and any new route-map images.
+3. Commit with a clear message, such as `Update Canal Café departure time`, then push or publish the change branch.
+4. Open a PR in `fleetmuckymayhem-dev/fleet-mucky-mayhem`, with **base: staging** and your change branch as the head.
+5. Wait for **Check, test and build** and the agreed review. The support team merges the PR into `staging`; the staging workflow then builds and publishes the preview.
+6. Check both the source workflow and the publishing repository's Pages deployment. Confirm the published version before sending the preview to the client.
 
 If GitHub reports conflicting changes, ask the maintainer for help rather than overwriting somebody else’s work.
 
-**Pushing to GitHub saves the project; it does not by itself guarantee the public website has been updated.** The live site needs the agreed build/deployment process. Confirm with the maintainer when the checked update should go live.
+Pushing a change branch saves it to GitHub; merging into `staging` starts preview publication. Neither action changes the current IONOS production website. Production remains on hold until the replacement is built, tested and documented and a separate cutover is authorised.
 
 If you spot a mistake after committing, make a correcting edit, repeat the checks, and create another commit. The maintainer can also recover earlier versions from Git history.
 
@@ -369,17 +373,23 @@ If you spot a mistake after committing, make a correcting edit, repeat the check
 
 ### Client staging preview
 
-The client preview is **[staging-fleet-mucky-mayhem](https://martin-ferrero-thompson.github.io/staging-fleet-mucky-mayhem/)**. The source repository stays private. A separate public repository holds only the generated website files, published through GitHub Pages from its `main` branch. The preview is publicly accessible; its indexing tag asks search engines not to index it.
+The client preview is **[staging-fleet-mucky-mayhem](https://fleetmuckymayhem-dev.github.io/staging-fleet-mucky-mayhem/)**. Changes merged into the public client source repository's `staging` branch run `.github/workflows/staging.yml`. After checks, tests and a successful build, `scripts/publish-client-staging.sh` copies the generated files to the separate staging repository's `main` branch. GitHub Pages publishes from that branch's root. Leave its custom domain empty.
 
-To update the preview from this Windows checkout, run:
+The source workflow uses the `FMM_STAGING_DEPLOY_KEY` Actions secret; its public deploy key has write access only to the staging publishing repository. PR checks do not receive this key. Never commit either private keys or tokens. See [staging setup](docs/client-handover/staging-setup.md) for setup and replacement instructions.
 
-```powershell
-./scripts/publish-staging.ps1
+The public preview has a `noindex, nofollow` tag, which discourages indexing but is not access control. Its `staging-version.json` records the source commit and workflow run. Check those against the successful deployment before requesting client approval.
+
+To prepare a client staging build locally in Ubuntu without publishing:
+
+```bash
+FMM_STAGING_SITE=https://fleetmuckymayhem-dev.github.io npm run build:staging
 ```
 
-This builds and validates the staging version, copies only its output into an isolated staging checkout, commits that output and pushes it. It uses your existing GitHub sign-in; no token is stored in the project. The command deliberately does not commit or push changes in the private source repository. Only run it when the source changes are ready for the client to see. GitHub Pages may take a few minutes to publish an update.
+This writes to `artifacts/staging-site/`, separate from the normal `dist/` build. A successful source workflow confirms that files were pushed; the separate Pages deployment must also succeed before the preview is current.
 
-`npm.cmd run build:staging` prepares the files without publishing them. It uses the Pages subdirectory and writes to `artifacts/staging-site/`, leaving the normal `dist/` build separate. Ordinary `npm.cmd run build` continues to target the main website. Nothing is automatically published to staging when you push source changes; use the publishing command above.
+### Maintainer's historical preview
+
+The original preview at https://martin-ferrero-thompson.github.io/staging-fleet-mucky-mayhem/ remains separate. Its Windows script `scripts/publish-staging.ps1` is tied to Martin's original private repository and account. Do not use it to publish the client's preview. Without `FMM_STAGING_SITE`, a local staging build retains that historical site's origin for compatibility.
 
 `scripts/verify-staging.mjs` checks the preview with Playwright/Edge at mobile and desktop widths. Set `STAGING_QA_URL` to the live preview URL to verify an actual deployment, or serve the staging build locally under `/staging-fleet-mucky-mayhem/` first. Like the other browser scripts, it accepts `QA_PACKAGE_ROOT` for an externally installed Playwright package.
 
@@ -395,6 +405,6 @@ This builds and validates the staging version, copies only its output into an is
 | `baseline/` | Historical migration comparison copy; not the active content to edit. |
 | `dist/`, `.astro/`, `node_modules/`, `artifacts/` | Generated builds, cache, installed dependencies, and local test evidence. Do not edit these to change a ride. |
 
-Useful commands: `npm.cmd run dev` for a development server, `npm.cmd run check` for Astro/TypeScript diagnostics, and `npm.cmd test` for the unit tests. `npm.cmd run build` validates ride data and builds the static site; `npm.cmd run preview` serves that build locally.
+Useful commands in Ubuntu: `npm run dev` for a development server, `npm run check` for Astro/TypeScript diagnostics, and `npm test` for the unit tests. `npm run build` validates site data and builds the static site; `npm run preview` serves that build locally. These local commands do not publish a website.
 
 The full browser check is `scripts/verify-full-browser.mjs`; countdown and populated General Info checks are in `scripts/verify-countdown.mjs` and `scripts/verify-general-info.mjs`. These need a separately available Playwright installation and Edge. Screenshot comparison uses `scripts/compare-screenshots.py` with Python/Pillow. See [VERIFICATION.md](VERIFICATION.md) for historical migration evidence and its limits.
