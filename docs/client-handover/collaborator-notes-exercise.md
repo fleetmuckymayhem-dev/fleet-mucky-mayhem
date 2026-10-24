@@ -83,6 +83,25 @@ Preview with `npm run dev` at `http://127.0.0.1:4321`, open the relevant archive
 
 ## 6. Commit, push and open the PR
 
+### One-time FMM-Dev HTTPS authentication
+
+The user chose to configure WSL Git authentication. The agent's initial noninteractive installation attempt stopped because `sudo` requires the user's Linux password. The user then installed GitHub CLI and completed browser sign-in locally. Verified installed version: `gh 2.103.2`.
+
+Run these in the user's own FMM-Dev terminal, one at a time:
+
+```bash
+sudo apt-get install gh
+gh auth login --hostname github.com --git-protocol https --web
+gh auth setup-git --hostname github.com
+gh api user --jq .login
+```
+
+The first command installs the GitHub CLI; enter the Linux password locally. The second starts browser sign-in: accept authentication for Git if prompted, and authorise as `Martin-Ferrero-Thompson`. If the browser does not open automatically, open the displayed URL in the Windows browser and enter the device code shown in the terminal. The third configures Git to obtain GitHub credentials through the CLI. The final command should print `Martin-Ferrero-Thompson`; it verifies the account without displaying a token. Do not paste passwords or tokens into chat or tracked files. The CLI uses a credential store when available and otherwise can store its token in its configuration file; do not share that file.
+
+References: [GitHub HTTPS credential setup](https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git?platform=linux), [CLI browser sign-in](https://cli.github.com/manual/gh_auth_login), [Git helper setup](https://cli.github.com/manual/gh_auth_setup-git).
+
+Authentication verified on 24 October: `gh api user --jq .login` returned `Martin-Ferrero-Thompson`; global Git configuration already uses `/usr/bin/gh auth git-credential` for GitHub HTTPS. No additional helper configuration was needed. Browser auto-launch was unavailable, but manual browser sign-in succeeded. The CLI reported plain-text credential storage; no credential file or token was read into this log or chat. Remote references were refreshed successfully after sign-in. Next: commit this workflow evidence update, push the exercise branch and open its staging PR.
+
 Once content and checks are reviewed, stage the two intended files explicitly, inspect the staged diff, then commit and push:
 
 ```bash
@@ -113,7 +132,9 @@ Ask the user to approve the identified version **for staging**. Record the respo
 - Content edits and diff review: exact text comparison and scope comparison passed; whitespace diff check passed.
 - Local checks: zero errors, warnings or hints across 41 files; all 18 individual tests passed; production and client staging builds passed; both generated ride JSON files match source byte for byte. The initial sandbox test run only reported three file results; the full 18-test result was obtained by rerunning with subprocess access outside the sandbox.
 - Browser preview: pending. No browser/Playwright installation was available in this environment. Phone and desktop visual acceptance must be recorded separately.
-- Commit, push and staging PR: pending.
+- Local commit: `0e9482f2429b1f02e13050bef8b581aa6f25beb8`, containing only the Notes data file and this workflow log. Staged whitespace review passed.
+- Authentication: verified as `Martin-Ferrero-Thompson`, with the GitHub CLI HTTPS credential helper configured. The first push failed before authentication was set up; it created no remote branch or PR. Fetching the public repository alone did not prove write access.
+- Push and staging PR: pending retry after authentication.
 - PR checks and merge into staging: pending.
 - Source publication and Pages deployment: pending.
 - Live content/version verification: pending.
