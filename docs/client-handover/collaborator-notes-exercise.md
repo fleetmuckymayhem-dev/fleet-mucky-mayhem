@@ -100,7 +100,7 @@ The first command installs the GitHub CLI; enter the Linux password locally. The
 
 References: [GitHub HTTPS credential setup](https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git?platform=linux), [CLI browser sign-in](https://cli.github.com/manual/gh_auth_login), [Git helper setup](https://cli.github.com/manual/gh_auth_setup-git).
 
-Authentication verified on 24 October: `gh api user --jq .login` returned `Martin-Ferrero-Thompson`; global Git configuration already uses `/usr/bin/gh auth git-credential` for GitHub HTTPS. No additional helper configuration was needed. Browser auto-launch was unavailable, but manual browser sign-in succeeded. The CLI reported plain-text credential storage; no credential file or token was read into this log or chat. Remote references were refreshed successfully after sign-in. Next: commit this workflow evidence update, push the exercise branch and open its staging PR.
+Authentication verified on 24 October: `gh api user --jq .login` returned `Martin-Ferrero-Thompson`; global Git configuration already uses `/usr/bin/gh auth git-credential` for GitHub HTTPS. No additional helper configuration was needed. Browser auto-launch was unavailable, but manual browser sign-in succeeded. The CLI reported plain-text credential storage; no credential file or token was read into this log or chat. Remote references were refreshed successfully after sign-in. The terminal push subsequently succeeded, confirming write access and setting the branch's upstream to `origin/update/longer-ride-notes`.
 
 Once content and checks are reviewed, stage the two intended files explicitly, inspect the staged diff, then commit and push:
 
@@ -134,8 +134,8 @@ Ask the user to approve the identified version **for staging**. Record the respo
 - Browser preview: pending. No browser/Playwright installation was available in this environment. Phone and desktop visual acceptance must be recorded separately.
 - Local commit: `0e9482f2429b1f02e13050bef8b581aa6f25beb8`, containing only the Notes data file and this workflow log. Staged whitespace review passed.
 - Authentication: verified as `Martin-Ferrero-Thompson`, with the GitHub CLI HTTPS credential helper configured. The first push failed before authentication was set up; it created no remote branch or PR. Fetching the public repository alone did not prove write access.
-- Push and staging PR: pending retry after authentication.
-- PR checks and merge into staging: pending.
-- Source publication and Pages deployment: pending.
-- Live content/version verification: pending.
-- User staging approval: pending.
+- Push and staging PR: terminal push succeeded. [PR #3](https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem/pull/3) targets `staging`, initially with content commit `0e9482f` and authentication documentation commit `233ce89`. A further documentation commit records this PR reference. The connected app could not create the PR (integration permission error); the authenticated `gh pr create` command succeeded with explicit base and head branches.
+- PR checks and merge into staging: pending at this document revision. See PR #3 for the final checks, merge and verification evidence; its description will be updated as those steps complete.
+- Source publication and Pages deployment: pending at this document revision; final run links and source version will be recorded in PR #3's description.
+- Live content/version verification: pending at this document revision; final evidence will be recorded in PR #3's description.
+- User staging approval: pending. Approval must identify the deployed source version; no automated result implies user approval.
