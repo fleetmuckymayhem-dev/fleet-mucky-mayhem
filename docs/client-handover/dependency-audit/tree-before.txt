@@ -15,4 +15,3 @@ fleet-mucky-mayhem-astro@2.0.0 /home/martin/projects/fleet-mucky-mayhem
 │   └── vite@8.3.4 deduped
 └─┬ vite-baseline@npm:vite@5.4.21
   └── esbuild@0.21.5
-
