@@ -1,6 +1,12 @@
 # Dependency security cleanup
 
-5 November 2026. Prepared for review; do not merge or publish as part of this task.
+5 November 2026. Implementation evidence below records the original pre-merge handoff. Martin subsequently authorised integration and acceptance; see the outcome immediately below.
+
+## Review and integration outcome
+
+PRs [#2](https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem/pull/2) and [#4](https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem/pull/4) are merged into `staging`. Documentation overlap was resolved while preserving the client workflow and patched audit results. Independent lockfile comparison confirmed exactly 51 removed historical entries, no added packages, and fast-uri as the only retained package version change. [Combined PR checks](https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem/actions/runs/41983404109) passed; the clean installation reported zero vulnerabilities, diagnostics were clear, all 18 tests passed, and both builds succeeded.
+
+Integration `572ad64f4a1d647cdf534522191c95383a90fa01` passed [staging publication](https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem/actions/runs/41983506058) and [Pages deployment](https://github.com/fleetmuckymayhem-dev/staging-fleet-mucky-mayhem/actions/runs/41983554449). Its live version file matched the source SHA/run. All 29 published files returned HTTP 200; live headless Edge checks passed at 390px and 1440px, including images, navigation, ride data, Photos, indexing tag, no observed browser errors and no horizontal overflow. Later documentation-only commits may advance the published version. Full real-device acceptance of this integration remains separate. Production, IONOS, DNS, domain, email and certificates were untouched. The remaining sections preserve the original implementation evidence; their pre-merge status statements are historical.
 
 ## Starting state and findings
 

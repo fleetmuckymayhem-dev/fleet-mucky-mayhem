@@ -89,9 +89,9 @@ If a check or build fails, the publishing step is not run and the previous previ
 
 ## Remaining handover work
 
-- Dependency security cleanup validated on 5 November 2026: retired historical `vite-baseline` 5.4.21 and nested esbuild 0.21.5; refreshed transitive fast-uri 3.1.8 to 3.1.9. Full npm audit fell from three affected packages (one high, two moderate) to zero, including development dependencies. Active Astro 7.4.0 / Vite 8.3.4 are unchanged. See [validation evidence](dependency-security-cleanup.md); review and merge remain pending.
+- Dependency security cleanup completed on 5 November 2026: PR #4 is reviewed, accepted and merged into `staging`, with PR #2 documentation reconciled. Retired historical `vite-baseline` 5.4.21 and nested esbuild 0.21.5; refreshed transitive fast-uri 3.1.8 to 3.1.9. Full npm audit fell from three affected packages (one high, two moderate) to zero, including development dependencies. Active Astro 7.4.0 / Vite 8.3.4 are unchanged. Combined checks, staging deployment and live Edge verification passed. See [validation evidence](dependency-security-cleanup.md) and the [current readiness checklist](readiness-checklist.md).
 - Configure branch protection using the **Check, test and build** check after its first successful run. Retain the permanent source `main` and `staging` branches.
-- Configure production Pages and IONOS DNS, and rehearse client-controlled publication and rollback before cutover.
+- Prepare the proposed production deployment and cutover plan; rehearse client-controlled publication and rollback at an isolated test destination. Any actual production Pages, IONOS or DNS changes require separate explicit cutover authorisation.
 - Record the agreed support contact and named client release approver in the handover guides.
 
 References: [GitHub deploy keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys), [GitHub Pages publishing settings](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
