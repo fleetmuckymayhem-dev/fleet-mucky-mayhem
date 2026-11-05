@@ -1,8 +1,33 @@
-# Branch protection proposal
+# Branch protection proposal and implementation record
 
-**Proposed — not applied** | Fleet Mucky Mayhem | 5 November 2026
+**Approved for implementation — not applied; owner-assisted rehearsal pending** | Fleet Mucky Mayhem | 5 November 2026
 
-This is an investigation and review proposal for the [client source repository](https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem). Approval of this document does not apply settings or authorise a production release. The [readiness task](readiness-checklist.md) remains open. Production automation, cutover, IONOS, hosting, DNS, domains, email and certificates remain outside this task.
+This records the approved proposal and implementation progress for the [client source repository](https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem). The user has authorised rehearsal, protection work and staging documentation merges after reporting Lliezar’s approval of PR #5 at `2857436c85b15abf65f7ed423c3cc650bd5aad94`. This authorisation does not permit a main merge or production work. The [readiness task](readiness-checklist.md) remains open. Production automation, cutover, IONOS, hosting, DNS, domains, email and certificates remain outside this task.
+
+## Implementation progress — 5 November 2026
+
+**Incomplete: owner/admin participation and human identities are pending.** No rule IDs exist from this implementation attempt because no rules have been created. PR #5 remains open at its reviewed commit, with successful [Check, test and build](https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem/actions/runs/41986286666/job/127107663256), auto-merge disabled, and no formal reviews or comments recorded on GitHub at reinspection. Lliezar’s independent review is recorded as reported by the user, not represented as a GitHub qualifying review.
+
+Both original and isolated checkouts were clean; refreshed remote staging/main still point to `1bad312fe06e266ab6b2e2ef5335f717edbc4d79` and `18a38c3e574bc2df489434c853b488a408a2facb`. Both report unprotected. Ruleset listing including parents and both effective branch-rule endpoints again returned empty arrays. Merge settings are unchanged from the snapshot below. Both connector and CLI authenticate as Martin, with write access and no admin permission; the collaborator inventory still contains only Martin and the owner. Existing work and the reviewed proposal branch were preserved; preparation uses a separate descendant branch, `docs/branch-protection-implementation`.
+
+The owner-controller identity, Andy’s GitHub login and the named client release approver cannot be established from current repository records. They have been requested separately, along with participation from the owner’s own signed-in session. No collaborator contact, invitation, review request, permission change, account switch or credential sharing was performed. Main activation remains conditional on confirming the independent reviewer arrangement.
+
+Prepared an [owner-assisted rehearsal kit](branch-protection/README.md), four exact-target rule payloads (two fixture and two permanent), and a reproducible local fixture. Ran the fixture builder successfully at `/tmp/fmm-protection-fixture-20261105` from pinned staging `1bad312`. The generated tree has no Git metadata/remote, no publisher workflow or publisher scripts, only the PR check workflow with fixture-only base filters, a deterministic failure switch, read-only token permissions and no secret references. JSON parsing and offline checks confirmed exact targets, empty bypass lists, history rules and context/provider ID 15368. Fixture check-workflow SHA-256: `184cab4670958be44167c4072f81dbdcc462675f4fac96718304e12046a38fb3`. These are preparation results, **not GitHub enforcement tests**. Payloads have not been submitted to GitHub or server-validated.
+
+| Verification | Actual result / remaining dependency |
+| --- | --- |
+| Current access, permanent refs, rulesets and merge settings | Re-read successfully; no change from initial audit |
+| Existing PR check name/provider and check success | Verified PR #5 success; original check-run provider is GitHub Actions app 15368 |
+| Isolated fixture and payload preparation | Completed locally; nothing published to fixture branches |
+| Required check failing/passing and merge gating | Not executed against enforced rules; owner must create temporary rules |
+| Independent approval, self-approval rejection and stale dismissal | Not rehearsed; requires owner and second account participation |
+| Conversation resolution and strict current-base gating | Not rehearsed; requires enforced fixture rules |
+| Merge-method and force-push/deletion/direct-push enforcement | Not rehearsed; permanent branches were never used for destructive probes |
+| Staging protection / main protection and rule IDs | Neither applied; no rule IDs; owner required, main additionally awaits identities |
+| Protected merge of PR #5 and staging publication | Pending successful rehearsal and staging activation; PR deliberately left unmerged |
+| Readiness completion | Unchecked until both branches and intended human workflow are verified |
+
+Continue using the kit once the owner participates. The approved settings below remain the implementation specification; they are not final effective settings. Do not claim the historical snapshots or offline payload checks establish enforcement. No repository settings, deployments or permanent branch heads changed during this preparation.
 
 ## Evidence and access limits
 
@@ -27,7 +52,7 @@ The connector and CLI both identify Martin. He can push change branches, submit 
 
 ## Recommended configuration
 
-Use **two branch rulesets**, with explicit branch targets, rather than adding overlapping classic rules. Names: `Protect staging` and `Protect main`; target `branch`, include respectively `refs/heads/staging` and `refs/heads/main`, no exclusions. Proposed final enforcement: **Active**, only after separate implementation approval and rehearsal. Active rulesets layer with classic rules and other rulesets; all must be inspected again before implementation. See [GitHub rule layering](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets).
+Use **two branch rulesets**, with explicit branch targets, rather than adding overlapping classic rules. Names: `Protect staging` and `Protect main`; target `branch`, include respectively `refs/heads/staging` and `refs/heads/main`, no exclusions. Approved target enforcement: **Active**, after successful rehearsal; main additionally requires confirmed independent reviewer identities. Active rulesets layer with classic rules and other rulesets; all must be inspected again before implementation. See [GitHub rule layering](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets).
 
 | Setting | `staging` | `main` | Reason |
 | --- | --- | --- | --- |
@@ -72,7 +97,7 @@ Native branch rules target the **destination**, not a required PR source branch.
 
 Use **Create a merge commit** for releases and undos into main. GitHub's [Revert procedure](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/reverting-a-pull-request) creates another PR to reverse a merge commit; conflicts can require support. Do not impose staging-only source enforcement that prevents that recovery route.
 
-## Ordered implementation plan — future authorisation required
+## Ordered implementation plan — authorised, prerequisites pending
 
 1. Martin obtains independent review of this proposal. Confirm Andy's login, the named client release approver, reviewer availability, and acceptance of the procedural limits above. Record contact/recovery ownership without publishing private recovery information. Production remains on hold.
 2. The owner (`fleetmuckymayhem-dev`, admin) re-reads current branch metadata, classic rules and rulesets, including inherited/overlapping definitions, merge settings and collaborators. Save a nonsecret before-state and rule identifiers. Martin's current write role cannot apply this plan.
@@ -98,7 +123,7 @@ First inspect the failing requirement: exact check context/provider, pending/fai
 
 For a confirmed misconfiguration or urgent authorised undo with no available independent reviewer, the **client owner only** may make the smallest time-limited rule change after explicit client authorisation naming the PR, reason and permitted action. Record the before-state, scope and expiry in the PR/incident record; keep force-push and deletion blocks, avoid direct pushes, and never treat this as production cutover permission. Restore and re-read the original rules immediately after the authorised operation and obtain retrospective independent review. There is no standing bypass actor. An empty bypass list does not remove the owner's ability to edit rules. If owner access is unavailable, support pauses the blocked merge and uses the privately held account recovery process; no credentials or recovery codes belong here.
 
-## Investigation and documentation validation
+## Initial investigation and documentation validation
 
 The original checkout was clean on `maintenance/dependency-audit-cleanup` at `dbdd026`; its `.git` directory is read-only. Its branches and unfinished-work state were preserved. Work used an isolated clone at `/tmp/fmm-branch-protection-review`: fetched, switched to `staging`, and pulled with `--ff-only`; staging was exactly `1bad312fe06e266ab6b2e2ef5335f717edbc4d79`, satisfying the required ancestry check without divergence. Created `docs/branch-protection-proposal` from that tip. Original Git author identity was inspected and reused for this documentation commit. No applicable `AGENTS.md` was found in the checkout or ancestor directories.
 
