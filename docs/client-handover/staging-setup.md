@@ -1,12 +1,14 @@
 # Connect the client staging preview
 
+> **Stage boundary, 5 November 2026:** finish local acceptance first; then prepare a separate approved source copy with fresh Git history and fully test it; then publish to a new client GitHub account for GitHub Pages remote acceptance; only after acceptance and an agreed cutover plan connect the IONOS domain. Existing `fleetmuckymayhem-dev` and Martin-account repositories/previews are rehearsals. Do not use repository renaming or a later ownership transfer as the handover route. See the [current verification and acceptance checklist](final-local-acceptance.md). No push, merge, publishing/settings change, history removal or IONOS change is authorised in this local stage.
+
 This is a one-time technical setup for the support team and the client account owner. The normal update and release guides remain the client's day-to-day instructions.
 
 **Status, 23 October 2026:** the deployment key and Actions secret are configured, the workflow is installed on the source `staging` branch, and the first staging publication and GitHub Pages deployment succeeded. The client confirmed the preview is visible. The steps below document the setup for future maintenance; do not generate another key just to follow them again.
 
 **Production hold:** the client's current IONOS deployment and all related hosting and domain settings must remain untouched until the replacement is fully built, tested and documented. Any cutover requires a separate plan and explicit authorisation. See the [readiness checklist](readiness-checklist.md).
 
-## Repositories and addresses
+## Rehearsal repositories and addresses
 
 | Purpose | Location |
 | --- | --- |
@@ -18,6 +20,8 @@ This is a one-time technical setup for the support team and the client account o
 The staging workflow runs only on the client source repository's `staging` branch. It installs the locked dependencies, checks the code, runs the tests and builds the staging website. Only successful builds are copied into the staging publishing repository's `main` branch. GitHub Pages then publishes those files. The preview is public; `noindex, nofollow` discourages search indexing but does not restrict access.
 
 This setup does not configure production deployment or change IONOS DNS. The client still publishes production by merging an approved release PR into the source repository's `main` branch once production automation has been configured and rehearsed.
+
+The commands below document the completed rehearsal. For a future destination, first replace repository guards, owner names, URLs and keys listed in the portability review. Do not rerun them during local acceptance.
 
 ## 1. Create a dedicated deployment key
 

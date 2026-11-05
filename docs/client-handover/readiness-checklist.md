@@ -2,7 +2,15 @@
 
 Fleet Mucky Mayhem | Readiness reviewed 5 November 2026
 
-## Current local scope — 5 November 2026
+## Agreed sequence and latest verification — 5 November 2026
+
+Follow the [agreed five-stage handover sequence](../../README.md#agreed-handover-sequence--5-november-2026): final local acceptance → separate approved source copy with fresh history → full fresh-copy testing → new client account/GitHub Pages remote acceptance → separately agreed IONOS-domain cutover. The existing `fleetmuckymayhem-dev` account, repositories and preview are rehearsal evidence. No repository rename under Martin's account or later ownership transfer is the handover plan.
+
+The [final local acceptance report](final-local-acceptance.md) records fresh-source verification of `b12fc29e5ca3cf037af597e747d47edd23484569`, remaining manual checks and destination portability. The earlier results below remain dated evidence; they do not certify the final handover copy. Neither history removal nor creation of that handover copy was performed in this review.
+
+The active workspace is now shared FMM-Dev; Martin verified the tested SHA and pending evidence. See [shared-workspace instructions](shared-workspace.md), the [numbered joint checklist and pending human results](acceptance-session.md), and the [website/documentation version record](acceptance-version.md). Matching release/undo PDFs are included in the documentation candidate. Historical unchecked items below remain pending unless explicitly resolved by this later record.
+
+## Earlier local scope — 5 November 2026
 
 **Local development can continue.** The final destination GitHub account and repositories are not available. Destination protections, account ownership and release-approver configuration are deferred pending availability; they do not block local development or testing. Account/admin coordination and protection implementation have stopped. Existing staging automation and all hosting/domain settings remain unchanged.
 
@@ -18,7 +26,7 @@ The existing client website continues to run on IONOS. Leave its deployment, hos
 
 The production cutover is a separate future task. Completing this checklist is evidence for a readiness review, not permission to switch the live website. The client must explicitly authorise a cutover plan and timing. The client remains responsible for merging approved production releases once that process is installed and rehearsed.
 
-## Confirmed so far
+## Completed rehearsal evidence
 
 - [x] Public client source repository: https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem, with permanent `main` and `staging` branches.
 - [x] Public generated staging repository: https://github.com/fleetmuckymayhem-dev/staging-fleet-mucky-mayhem, with Martin added as collaborator.
@@ -53,7 +61,7 @@ The production cutover is a separate future task. Completing this checklist is e
 - [ ] **Deferred pending destination availability:** configure and rehearse branch protection and required checks on destination `staging` and `main`. Confirm the client approval/merge workflow, permanent branches and release merge commits. Use [PR #5](https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem/pull/5) as preparation, then revalidate against the actual destination. This is not a blocker to local development.
 - [ ] **Deferred destination/deployment work:** prepare the production automation and isolated release/undo deployment rehearsal once the destination is available and that work is authorised. The static production and staging builds have already passed locally; this does not authorise deployment.
 - [ ] **Deferred pending destination availability:** separately confirm account ownership/controller, Andy’s GitHub identity, independent reviewer availability and the named client release approver; record support/recovery arrangements privately. This is not a blocker to local development.
-- [ ] Finalise the illustrated update/publish and undo guides, keeping Markdown and PDF copies consistent with the rehearsed workflow. The current printable versions describe a planned production process.
+- [x] Align update/publish and undo Markdown/PDF copies with the agreed sequence; PDFs regenerated and visually inspected for the documentation candidate. Destination-specific details and workflow rehearsal remain future work; these guides describe the planned process.
 - [ ] Review a proposed future cutover and recovery plan, including any domain verification, HTTPS, bare/www redirects and preservation of email records. Planning does not authorise applying those changes.
 
 ## Separate production go-ahead

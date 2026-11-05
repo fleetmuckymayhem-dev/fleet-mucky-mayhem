@@ -1,17 +1,14 @@
 # Undo a release
 
-Fleet Mucky Mayhem | Client and support guide | 21 October 2026
+> **Stage boundary, 5 November 2026:** finish local acceptance first; then prepare a separate approved source copy with fresh Git history and fully test it; then publish to a new client GitHub account for GitHub Pages remote acceptance; only after acceptance and an agreed cutover plan connect the IONOS domain. Existing `fleetmuckymayhem-dev` and Martin-account repositories/previews are rehearsals. Do not use repository renaming or a later ownership transfer as the handover route. See the [current verification and acceptance checklist](final-local-acceptance.md). No push, merge, publishing/settings change, history removal or IONOS change is authorised in this local stage.
+
+Fleet Mucky Mayhem | Client and support guide | Revised 5 November 2026
 
 > **Planned workflow, pending setup and rehearsal.** This page applies to the automated release process in [Update, preview and publish](update-preview-publish.md).
 
-```mermaid
-flowchart LR
-    A["You report the problem"] --> B["We prepare the undo PR"]
-    B --> C["You approve the undo"]
-    C --> D["You merge into main"]
-    D --> E["GitHub deploys the undo"]
-    E --> F["We verify the live site"]
-```
+Report problem → prepare and check undo PR → client approval → client merge → deployment → live verification.
+
+**Printable guide:** the accompanying PDF is generated from this Markdown guide. Both describe the future process; neither authorises a release during local acceptance.
 
 ## Your first step
 

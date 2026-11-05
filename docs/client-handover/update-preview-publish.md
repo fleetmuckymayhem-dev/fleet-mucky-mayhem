@@ -1,8 +1,12 @@
 # Update, preview and publish
 
-Fleet Mucky Mayhem | Client and support guide | 21 October 2026
+> **Stage boundary, 5 November 2026:** finish local acceptance first; then prepare a separate approved source copy with fresh Git history and fully test it; then publish to a new client GitHub account for GitHub Pages remote acceptance; only after acceptance and an agreed cutover plan connect the IONOS domain. Existing `fleetmuckymayhem-dev` and Martin-account repositories/previews are rehearsals. Do not use repository renaming or a later ownership transfer as the handover route. See the [current verification and acceptance checklist](final-local-acceptance.md). No push, merge, publishing/settings change, history removal or IONOS change is authorised in this local stage.
 
-> **Planned workflow, pending setup.** Use this process once the client repositories, branch protection and automated deployments have been configured and rehearsed. Production will be **https://fleetmuckymayhem.com**. The client's staging address and support contact will be added during setup. The existing preview on Martin's account is temporary.
+Fleet Mucky Mayhem | Client and support guide | Revised 5 November 2026
+
+> **Planned workflow, pending setup.** Use this process once the client repositories, branch protection and automated deployments have been configured and rehearsed. Production will be **https://fleetmuckymayhem.com**. The client's staging address and support contact will be added during setup. The existing previews on Martin's account and `fleetmuckymayhem-dev` are rehearsals; the final preview belongs to the new client account.
+
+**Printable guide:** the accompanying PDF is generated from this Markdown guide. Both describe the future process; neither authorises a release during local acceptance.
 
 ## Who does what?
 
@@ -10,15 +14,7 @@ Fleet Mucky Mayhem | Client and support guide | 21 October 2026
 
 **We, your support/development team**, agree the work with you, make the changes, run the checks, publish to staging, prepare the release PR and help with publication. We verify the result after you release it. You do not need to run build commands. Your developer can take on more development tasks later with an agreed review process.
 
-```mermaid
-flowchart LR
-    A["You send a request"] --> B["We prepare the change"]
-    B --> C["We publish to staging"]
-    C --> D["You test the preview"]
-    D --> E["You approve the version"]
-    E --> F["You publish to production"]
-    D -->|Changes needed| B
-```
+Request → prepare and check → preview → client testing → approval → client release → live verification. If changes are needed, repeat preparation and testing.
 
 **Staging** is the test website. **Production** is the public website. A **pull request (PR)** is a recorded proposal to combine changes. A **merge** accepts it. A **build/deployment** prepares the website and publishes it.
 
@@ -50,7 +46,7 @@ Reply clearly: **“I approve request FMM-012, staging version [identifier], for
 
 We prepare a release PR **from `staging` into `main`**, link your approval and check that it contains only the changes you approved. We send you the exact PR link and keep that version fixed for release.
 
-**You open the PR** and confirm it targets `main` and contains the version you tested. If a formal review is required, choose **Files changed**, **Review changes**, **Approve**, then **Submit review**. Once the required checks and reviews pass, choose **Merge pull request**, then **Confirm merge**.
+**You open the PR** and confirm it targets `main` and contains the version you tested. The required independent reviewer completes **Files changed** → **Review changes** → **Approve** → **Submit review** before merging. A PR author cannot approve their own PR; the client release approver and required GitHub reviewer may be different people. Once the required checks and reviews pass, choose **Merge pull request**, then **Confirm merge**, using the agreed merge-commit method for the rehearsed Revert procedure.
 
 **Your merge into `main` starts the automatic production build and deployment.** You control when the approved change goes live. Keep the permanent `main` and `staging` branches. If GitHub blocks the merge or shows a failure, contact us rather than bypassing the checks. GitHub's [merge guide](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/merging-a-pull-request) explains the controls.
 

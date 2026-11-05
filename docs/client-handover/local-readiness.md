@@ -4,6 +4,12 @@ Fleet Mucky Mayhem | Verified 5 November 2026 | **Local development can continue
 
 The final destination GitHub account and repositories are not available. Destination branch protection, account ownership, independent reviewers and the named client release approver are **deferred pending availability**, not blockers to local development. Account/admin coordination and protection implementation have stopped. No production release or cutover is authorised.
 
+## Later verification and agreed handover route
+
+This is the earlier development-readiness record. See [final local acceptance](final-local-acceptance.md) for the subsequent fresh-source checks and manual acceptance checklist. The agreed route is local acceptance, then a separate approved copy with fresh Git history and full testing, then a new client account/GitHub Pages remote acceptance, then separately planned IONOS-domain cutover. Existing accounts and deployments are rehearsals, not a rename/transfer route. Historical results below are preserved.
+
+The shared checkout is now confirmed by Martin; use [shared-workspace.md](shared-workspace.md) and the [joint acceptance session](acceptance-session.md). This does not mark any physical-device or account-access check as passed.
+
 ## Checkout and preserved work
 
 Working checkout: `/home/martin/projects/fleet-mucky-mayhem` in WSL/Linux, user `martin`. Local branch: `docs/local-readiness`, created from fetched `origin/staging` at `1bad312fe06e266ab6b2e2ef5335f717edbc4d79`. The checkout was clean before switching. The existing `maintenance/dependency-audit-cleanup` branch remains at `dbdd02671781050e052edd0f3ca3608d1ed0c7e6`; its application source, public files, dependency manifests, scripts and tests match this staging baseline. No unfinished work was discarded. No applicable `AGENTS.md` was found in the project or ancestors.

@@ -2,9 +2,21 @@
 
 Fleet Mucky Mayhem is a website for a social cycling group in Fleet, Hampshire, and the surrounding area. It includes information about the group, Regular and Longer Rides, past adventures, photos, and frequently asked questions.
 
-This is version **2.0.0**, built with Astro and Bootstrap. It keeps the familiar website layout and styling while using a newer build system. The public client source repository is [fleetmuckymayhem-dev/fleet-mucky-mayhem](https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem), with its own history separate from the original website repository. The original maintainer's Astro repository remains a separate private copy.
+This is version **2.0.0**, built with Astro and Bootstrap. It keeps the familiar website layout and styling while using a newer build system. The public rehearsal source repository is [fleetmuckymayhem-dev/fleet-mucky-mayhem](https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem), with its own history separate from the original website repository. The original maintainer's Astro repository remains a separate private copy.
 
 This guide is for Andy, the client's developer, and anyone else who needs to maintain the website. For routine ride updates, start with **The file you will normally edit** below. For a first introduction to the website code, start with the walkthrough and file guide here.
+
+## Agreed handover sequence — 5 November 2026
+
+1. Finish development and final local acceptance with Martin and Ines.
+2. After approving an exact source version, create a **separate handover folder on the dev laptop**. Take that approved source, omit Git history in that copy only, and initialise a fresh repository. Preserve the development checkout and its history.
+3. Fully test the fresh copy, including installation, checks, both builds and browser acceptance.
+4. Publish to a **new client GitHub account** and use GitHub Pages for remote user acceptance.
+5. After remote acceptance and a separately agreed cutover plan, connect the client's IONOS domain and verify the live website.
+
+The `fleetmuckymayhem-dev` source repository and staging preview are a **rehearsal**. Do not rename repositories under Martin's account or plan an ownership transfer as the handover route. Existing setup, PR and deployment evidence below is retained as rehearsal history. Later routine release/undo instructions apply only after destination configuration and rehearsal; they do not authorise publication or domain changes now.
+
+See [final local acceptance verification](docs/client-handover/final-local-acceptance.md) for the tested commit, current results, portability settings and Martin/Ines checklist. The release/undo PDFs now match their Markdown guides; see the [acceptance version record](docs/client-handover/acceptance-version.md) and [joint acceptance checklist](docs/client-handover/acceptance-session.md).
 
 ## Current local readiness
 
@@ -21,7 +33,7 @@ The client has approved a public source repository and confirmed **fleetmuckymay
 | [Update, preview and publish](docs/client-handover/update-preview-publish.md) | Who requests, develops, tests, approves and publishes a change, including our support team's role throughout. | [PDF](docs/client-handover/update-preview-publish.pdf) |
 | [Undo a release](docs/client-handover/undo-release.md) | Reporting a problem, authorising a reversal, publishing it and keeping staging aligned. | [PDF](docs/client-handover/undo-release.pdf) |
 
-**Setup status, 23 October 2026:** the public client source repository has `main` and `staging` branches. Automatic staging publication is installed on `staging`, its dedicated deployment key is configured, and GitHub Pages is enabled in [staging-fleet-mucky-mayhem](https://github.com/fleetmuckymayhem-dev/staging-fleet-mucky-mayhem). The first build, tests, file publication and Pages deployment succeeded. The [client staging preview](https://fleetmuckymayhem-dev.github.io/staging-fleet-mucky-mayhem/) is available. See [staging setup](docs/client-handover/staging-setup.md) and the [readiness checklist](docs/client-handover/readiness-checklist.md) for evidence and outstanding work.
+**Completed rehearsal setup, 23 October 2026:** the public client source repository has `main` and `staging` branches. Automatic staging publication is installed on `staging`, its dedicated deployment key is configured, and GitHub Pages is enabled in [staging-fleet-mucky-mayhem](https://github.com/fleetmuckymayhem-dev/staging-fleet-mucky-mayhem). The first build, tests, file publication and Pages deployment succeeded. The [client staging preview](https://fleetmuckymayhem-dev.github.io/staging-fleet-mucky-mayhem/) is available. See [staging setup](docs/client-handover/staging-setup.md) and the [readiness checklist](docs/client-handover/readiness-checklist.md) for evidence and outstanding work.
 
 **Production is on hold.** The existing IONOS-hosted website, hosting configuration, domain, DNS, redirects, email records and certificates must remain untouched while we finish building, testing and documenting the replacement. No production deployment workflow has been installed. Production cutover requires a separate agreed plan and explicit client authorisation after readiness review. The client controls the eventual production release.
 
@@ -29,7 +41,7 @@ The client has approved a public source repository and confirmed **fleetmuckymay
 
 Branch protection, broader website acceptance testing and an isolated release/undo rehearsal are still pending. The support contact and named client release approver also need recording. Use merge commits for release PRs so the documented Revert procedure can be rehearsed, and retain the permanent `main` and `staging` branches. The printable release and undo guides describe the future production process; they do not authorise publication now.
 
-For supported updates, the client requests the work and tests the staging version. We handle development, checks, staging publication and preparation of the release PR. The client approves the tested version and merges the release PR into `main` to trigger automatic production deployment, then tells us so we can verify the live result. Any required GitHub approving review is completed before merging. The same ownership applies to an undo: we prepare and check the reversal PR; the client merges it to publish the reversal.
+After the new destination is configured, rehearsed and accepted, routine supported updates follow this planned process: the client requests the work and tests the staging version. We handle development, checks, staging publication and preparation of the release PR. The client approves the tested version and merges the release PR into `main` to trigger automatic production deployment, then tells us so we can verify the live result. Any required GitHub approving review is completed before merging. The same ownership applies to an undo: we prepare and check the reversal PR; the client merges it to publish the reversal.
 
 ## Beginner website code walkthrough
 
@@ -363,6 +375,8 @@ Photos data is maintained separately from ride data: changing a ride's `photosUr
 A **commit** is a saved checkpoint with a short description. **Push** uploads that checkpoint to the shared GitHub repository.
 
 In the client's WSL-connected VS Code project:
+
+These are future/rehearsal workflow instructions. During the current local acceptance stage, stop after local verification: do not push or merge. Replace rehearsal repository addresses for the eventual client destination.
 
 1. Confirm you are on the agreed change branch based on `staging`.
 2. Open **Source Control** and review the changes. Stage only files for this update, usually `public/data/longer-rides.json` and any new route-map images.
