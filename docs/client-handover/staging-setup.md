@@ -2,6 +2,10 @@
 
 This is a one-time technical setup for the support team and the client account owner. The normal update and release guides remain the client's day-to-day instructions.
 
+**Status, 23 October 2026:** the deployment key and Actions secret are configured, the workflow is installed on the source `staging` branch, and the first staging publication and GitHub Pages deployment succeeded. The client confirmed the preview is visible. The steps below document the setup for future maintenance; do not generate another key just to follow them again.
+
+**Production hold:** the client's current IONOS deployment and all related hosting and domain settings must remain untouched until the replacement is fully built, tested and documented. Any cutover requires a separate plan and explicit authorisation. See the [readiness checklist](readiness-checklist.md).
+
 ## Repositories and addresses
 
 | Purpose | Location |
@@ -85,7 +89,7 @@ If a check or build fails, the publishing step is not run and the previous previ
 
 ## Remaining handover work
 
-- Review the legacy `vite-baseline` dependency audit findings separately; the active Astro build uses a separate Vite version.
+- Dependency security cleanup validated on 5 November 2026: retired historical `vite-baseline` 5.4.21 and nested esbuild 0.21.5; refreshed transitive fast-uri 3.1.8 to 3.1.9. Full npm audit fell from three affected packages (one high, two moderate) to zero, including development dependencies. Active Astro 7.4.0 / Vite 8.3.4 are unchanged. See [validation evidence](dependency-security-cleanup.md); review and merge remain pending.
 - Configure branch protection using the **Check, test and build** check after its first successful run. Retain the permanent source `main` and `staging` branches.
 - Configure production Pages and IONOS DNS, and rehearse client-controlled publication and rollback before cutover.
 - Record the agreed support contact and named client release approver in the handover guides.

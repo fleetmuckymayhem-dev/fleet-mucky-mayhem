@@ -10,9 +10,7 @@
     "build:staging": "node scripts/build-staging.mjs",
     "validate:data": "node scripts/validate-data.ts",
     "test": "node --test tests/*.test.ts",
-    "preview": "astro preview --host 127.0.0.1 --port 4321",
-    "baseline:build": "node node_modules/vite-baseline/bin/vite.js build --config baseline/vite.config.mjs",
-    "baseline:preview": "node node_modules/vite-baseline/bin/vite.js preview --config baseline/vite.config.mjs --host 127.0.0.1 --port 4322"
+    "preview": "astro preview --host 127.0.0.1 --port 4321"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
@@ -24,7 +22,6 @@
     "@types/bootstrap": "5.2.11",
     "@types/node": "24.19.2",
     "sass": "1.105.2",
-    "typescript": "6.0.3",
-    "vite-baseline": "npm:vite@5.4.21"
+    "typescript": "6.0.3"
   }
 }

@@ -3,12 +3,14 @@ import assert from 'node:assert/strict';
 const require = createRequire(process.env.QA_PACKAGE_ROOT ? `${process.env.QA_PACKAGE_ROOT}/package.json` : import.meta.url);
 const { chromium } = require('playwright');
 const url = process.env.STAGING_QA_URL || 'http://127.0.0.1:4324/staging-fleet-mucky-mayhem/';
-const browser = await chromium.launch({ channel: 'msedge', headless: true });
+const browser = await chromium.launch({ channel: process.env.QA_BROWSER_CHANNEL || 'msedge', headless: true });
 try {
   for (const width of [390, 1440]) {
     const page = await browser.newPage({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
     const errors = [], failures = [];
     page.on('pageerror', error => errors.push(error.message));
+    page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+    page.on('requestfailed', request => failures.push(`${request.failure()?.errorText} ${request.url()}`));
     page.on('response', response => {
       if (response.url().startsWith(new URL(url).origin) && response.status() >= 400) failures.push(`${response.status()} ${response.url()}`);
     });
@@ -26,6 +28,14 @@ try {
     });
     const broken = await page.locator('img').evaluateAll(images => images.filter(image => !image.complete || !image.naturalWidth).map(image => image.src));
     assert.deepEqual(broken, [], 'Images must load from the staging subdirectory');
+    for (const link of await page.locator('nav .nav-link').all()) {
+      if (width < 1400) await page.locator('.navbar-toggler').click();
+      const fragment = await link.getAttribute('href');
+      assert.equal(await page.locator(fragment).count(), 1);
+      await link.click();
+      await page.waitForFunction(hash => location.hash === hash, fragment);
+      if (width < 1400) await page.waitForFunction(() => !document.querySelector('#navbarNav').classList.contains('show'));
+    }
     await page.locator('#showLonger').click();
     assert.match(await page.locator('#accordionLonger').textContent(), /2027 Longer Rides programme/);
     await page.locator('#archivedDropdownBtn').click();
@@ -40,7 +50,7 @@ try {
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     assert.deepEqual(errors, []);
     assert.deepEqual(failures, []);
-    console.log(`PASS ${width}px: staging assets, ride data, all images, Photos controls, indexing tag and JavaScript.`);
+    console.log(`PASS ${width}px: staging assets, ride data, all images, Photos controls, navigation, indexing tag and JavaScript.`);
     await page.close();
   }
 } finally { await browser.close(); }

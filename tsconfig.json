@@ -6,7 +6,6 @@
   ],
   "exclude": [
     "dist",
-    "baseline",
     "artifacts"
   ],
   "compilerOptions": {

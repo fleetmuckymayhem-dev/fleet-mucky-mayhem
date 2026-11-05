@@ -55,3 +55,13 @@ Build output still includes Sass deprecation notices from unchanged `lighten()`/
 ## Next stage
 
 Introduce typed ride/event schemas and shared date helpers, then fix the countdown's competing updates in a separate behavior change with date-boundary checks. Before production release, validate deployment paths, metadata/static verification files, analytics, and the live-site baseline. Re-enabling the calendar requires its own acceptance checks.
+
+## Historical comparison retirement
+
+On 5 November 2026 the historical `baseline/` source, Vite 5 alias and its build/preview commands were retired from the active project. They served migration comparison only; the active Astro build uses its own Vite dependency. Results and evidence paths above remain milestone records. The old baseline reproduction instructions require a historical checkout and are no longer active commands.
+
+The last pre-cleanup client staging snapshot is `395d9c261de5696ed79ea53f62f87c54e36ed813`. Inspect source with `git show 395d9c261de5696ed79ea53f62f87c54e36ed813:baseline/vite.config.mjs`, or recover the whole historical workspace with `git archive 395d9c261de5696ed79ea53f62f87c54e36ed813` into a separate directory. That snapshot includes `baseline/`, package manifests, comparison scripts and milestone reports. It retains the vulnerable historical dependencies; use it as an archive rather than restoring them to the active project.
+
+The `7c284bb` original-source reference above belongs to the earlier migration repository and may not exist in this client repository's independent history. Generated screenshots and JSON under ignored `artifacts/` were local evidence, never committed; Git can recover the source and reports, not those generated files. Retain any existing local evidence separately.
+
+`verify-full-browser.mjs`, `compare-screenshots.py` and `preview-snapshot.mjs` remain useful for comparisons between saved Astro builds, as described in [LONGER-RIDES-LAYOUT.md](LONGER-RIDES-LAYOUT.md). They do not import or require `vite-baseline`. Single-site verification scripts for staging, countdown, Photos, ride rollover and General Info are retained too.
