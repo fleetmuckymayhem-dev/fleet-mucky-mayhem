@@ -6,6 +6,12 @@ This is version **2.0.0**, built with Astro and Bootstrap. It keeps the familiar
 
 This guide is for Andy, the client's developer, and anyone else who needs to maintain the website. For routine ride updates, start with **The file you will normally edit** below. For a first introduction to the website code, start with the walkthrough and file guide here.
 
+## Current local readiness
+
+**5 November 2026:** local development is ready to continue on the supported Linux toolchain. Clean installation, dependency audit, code checks, all 18 tests, production/local staging builds and mobile/desktop browser smoke checks passed. Screenshot review found a mobile Contact Us QR-image sizing defect to fix next. See [local verification results and gaps](docs/client-handover/local-readiness.md).
+
+The final destination GitHub account and repositories are unavailable. Destination branch protection, ownership and release-approver setup are **deferred pending availability**, not blockers to local work. Existing repository/staging details below are historical setup context. Protection PR #5 remains an unmerged future proposal; account/admin coordination and implementation are stopped. This local review does not push, merge or publish anything or change existing staging automation.
+
 ## Client update and release guides
 
 The client has approved a public source repository and confirmed **fleetmuckymayhem.com** as the production domain, managed through IONOS. The planned client setup uses a client representative's GitHub account, individual collaborators, `main` and `staging` source branches, and a separate staging publishing repository.
