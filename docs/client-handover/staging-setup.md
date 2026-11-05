@@ -2,6 +2,10 @@
 
 This is a one-time technical setup for the support team and the client account owner. The normal update and release guides remain the client's day-to-day instructions.
 
+**Status, 23 October 2026:** the deployment key and Actions secret are configured, the workflow is installed on the source `staging` branch, and the first staging publication and GitHub Pages deployment succeeded. The client confirmed the preview is visible. The steps below document the setup for future maintenance; do not generate another key just to follow them again.
+
+**Production hold:** the client's current IONOS deployment and all related hosting and domain settings must remain untouched until the replacement is fully built, tested and documented. Any cutover requires a separate plan and explicit authorisation. See the [readiness checklist](readiness-checklist.md).
+
 ## Repositories and addresses
 
 | Purpose | Location |
