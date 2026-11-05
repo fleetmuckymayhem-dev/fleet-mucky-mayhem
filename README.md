@@ -65,7 +65,7 @@ HTML describes the content and structure. CSS/SCSS controls appearance. JavaScri
 
 The homepage assembles the components inside the shared layout. Longer rides load from JSON through `src/lib/data.ts`; `src/js/ride-diary.js` creates their displayed entries. Regular rides remain directly in `RideDiary.astro`. Photos uses its own JSON file, component and browser script, so its year menus are independent of the ride programme.
 
-Use `src/` and `public/` for source changes. `baseline/` is a historical comparison copy; `dist/`, `.astro/` and `node_modules/` are generated output, cache or installed dependencies. The sibling `fleet-mucky-mayhem/` folder contains the original website rather than this refactored site.
+Use `src/` and `public/` for source changes. The historical `baseline/` comparison copy has been retired; see [recovery instructions](VERIFICATION.md#historical-comparison-retirement). `dist/`, `.astro/` and `node_modules/` are generated output, cache or installed dependencies. The sibling `fleet-mucky-mayhem/` folder contains the original website rather than this refactored site.
 
 ## The file you will normally edit
 
@@ -381,7 +381,7 @@ This builds and validates the staging version, copies only its output into an is
 
 `npm.cmd run build:staging` prepares the files without publishing them. It uses the Pages subdirectory and writes to `artifacts/staging-site/`, leaving the normal `dist/` build separate. Ordinary `npm.cmd run build` continues to target the main website. Nothing is automatically published to staging when you push source changes; use the publishing command above.
 
-`scripts/verify-staging.mjs` checks the preview with Playwright/Edge at mobile and desktop widths. Set `STAGING_QA_URL` to the live preview URL to verify an actual deployment, or serve the staging build locally under `/staging-fleet-mucky-mayhem/` first. Like the other browser scripts, it accepts `QA_PACKAGE_ROOT` for an externally installed Playwright package.
+`scripts/verify-staging.mjs` checks the preview with Playwright/Edge at mobile and desktop widths. Set `STAGING_QA_URL` to the live preview URL to verify an actual deployment, or serve the staging build locally under `/staging-fleet-mucky-mayhem/` first. Like the other browser scripts, it accepts `QA_PACKAGE_ROOT` for an externally installed Playwright package. For this staging script, `QA_BROWSER_CHANNEL=chromium` selects installed Chromium instead of the default Edge.
 
 | Location | Purpose |
 | --- | --- |
@@ -392,9 +392,10 @@ This builds and validates the staging version, copies only its output into an is
 | `public/data/` | Longer Ride programme, authoring template, and yearly Photos links. |
 | `public/img/` | Static images and route maps. |
 | `tests/`, `scripts/` | Unit tests, data validation, and browser/visual verification tools. |
-| `baseline/` | Historical migration comparison copy; not the active content to edit. |
 | `dist/`, `.astro/`, `node_modules/`, `artifacts/` | Generated builds, cache, installed dependencies, and local test evidence. Do not edit these to change a ride. |
 
 Useful commands: `npm.cmd run dev` for a development server, `npm.cmd run check` for Astro/TypeScript diagnostics, and `npm.cmd test` for the unit tests. `npm.cmd run build` validates ride data and builds the static site; `npm.cmd run preview` serves that build locally.
 
-The full browser check is `scripts/verify-full-browser.mjs`; countdown and populated General Info checks are in `scripts/verify-countdown.mjs` and `scripts/verify-general-info.mjs`. These need a separately available Playwright installation and Edge. Screenshot comparison uses `scripts/compare-screenshots.py` with Python/Pillow. See [VERIFICATION.md](VERIFICATION.md) for historical migration evidence and its limits.
+The saved-build comparison harness is `scripts/verify-full-browser.mjs` (serve two saved Astro builds with `scripts/preview-snapshot.mjs` and set `BASELINE_QA_URL` and `ASTRO_QA_URL`); countdown and populated General Info checks are in `scripts/verify-countdown.mjs` and `scripts/verify-general-info.mjs`. These need a separately available Playwright installation and Edge. Screenshot comparison uses `scripts/compare-screenshots.py` with Python/Pillow. See [VERIFICATION.md](VERIFICATION.md) for historical migration evidence and its limits.
+
+The historical `vite-baseline` dependency and `baseline:build`/`baseline:preview` commands were retired during the dependency security cleanup. Active staging verification remains in `scripts/verify-staging.mjs`. See [the cleanup report](docs/client-handover/dependency-security-cleanup.md) for audit and validation evidence. Older walkthrough references to `baseline/` describe the pre-retirement workspace.

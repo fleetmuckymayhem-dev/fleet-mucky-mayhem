@@ -32,7 +32,7 @@ Generated evidence is in ignored `artifacts/longer-rides/`: pre-change `baseline
 
 ## Comparing future changes
 
-For this redesign, the original `baseline/src/` is retained as historical migration evidence. Regression comparisons instead used the previous Astro build (Git commit `cb21ceb`) so the v2 footer and prior intentional behavior fixes were already present.
+At this milestone, the original `baseline/src/` was retained as historical migration evidence. It has since been retired; see [Git recovery instructions](VERIFICATION.md#historical-comparison-retirement). Regression comparisons instead used the previous Astro build (Git commit `cb21ceb`) so the v2 footer and prior intentional behavior fixes were already present.
 
 Before making a later layout change, save the current build into an ignored reference directory, then rebuild the changed code. `scripts/preview-snapshot.mjs <saved-build-directory> <port>` serves that reference. `ASTRO_QA_URL`, `BASELINE_QA_URL`, and `QA_ARTIFACT_DIR` select the comparison URLs and output directory for `verify-full-browser.mjs`. Use the same `QA_ARTIFACT_DIR` when running `compare-screenshots.py`. Run `verify-general-info.mjs` with `ASTRO_QA_URL` for populated-field checks.
 
