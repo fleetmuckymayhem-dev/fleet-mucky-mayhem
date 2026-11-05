@@ -8,7 +8,7 @@ This guide is for Andy, the client's developer, and anyone else who needs to mai
 
 ## Current local readiness
 
-**5 November 2026:** local development is ready to continue on the supported Linux toolchain. Clean installation, dependency audit, code checks, all 18 tests, production/local staging builds and mobile/desktop browser smoke checks passed. Screenshot review found a mobile Contact Us QR-image sizing defect to fix next. See [local verification results and gaps](docs/client-handover/local-readiness.md).
+**5 November 2026:** local development is ready to continue on the supported Linux toolchain. Clean installation, dependency audit, code checks, all 18 tests, production/local staging builds and mobile/desktop browser smoke checks passed. The mobile Contact Us QR-image sizing defect is fixed and verified locally in both builds at 390px, 768px and 1440px; see [before/after evidence](docs/client-handover/contact-qr-fix.md). See [local verification results and gaps](docs/client-handover/local-readiness.md).
 
 The final destination GitHub account and repositories are unavailable. Destination branch protection, ownership and release-approver setup are **deferred pending availability**, not blockers to local work. Existing repository/staging details below are historical setup context. Protection PR #5 remains an unmerged future proposal; account/admin coordination and implementation are stopped. This local review does not push, merge or publish anything or change existing staging automation.
 

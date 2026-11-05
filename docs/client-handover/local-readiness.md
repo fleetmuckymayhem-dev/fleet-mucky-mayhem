@@ -40,9 +40,15 @@ Logs, supplemental verification scripts, screenshots and contact measurements ar
 
 For routine local work, use the Linux terminal in the project root: `npm run dev` for editing and `npm run preview` after a production build. The staging build command above prepares files without calling a publisher. Never run publisher scripts as part of local verification.
 
-## Gaps and recommended next local task
+## Contact Us follow-up — fixed locally
 
-**Next task: fix the mobile Contact Us layout and recheck it locally.** At a 390px viewport the QR image's natural size is 450 × 604px, but it renders at **20.125 × 400px** in both builds. At 1440px it renders at approximately **298 × 400px**. The image loads successfully; HTTP and no-overflow checks therefore do not detect this visual defect. `ContactUs.astro` uses two unqualified Bootstrap `.col` elements and `src/scss/pages/contact-us.scss` fixes image height at 400px. Review responsive stacking and proportional sizing, then verify contact links and the complete QR artwork at mobile/tablet/desktop sizes. This review documents the issue without changing application code.
+After preserving this initial readiness report in commit `9150c97aae65661e9c50fc47668d8f8949536e86`, the QR-image issue described below was fixed separately. Both production and staging now preserve the 450:604 natural image ratio, stack image/text below 992px with 24px spacing and retain the desktop layout. All requested checks passed at 390px, 768px and 1440px, with no horizontal overflow or observed browser errors. Code checks, all 18 tests and both builds passed again. See [the fix record and before/after evidence](contact-qr-fix.md).
+
+The next local task is keyboard/focus and real-device acceptance of navigation, Ride Diary, Photos, FAQ and contact behavior, including physical QR scanning. Destination setup remains deferred.
+
+## Initial gap recorded before the fix
+
+**Initial finding, subsequently fixed as recorded above:** mobile Contact Us layout. At a 390px viewport the QR image's natural size is 450 × 604px, but it renders at **20.125 × 400px** in both builds. At 1440px it renders at approximately **298 × 400px**. The image loads successfully; HTTP and no-overflow checks therefore do not detect this visual defect. `ContactUs.astro` uses two unqualified Bootstrap `.col` elements and `src/scss/pages/contact-us.scss` fixes image height at 400px. Review responsive stacking and proportional sizing, then verify contact links and the complete QR artwork at mobile/tablet/desktop sizes. The initial readiness review documented this issue; the separate follow-up now fixes it and retains the baseline measurements for comparison.
 
 Remaining acceptance coverage: physical phones/tablets and desktop browsers beyond this Chromium run; keyboard/focus behavior and wider accessibility review; every FAQ and regular-ride interaction; external link destinations, WhatsApp access and shared-folder permissions; and development-server/watch behavior under the current install-script policy. No claim of full website acceptance or destination readiness is made. The empty 2027 programme is the current data state, not a rendering failure.
 

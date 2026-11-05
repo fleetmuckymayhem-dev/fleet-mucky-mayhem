@@ -1,0 +1,530 @@
+[
+  {
+    "phase": "after",
+    "build": "production",
+    "viewport": 390,
+    "browser": "156.0.8078.4",
+    "naturalWidth": 450,
+    "naturalHeight": 604,
+    "image": {
+      "x": 46,
+      "y": 299.765625,
+      "width": 298,
+      "height": 399.96875,
+      "right": 344,
+      "bottom": 699.734375
+    },
+    "column": {
+      "x": 16,
+      "y": 299.765625,
+      "width": 358,
+      "height": 399.96875,
+      "right": 374,
+      "bottom": 699.734375
+    },
+    "text": {
+      "x": 16,
+      "y": 723.734375,
+      "width": 358,
+      "height": 447.3125,
+      "right": 374,
+      "bottom": 1171.046875
+    },
+    "availableColumnWidth": 334,
+    "computed": {
+      "width": "298px",
+      "height": "399.969px",
+      "maxWidth": "298px",
+      "objectFit": "fill"
+    },
+    "paragraphFontSizes": [
+      "22.4px",
+      "20px",
+      "20px",
+      "20px",
+      "20px"
+    ],
+    "links": [
+      {
+        "href": "https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD",
+        "text": "WhatsApp Group",
+        "box": {
+          "x": 152.625,
+          "y": 783.21875,
+          "width": 198.078125,
+          "height": 27,
+          "right": 350.703125,
+          "bottom": 810.21875
+        }
+      },
+      {
+        "href": "https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD",
+        "text": "WhatsApp Group",
+        "box": {
+          "x": 28,
+          "y": 976.046875,
+          "width": 179.046875,
+          "height": 24,
+          "right": 207.046875,
+          "bottom": 1000.046875
+        }
+      },
+      {
+        "href": "mailto:fleetmuckymayhem@gmail.com",
+        "text": "fleetmuckymayhem@gmail.com",
+        "box": {
+          "x": 28,
+          "y": 1128.046875,
+          "width": 310.6875,
+          "height": 24,
+          "right": 338.6875,
+          "bottom": 1152.046875
+        }
+      }
+    ],
+    "overflow": false,
+    "textContent": "\n            Contact Us\n            \n              We have a WhatsApp Group  , so why not reach out and chat to\n                the group.\n              If you join, please introduce yourself to the group.\n              WhatsApp Group  \n                or scan the QR code.\n              If you prefer, you can reach out to us via email at: \n              fleetmuckymayhem@gmail.com  \n            \n          ",
+    "aspectRatioError": 0.00003368318705443407,
+    "errors": []
+  },
+  {
+    "phase": "after",
+    "build": "production",
+    "viewport": 768,
+    "browser": "156.0.8078.4",
+    "naturalWidth": 450,
+    "naturalHeight": 604,
+    "image": {
+      "x": 235,
+      "y": 299.8125,
+      "width": 298,
+      "height": 399.96875,
+      "right": 533,
+      "bottom": 699.78125
+    },
+    "column": {
+      "x": 40,
+      "y": 299.8125,
+      "width": 688,
+      "height": 399.96875,
+      "right": 728,
+      "bottom": 699.78125
+    },
+    "text": {
+      "x": 40,
+      "y": 723.78125,
+      "width": 688,
+      "height": 341.40625,
+      "right": 728,
+      "bottom": 1065.1875
+    },
+    "availableColumnWidth": 664,
+    "computed": {
+      "width": "298px",
+      "height": "399.969px",
+      "maxWidth": "298px",
+      "objectFit": "fill"
+    },
+    "paragraphFontSizes": [
+      "22.4px",
+      "20px",
+      "20px",
+      "20px",
+      "20px"
+    ],
+    "links": [
+      {
+        "href": "https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD",
+        "text": "WhatsApp Group",
+        "box": {
+          "x": 176.625,
+          "y": 800.96875,
+          "width": 198.078125,
+          "height": 27,
+          "right": 374.703125,
+          "bottom": 827.96875
+        }
+      },
+      {
+        "href": "https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD",
+        "text": "WhatsApp Group",
+        "box": {
+          "x": 52,
+          "y": 930.1875,
+          "width": 179.046875,
+          "height": 24,
+          "right": 231.046875,
+          "bottom": 954.1875
+        }
+      },
+      {
+        "href": "mailto:fleetmuckymayhem@gmail.com",
+        "text": "fleetmuckymayhem@gmail.com",
+        "box": {
+          "x": 52,
+          "y": 1022.1875,
+          "width": 310.6875,
+          "height": 24,
+          "right": 362.6875,
+          "bottom": 1046.1875
+        }
+      }
+    ],
+    "overflow": false,
+    "textContent": "\n            Contact Us\n            \n              We have a WhatsApp Group  , so why not reach out and chat to\n                the group.\n              If you join, please introduce yourself to the group.\n              WhatsApp Group  \n                or scan the QR code.\n              If you prefer, you can reach out to us via email at: \n              fleetmuckymayhem@gmail.com  \n            \n          ",
+    "aspectRatioError": 0.00003368318705443407,
+    "errors": []
+  },
+  {
+    "phase": "after",
+    "build": "production",
+    "viewport": 1440,
+    "browser": "156.0.8078.4",
+    "naturalWidth": 450,
+    "naturalHeight": 604,
+    "image": {
+      "x": 249,
+      "y": 300.203125,
+      "width": 298,
+      "height": 399.96875,
+      "right": 547,
+      "bottom": 700.171875
+    },
+    "column": {
+      "x": 76,
+      "y": 300.203125,
+      "width": 644,
+      "height": 399.96875,
+      "right": 720,
+      "bottom": 700.171875
+    },
+    "text": {
+      "x": 720,
+      "y": 319.375,
+      "width": 644,
+      "height": 361.609375,
+      "right": 1364,
+      "bottom": 680.984375
+    },
+    "availableColumnWidth": 620,
+    "computed": {
+      "width": "298px",
+      "height": "399.969px",
+      "maxWidth": "298px",
+      "objectFit": "fill"
+    },
+    "paragraphFontSizes": [
+      "22.4px",
+      "20px",
+      "20px",
+      "20px",
+      "20px"
+    ],
+    "links": [
+      {
+        "href": "https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD",
+        "text": "WhatsApp Group",
+        "box": {
+          "x": 856.625,
+          "y": 416.765625,
+          "width": 198.078125,
+          "height": 27,
+          "right": 1054.703125,
+          "bottom": 443.765625
+        }
+      },
+      {
+        "href": "https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD",
+        "text": "WhatsApp Group",
+        "box": {
+          "x": 732,
+          "y": 545.984375,
+          "width": 179.046875,
+          "height": 24,
+          "right": 911.046875,
+          "bottom": 569.984375
+        }
+      },
+      {
+        "href": "mailto:fleetmuckymayhem@gmail.com",
+        "text": "fleetmuckymayhem@gmail.com",
+        "box": {
+          "x": 732,
+          "y": 637.984375,
+          "width": 310.6875,
+          "height": 24,
+          "right": 1042.6875,
+          "bottom": 661.984375
+        }
+      }
+    ],
+    "overflow": false,
+    "textContent": "\n            Contact Us\n            \n              We have a WhatsApp Group  , so why not reach out and chat to\n                the group.\n              If you join, please introduce yourself to the group.\n              WhatsApp Group  \n                or scan the QR code.\n              If you prefer, you can reach out to us via email at: \n              fleetmuckymayhem@gmail.com  \n            \n          ",
+    "aspectRatioError": 0.00003368318705443407,
+    "errors": []
+  },
+  {
+    "phase": "after",
+    "build": "staging",
+    "viewport": 390,
+    "browser": "156.0.8078.4",
+    "naturalWidth": 450,
+    "naturalHeight": 604,
+    "image": {
+      "x": 46,
+      "y": 299.765625,
+      "width": 298,
+      "height": 399.96875,
+      "right": 344,
+      "bottom": 699.734375
+    },
+    "column": {
+      "x": 16,
+      "y": 299.765625,
+      "width": 358,
+      "height": 399.96875,
+      "right": 374,
+      "bottom": 699.734375
+    },
+    "text": {
+      "x": 16,
+      "y": 723.734375,
+      "width": 358,
+      "height": 447.3125,
+      "right": 374,
+      "bottom": 1171.046875
+    },
+    "availableColumnWidth": 334,
+    "computed": {
+      "width": "298px",
+      "height": "399.969px",
+      "maxWidth": "298px",
+      "objectFit": "fill"
+    },
+    "paragraphFontSizes": [
+      "22.4px",
+      "20px",
+      "20px",
+      "20px",
+      "20px"
+    ],
+    "links": [
+      {
+        "href": "https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD",
+        "text": "WhatsApp Group",
+        "box": {
+          "x": 152.625,
+          "y": 783.21875,
+          "width": 198.078125,
+          "height": 27,
+          "right": 350.703125,
+          "bottom": 810.21875
+        }
+      },
+      {
+        "href": "https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD",
+        "text": "WhatsApp Group",
+        "box": {
+          "x": 28,
+          "y": 976.046875,
+          "width": 179.046875,
+          "height": 24,
+          "right": 207.046875,
+          "bottom": 1000.046875
+        }
+      },
+      {
+        "href": "mailto:fleetmuckymayhem@gmail.com",
+        "text": "fleetmuckymayhem@gmail.com",
+        "box": {
+          "x": 28,
+          "y": 1128.046875,
+          "width": 310.6875,
+          "height": 24,
+          "right": 338.6875,
+          "bottom": 1152.046875
+        }
+      }
+    ],
+    "overflow": false,
+    "textContent": "\n            Contact Us\n            \n              We have a WhatsApp Group  , so why not reach out and chat to\n                the group.\n              If you join, please introduce yourself to the group.\n              WhatsApp Group  \n                or scan the QR code.\n              If you prefer, you can reach out to us via email at: \n              fleetmuckymayhem@gmail.com  \n            \n          ",
+    "aspectRatioError": 0.00003368318705443407,
+    "errors": []
+  },
+  {
+    "phase": "after",
+    "build": "staging",
+    "viewport": 768,
+    "browser": "156.0.8078.4",
+    "naturalWidth": 450,
+    "naturalHeight": 604,
+    "image": {
+      "x": 235,
+      "y": 299.8125,
+      "width": 298,
+      "height": 399.96875,
+      "right": 533,
+      "bottom": 699.78125
+    },
+    "column": {
+      "x": 40,
+      "y": 299.8125,
+      "width": 688,
+      "height": 399.96875,
+      "right": 728,
+      "bottom": 699.78125
+    },
+    "text": {
+      "x": 40,
+      "y": 723.78125,
+      "width": 688,
+      "height": 341.40625,
+      "right": 728,
+      "bottom": 1065.1875
+    },
+    "availableColumnWidth": 664,
+    "computed": {
+      "width": "298px",
+      "height": "399.969px",
+      "maxWidth": "298px",
+      "objectFit": "fill"
+    },
+    "paragraphFontSizes": [
+      "22.4px",
+      "20px",
+      "20px",
+      "20px",
+      "20px"
+    ],
+    "links": [
+      {
+        "href": "https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD",
+        "text": "WhatsApp Group",
+        "box": {
+          "x": 176.625,
+          "y": 800.96875,
+          "width": 198.078125,
+          "height": 27,
+          "right": 374.703125,
+          "bottom": 827.96875
+        }
+      },
+      {
+        "href": "https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD",
+        "text": "WhatsApp Group",
+        "box": {
+          "x": 52,
+          "y": 930.1875,
+          "width": 179.046875,
+          "height": 24,
+          "right": 231.046875,
+          "bottom": 954.1875
+        }
+      },
+      {
+        "href": "mailto:fleetmuckymayhem@gmail.com",
+        "text": "fleetmuckymayhem@gmail.com",
+        "box": {
+          "x": 52,
+          "y": 1022.1875,
+          "width": 310.6875,
+          "height": 24,
+          "right": 362.6875,
+          "bottom": 1046.1875
+        }
+      }
+    ],
+    "overflow": false,
+    "textContent": "\n            Contact Us\n            \n              We have a WhatsApp Group  , so why not reach out and chat to\n                the group.\n              If you join, please introduce yourself to the group.\n              WhatsApp Group  \n                or scan the QR code.\n              If you prefer, you can reach out to us via email at: \n              fleetmuckymayhem@gmail.com  \n            \n          ",
+    "aspectRatioError": 0.00003368318705443407,
+    "errors": []
+  },
+  {
+    "phase": "after",
+    "build": "staging",
+    "viewport": 1440,
+    "browser": "156.0.8078.4",
+    "naturalWidth": 450,
+    "naturalHeight": 604,
+    "image": {
+      "x": 249,
+      "y": 300.203125,
+      "width": 298,
+      "height": 399.96875,
+      "right": 547,
+      "bottom": 700.171875
+    },
+    "column": {
+      "x": 76,
+      "y": 300.203125,
+      "width": 644,
+      "height": 399.96875,
+      "right": 720,
+      "bottom": 700.171875
+    },
+    "text": {
+      "x": 720,
+      "y": 319.375,
+      "width": 644,
+      "height": 361.609375,
+      "right": 1364,
+      "bottom": 680.984375
+    },
+    "availableColumnWidth": 620,
+    "computed": {
+      "width": "298px",
+      "height": "399.969px",
+      "maxWidth": "298px",
+      "objectFit": "fill"
+    },
+    "paragraphFontSizes": [
+      "22.4px",
+      "20px",
+      "20px",
+      "20px",
+      "20px"
+    ],
+    "links": [
+      {
+        "href": "https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD",
+        "text": "WhatsApp Group",
+        "box": {
+          "x": 856.625,
+          "y": 416.765625,
+          "width": 198.078125,
+          "height": 27,
+          "right": 1054.703125,
+          "bottom": 443.765625
+        }
+      },
+      {
+        "href": "https://chat.whatsapp.com/LJ1XZhB7KprApZhr4plhGD",
+        "text": "WhatsApp Group",
+        "box": {
+          "x": 732,
+          "y": 545.984375,
+          "width": 179.046875,
+          "height": 24,
+          "right": 911.046875,
+          "bottom": 569.984375
+        }
+      },
+      {
+        "href": "mailto:fleetmuckymayhem@gmail.com",
+        "text": "fleetmuckymayhem@gmail.com",
+        "box": {
+          "x": 732,
+          "y": 637.984375,
+          "width": 310.6875,
+          "height": 24,
+          "right": 1042.6875,
+          "bottom": 661.984375
+        }
+      }
+    ],
+    "overflow": false,
+    "textContent": "\n            Contact Us\n            \n              We have a WhatsApp Group  , so why not reach out and chat to\n                the group.\n              If you join, please introduce yourself to the group.\n              WhatsApp Group  \n                or scan the QR code.\n              If you prefer, you can reach out to us via email at: \n              fleetmuckymayhem@gmail.com  \n            \n          ",
+    "aspectRatioError": 0.00003368318705443407,
+    "errors": []
+  }
+]
