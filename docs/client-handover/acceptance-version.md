@@ -1,13 +1,13 @@
 # Local acceptance version record
 
-Candidate label: **FMM-LOCAL-ACCEPTANCE-2026-11-05-01**. Status: documentation prepared; human acceptance **pending**. No approval for publication, clean-copy creation or IONOS cutover is implied.
+Candidate label: **FMM-LOCAL-ACCEPTANCE-2026-11-05-01**. Status: **locally accepted by Martin on 5 November 2026**; final client acceptance remains at the later new-account GitHub Pages stage. No approval for publication, clean-copy creation or IONOS cutover is implied.
 
 | Version | Meaning |
 | --- | --- |
 | Tested website | `b12fc29e5ca3cf037af597e747d47edd23484569` — QR-layout fix, with the fresh-source checks recorded in [final-local-acceptance.md](final-local-acceptance.md). |
-| Documentation candidate | The local commit containing this version record, the reviewed acceptance documents and matching release/undo PDFs. Resolve its exact SHA using the command below; a Git commit cannot contain its own SHA. Ines reports that same SHA after committing. |
+| Documentation candidate accepted locally | be5efc2e52e289579b48b522e70d5a7abe97001f — reviewed guides, acceptance evidence and matching release/undo PDFs. Subsequent evidence commits record the guided results without changing the accepted website. |
 | Shared workspace | `/home/martin/projects/fleet-mucky-mayhem`, FMM-Dev, branch `docs/local-readiness`. Martin confirmed this alignment on 5 November 2026; the P: copies are references only. |
-| Human acceptance | Pending in [acceptance-session.md](acceptance-session.md), including individual results for all 43 Box shares and four Maps links. |
+| Human acceptance | Functional and content checks completed by Martin on 5 November 2026: desktop checks in Chrome, Chromium, Edge and Firefox; mobile-menu/Ride Diary/Photos/FAQ keyboard checks; ride/FAQ/contact/disclaimer wording; all 43 Box shares; four maps; four sponsors; two cycling articles; Relive playback; laptop and Huawei Outlook email handling; WhatsApp invitation; physical QR scan; Huawei Mate 20 X 5G/Chrome portrait, landscape and touch checks; and the isolated populated upcoming-ride/countdown demonstration. Martin explicitly approved local acceptance of be5efc2e52e289579b48b522e70d5a7abe97001f on 5 November 2026. Final authorised client sign-off is deferred to the new-account GitHub Pages remote acceptance stage; see [acceptance-session.md](acceptance-session.md). The temporary phone server/firewall rule and countdown demo server were removed/stopped after testing. |
 
 Resolve the immutable documentation candidate after the local commit:
 
@@ -24,7 +24,7 @@ git diff b12fc29e5ca3cf037af597e747d47edd23484569 CANDIDATE_SHA -- src public sc
 
 The second command must have no output for this documentation-only candidate. Future website edits require a new tested website SHA and affected checks. Record subsequent human results in later coordinated commits without silently changing the identity of this candidate.
 
-## Review and PDF verification — 5 November 2026
+## Preparation evidence at candidate be5efc2 — 5 November 2026
 
 - Reviewed the six pending Markdown changes and both acceptance-evidence files against the agreed five-stage release sequence and retained local logs. The external inventory contains 55 unique HTTP-200 responses, including 43 unique Box shares; account/content acceptance remains pending.
 - Updated workspace status using Martin's report, without claiming device/account checks were performed. Preserved prior PR/deployment and test evidence as dated rehearsal history.
@@ -47,4 +47,14 @@ The candidate contains only acceptance/handover documentation and the two matchi
 
 - `undo-release.pdf`: `32a25e199bc43d1f301fe559e29aee26acc76f1284fe33ddabff218aed153614`.
 
-Document checks also passed: relative Markdown file links resolve, external-evidence JSON parses, all 43 Box/four map result rows are present and pending, and `git diff --check` reports no whitespace errors. Existing website test results are retained; this documentation-only task does not claim a new website build/test run.
+Document checks also passed: relative Markdown file links resolve, external-evidence JSON parses, all 43 Box/four map result rows were present and pending at candidate preparation; the later guided results are now recorded in acceptance-session.md, and `git diff --check` reports no whitespace errors. Existing website test results are retained; this documentation-only task does not claim a new website build/test run.
+
+## Local acceptance approval and evidence
+
+Martin approved local acceptance in the shared chat on 5 November 2026 after explicitly confirming all guided checks. His approval applies to candidate be5efc2e52e289579b48b522e70d5a7abe97001f with unchanged tested website b12fc29e5ca3cf037af597e747d47edd23484569. Final client acceptance takes place at the later new-account GitHub Pages stage.
+
+The evidence commit updates Markdown records only. It does not create the clean handover copy, remove history, publish, or change IONOS. Resolve its SHA after committing with:
+
+```bash
+git log -1 --format=%H -- docs/client-handover/acceptance-session.md
+```

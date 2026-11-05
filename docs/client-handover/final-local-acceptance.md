@@ -1,6 +1,8 @@
 # Final local acceptance readiness
 
-Verified 5 November 2026. **Ready to begin final local acceptance with Martin and Ines; not yet approved for creating the clean handover copy or publication.** No new website defect was established in this review. The existing Contact Us QR fix is included and reverified. The tested website is unchanged. The acceptance candidate adds reviewed documentation and matching release/undo PDFs; see [version record](acceptance-version.md).
+**Later guided result, 5 November 2026:** Martin approved local acceptance of candidate be5efc2e52e289579b48b522e70d5a7abe97001f after the checks recorded in [acceptance-session.md](acceptance-session.md). Final client acceptance remains at the later new-account GitHub Pages stage. The clean handover copy has not been created and publication is not authorised here.
+
+**Preparation evidence, 5 November 2026:** ready to begin final local acceptance at tested website b12fc29e5ca3cf037af597e747d47edd23484569. The following verification and limitations describe that preparation; subsequent human results are in the session record. No new website defect was established in this review. The existing Contact Us QR fix is included and reverified. The tested website is unchanged. The acceptance candidate adds reviewed documentation and matching release/undo PDFs; see [version record](acceptance-version.md).
 
 ## Source and scope
 
@@ -84,6 +86,6 @@ README, readiness checklist, local-readiness record, staging setup, update/publi
 
 ## Joint acceptance and results
 
-Use the short [Martin and Lleizar acceptance session](acceptance-session.md). It separates agent checks from human checks and includes results tables for each acceptance item, all 43 Box shares and all four map destinations. Human checks remain pending until Martin reports device/browser, result, issue and date. The earlier Notes-exercise device acceptance is historical and does not approve this candidate.
+Use the short [Martin and Lleizar acceptance session](acceptance-session.md). It separates agent checks from human checks and includes results tables for each acceptance item, all 43 Box shares and all four map destinations. Martin's guided human checks and explicit local approval are now recorded there, with the reported devices and evidence limits. Final authorised client acceptance remains deferred to the later remote stage. The earlier Notes-exercise device acceptance is historical and does not approve this candidate.
 
-Before creating the clean handover copy: complete local acceptance and resolve/document permission/content issues, approve and freeze an exact source version, agree the separate laptop folder and included source files, and review the remaining code-walkthrough guides. Workspace alignment is complete and the two release/undo PDFs now match. **Do not create the copy in this stage.** At the later authorised stage, initialise fresh history only in that copy and fully retest it before publishing to the new client account. Destination configuration and remote acceptance then precede the separately agreed IONOS-domain cutover.
+Local acceptance is complete for the candidate recorded above. Before creating the clean handover copy: agree the separate laptop folder and included source files, preserve the accepted candidate and evidence mapping, and review the remaining code-walkthrough guides. Workspace alignment is complete and the two release/undo PDFs now match. **Do not create the copy in this stage.** At the later authorised stage, initialise fresh history only in that copy and fully retest it before publishing to the new client account. Destination configuration and remote acceptance then precede the separately agreed IONOS-domain cutover.
