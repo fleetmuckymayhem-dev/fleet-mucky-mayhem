@@ -4,6 +4,10 @@
 
 Work in the shared [FMM-Dev workspace](shared-workspace.md). Martin operates his devices/accounts; Lleizar reads the steps and records results. Ines can assist with local builds, simulated browsers and issue investigation. One writer at a time: coordinate builds, edits and commits; no branch switching, push, publication, clean handover copy or IONOS changes.
 
+## Follow-up decisions — 6 November 2026
+
+Martin accepted the reviewed interaction fixes for commit and push on the existing development branch. No repeat physical-device run is claimed. Andy owns the 2027 programme as editorial work and will arrange a possible final-client-approval date in the New Year, 2027. Accessibility enhancements are future development and do not delay initial release. The seasonal follow-up expires the celebration after 1 December 2026 in UK time. See the [current readiness decisions](readiness-checklist.md#functional-scope-and-release-decisions--6-november-2026). The dated checklist/results below retain their original candidate scope; final client approval is still pending.
+
 ## Checks Ines can perform
 
 1. Confirm folder, branch, website SHA and documentation candidate using the version-record commands. Review docs/PDF consistency and confirm no application/configuration changes in the candidate.

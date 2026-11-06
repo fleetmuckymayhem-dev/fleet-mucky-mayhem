@@ -2,6 +2,24 @@
 
 Fleet Mucky Mayhem | Readiness reviewed 5 November 2026
 
+## Functional scope and release decisions — 6 November 2026
+
+Martin confirmed these decisions in the functional status review:
+
+| Item | Agreed status and owner |
+| --- | --- |
+| Core website journeys | Built and working; reviewed interaction fixes accepted for commit and push by Martin. This approval does not claim another physical-device test. |
+| 2027 Longer Rides programme | Editorial task for Andy. The coming-soon message is an accepted initial-release state. |
+| Seasonal Where To Next | Expire the celebration after the whole of 1 December 2026 in Europe/London. From 2 December show the next planned future dated Longer Ride; if none exists, show a coming-soon message linking to Ride Diary and WhatsApp. Existing future-ride priority before the deadline is retained. |
+| Accessibility enhancements | Future development: main landmark, skip-navigation link, explicit carousel pause/resume and dedicated screen-reader review. These do not delay initial release. |
+| Final client approval | Planned for the New Year, 2027. Andy will arrange a possible date; no exact date or final approval is recorded. |
+
+Martin authorised committing and pushing the latest fixes to the existing development branch on the rehearsal source repository. This supersedes earlier local-only restrictions for this source push. Publication, staging merges, destination-account setup and IONOS cutover remain separate steps.
+
+**Verification, 6 November 2026:** code checks returned zero errors/warnings/hints; all 19 unit tests, data validation, production build, staging build and the walkthrough content verifier passed. The existing Edge 156.0.4314.58 matrix passed against both builds at 390, 768, 1399, 1400 and 1440px, covering navigation, carousel, all ride/FAQ panels, rapid interactions, keyboard controls, images and overflow. Countdown, ride-rollover, Photos and General Info suites passed against both builds. New browser assertions cover the 1/2 December UK-midnight transition on an already-open page in London, Los Angeles and Tokyo; earliest future dated active-ride selection after expiry; exclusion of undated/archived rides; and final-departure rollover to the empty-programme state. Mobile/desktop coming-soon screenshots were visually checked. No unexpected browser/runtime errors were observed; injected failure fixtures retain their expected diagnostics. Main-matrix evidence is under `artifacts/functional-release-2026-11-06/`; focused results/screenshots are under `artifacts/countdown/`. No new physical-device or final-client acceptance is claimed.
+
+The reviewed interaction fixes are saved as commit `bcc32ce`; the seasonal follow-up is a separate commit. Andy's existing untracked editing-guide draft is preserved outside these commits.
+
 ## Agreed sequence and latest verification — 5 November 2026
 
 Follow the [agreed five-stage handover sequence](../../README.md#agreed-handover-sequence--5-november-2026): final local acceptance → separate approved source copy with fresh history → full fresh-copy testing → new client account/GitHub Pages remote acceptance → separately agreed IONOS-domain cutover. The existing `fleetmuckymayhem-dev` account, repositories and preview are rehearsal evidence. No repository rename under Martin's account or later ownership transfer is the handover plan.

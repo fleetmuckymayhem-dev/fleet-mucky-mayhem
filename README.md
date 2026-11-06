@@ -8,6 +8,18 @@ This is version **2.0.0**, built with Astro and Bootstrap. It keeps the familiar
 
 This guide is for Andy, the client's developer, and anyone else who needs to maintain the website. For routine ride updates, start with **The file you will normally edit** below. For a first introduction to the website code, start with the walkthrough and file guide here.
 
+## Functional scope decisions — 6 November 2026
+
+Martin confirmed the initial-release scope after the functional status review:
+
+- Andy owns preparation and entry of the 2027 Longer Rides programme as an editorial task. The working coming-soon state does not delay release.
+- The Midwinter Celebration fallback expires after 1 December 2026 in UK time. From 2 December, Where To Next shows the next future dated Longer Ride, or a coming-soon message with Ride Diary/WhatsApp links if none is scheduled. A future dated ride can also replace the fallback before that deadline.
+- Main-content/skip-navigation improvements, an explicit carousel pause/resume control and a dedicated screen-reader review are future development, not initial-release blockers.
+- Martin authorised committing and pushing the reviewed fixes on the existing development branch. This supersedes earlier local-only restrictions for that source push; it does not authorise a staging merge or website publication.
+- Final client approval is planned for the New Year, 2027; Andy will arrange a possible date. It remains separate from Martin's completed local acceptance and from production cutover.
+
+See the [current readiness record](docs/client-handover/readiness-checklist.md#functional-scope-and-release-decisions--6-november-2026).
+
 ## Agreed handover sequence — 5 November 2026
 
 1. Finish development and final local acceptance with Martin and Ines.
@@ -99,7 +111,7 @@ Open **[public/data/longer-rides.json](public/data/longer-rides.json)**.
 
 This file holds the ride details shown in the Ride Diary and supplies the next upcoming ride in **Where To Next**. JSON is simply a structured text format: labels such as `"title"` identify the information that follows.
 
-When there are no future dated Longer Rides, Where To Next displays only the festive **Muckies Midwinter Celebration** image alongside the section heading. All separate event details, the ride countdown, introduction, and route-map caption are hidden. Adding a future dated ride restores the normal ride display after refreshing. The celebration is a fixed fallback in the website code, not an entry in this ride file; it stays until a future ride is available or the maintainer updates it. A data-loading error still uses the existing TBD display.
+When there are no future dated Longer Rides, Where To Next displays the festive **Muckies Midwinter Celebration** image alongside the section heading through 1 December 2026, using UK time. All separate event details, the ride countdown, introduction, and route-map caption are hidden. At 00:00 on 2 December, that seasonal fallback expires automatically, including on an already-open page. If no future ride is scheduled, a coming-soon message links visitors to the Ride Diary and WhatsApp; the stale artwork, map and countdown are hidden. Adding a future dated ride restores the normal ride display after refreshing, before or after the seasonal deadline. The celebration is coded separately from the ride file. A data-loading error still uses the existing TBD display.
 
 There are two lists inside the file:
 
@@ -270,7 +282,7 @@ Do not delete image files as part of a routine ride removal: another ride may sh
 3. Add the new schedule to `longerRides`, with new unique IDs and matching dates/years. Do not change an archived ride’s year to reuse it.
 4. Validate and preview Longer Rides, each archive year, and Where To Next before publishing.
 
-The archive dropdown updates automatically. Where To Next only selects future dated entries from `longerRides`; archived rides never become upcoming rides. While the new list is empty, the existing Midwinter Celebration fallback remains in place. That seasonal image is maintained separately from the programme rollover.
+The archive dropdown updates automatically. Where To Next only selects future dated entries from `longerRides`; archived rides never become upcoming rides. While the new list is empty, the Midwinter Celebration fallback is available only through 1 December 2026 (UK time). After that it becomes a coming-soon message automatically. The seasonal deadline is separate from the programme rollover.
 
 ## Route maps and photos
 

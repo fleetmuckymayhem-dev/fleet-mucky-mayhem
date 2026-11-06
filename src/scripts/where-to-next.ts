@@ -1,6 +1,8 @@
 import { loadRideData, type Ride } from '../lib/data.ts';
 import { countdownParts, formatRideDate, londonDeparture, nextRide } from '../lib/dates.ts';
 const fallback = 'img/ride-maps/no-map-provided.png';
+// Keep the seasonal fallback through the event's UK calendar day only.
+const celebrationEnds = londonDeparture('2026-12-02', '00:00');
 let stop: (() => void) | undefined;
 let generation = 0;
 function text(id: string, value: string | number) { const el = document.getElementById(id); if (el) el.textContent = String(value); }
@@ -12,6 +14,11 @@ function celebrationMode(enabled: boolean) {
 }
 function renderRide(ride: Ride | null) {
   celebrationMode(false);
+  const emptyMessage = document.getElementById('next-empty-message');
+  if (emptyMessage) emptyMessage.hidden = true;
+  const mapColumn = document.getElementById('next-map-column');
+  if (mapColumn) mapColumn.hidden = false;
+  document.getElementById('next-content-column')?.classList.add('col-xxl-6');
   text('next-title', ride?.title ?? 'TBD');
   text('next-date', formatRideDate(ride?.date));
   text('next-start-time', ride ? (ride.startTime ?? '09:30') : '--');
@@ -44,6 +51,15 @@ function renderCelebration() {
     image.alt = 'The Muckies Midwinter Celebration, 1st December 2026: festive bicycles beside a warmly lit pub';
   }
 }
+function renderEmptyProgramme() {
+  renderRide(null);
+  celebrationMode(true);
+  const emptyMessage = document.getElementById('next-empty-message');
+  if (emptyMessage) emptyMessage.hidden = false;
+  const mapColumn = document.getElementById('next-map-column');
+  if (mapColumn) mapColumn.hidden = true;
+  document.getElementById('next-content-column')?.classList.remove('col-xxl-6');
+}
 function renderClock(target: number | null) {
   const clock = countdownParts(target);
   for (const [id, value] of Object.entries({ days: clock.days, hours: clock.hours, min: clock.minutes, sec: clock.seconds })) text(id, String(value).padStart(2, '0'));
@@ -55,12 +71,16 @@ export async function initWhereToNext(): Promise<void> {
   try {
     const data = await loadRideData();
     if (request !== generation) return;
-    let selected: Ride | null | undefined;
+    let selected: Ride | 'celebration' | 'empty' | undefined;
     const tick = () => {
-      const ride = nextRide(data.longerRides);
-      if (ride !== selected) {
-        if (ride) renderRide(ride); else renderCelebration();
-        selected = ride;
+      const now = Date.now();
+      const ride = nextRide(data.longerRides, now);
+      const display = ride ?? (now < celebrationEnds ? 'celebration' : 'empty');
+      if (display !== selected) {
+        if (display === 'celebration') renderCelebration();
+        else if (display === 'empty') renderEmptyProgramme();
+        else renderRide(display);
+        selected = display;
       }
       renderClock(ride?.date ? londonDeparture(ride.date, ride.startTime) : null);
     };

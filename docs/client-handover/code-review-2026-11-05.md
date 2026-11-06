@@ -2,6 +2,8 @@
 
 The local technical review passed after the fixes below. Production and staging builds complete, the unit suite passes, and no unexpected browser errors were observed in the tested scenarios. This is a bounded technical result for the reviewed working tree.
 
+**Follow-up, 6 November 2026:** Martin authorised committing and pushing these fixes. The reviewed source was committed as `bcc32ce`. The later [functional scope decisions and seasonal follow-up](readiness-checklist.md#functional-scope-and-release-decisions--6-november-2026) supersede the indefinite seasonal fallback described below; the dated evidence in this report retains its original scope.
+
 ## Candidate and evidence
 
 - Shared source: /home/martin/projects/fleet-mucky-mayhem, branch docs/local-readiness.

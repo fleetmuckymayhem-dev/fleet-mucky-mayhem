@@ -79,15 +79,64 @@ try {
   for (const [name, payload, status, now] of scenarios) {
     const { page, errors, requests } = await open('Europe/London', now, payload, status);
     const actual = await state(page);
-    const celebration = status === 200 && name !== 'invalid-json-shape';
+    const celebration = status === 200 && name !== 'invalid-json-shape' && now < '2026-12-02T00:00:00Z';
     assert.equal(actual.title, celebration ? 'The Muckies Midwinter Celebration' : 'TBD');
     assert.deepEqual(actual.clock, ['00', '00', '00', '00']);
     assert.equal(await page.locator('#next-start-point-link').isVisible(), false);
     if (celebration) await checkCelebration(page);
-    else assert.match(await page.locator('#next-route-map').getAttribute('src'), /no-map-provided/);
+    else if (name === 'no-future-rides') await checkEmptyProgramme(page);
+    else {
+      assert.match(await page.locator('#next-route-map').getAttribute('src'), /no-map-provided/);
+      assert.equal(await page.locator('#next-empty-message').isVisible(), false);
+    }
     assert.deepEqual(errors, []); assert.equal(requests(), 1);
     records.push({ name, actual }); await page.close();
   }
+  // Expire at UK midnight after 1 December, including an already-open page.
+  for (const timezone of ['Europe/London', 'America/Los_Angeles', 'Asia/Tokyo']) {
+    const { page, errors, requests } = await open(timezone, '2026-12-01T23:59:59Z');
+    await checkCelebration(page);
+    await page.clock.runFor(1000);
+    await checkEmptyProgramme(page);
+    assert.equal((await state(page)).timers, 1);
+    assert.equal(requests(), 1);
+    assert.deepEqual(errors, []);
+    records.push({ name: 'seasonal-midnight-expiry', timezone, actual: await state(page) });
+    await page.close();
+
+    const future = structuredClone(data);
+    const example = data.longerRides[0];
+    future.longerRides = [
+      { ...example, id: 'test-later-2027', title: 'Later 2027 ride', date: '2027-02-20', year: 2027 },
+      { ...example, id: 'test-undecided-2027', title: 'Undecided ride', date: null, year: 2027 },
+      { ...example, id: 'test-first-2027', title: 'First 2027 ride', date: '2027-01-23', year: 2027 },
+    ];
+    future.archivedRides.push({ ...example, id: 'test-archived-future', date: '2027-01-01', year: 2027 });
+    const upcoming = await open(timezone, '2026-12-02T00:00:00Z', future);
+    assert.equal((await state(upcoming.page)).title, 'First 2027 ride');
+    assert.equal((await state(upcoming.page)).date, '23-Jan-27');
+    assert.equal(await upcoming.page.locator('#next-details').isVisible(), true);
+    assert.equal(await upcoming.page.locator('#next-countdown').isVisible(), true);
+    assert.equal(await upcoming.page.locator('#next-empty-message').isVisible(), false);
+    assert.equal(await upcoming.page.locator('#next-map-column').isVisible(), true);
+    assert.notDeepEqual((await state(upcoming.page)).clock, ['00', '00', '00', '00']);
+    assert.deepEqual(upcoming.errors, []);
+    assert.equal(upcoming.requests(), 1);
+    records.push({ name: 'post-season-next-ride', timezone, actual: await state(upcoming.page) });
+    await upcoming.page.close();
+  }
+  // The last ride after the seasonal deadline expires into the coming-soon state.
+  const finalSchedule = structuredClone(data);
+  finalSchedule.longerRides = [{ ...data.longerRides[0], id: 'test-final-december', date: '2026-12-19', year: 2026 }];
+  const postSeasonFinal = await open('Europe/London', '2026-12-19T09:29:59Z', finalSchedule);
+  assert.equal(await postSeasonFinal.page.locator('#next-details').isVisible(), true);
+  await postSeasonFinal.page.clock.runFor(1000);
+  await checkEmptyProgramme(postSeasonFinal.page);
+  assert.deepEqual(postSeasonFinal.errors, []);
+  assert.equal(postSeasonFinal.requests(), 1);
+  records.push({ name: 'post-season-final-departure', actual: await state(postSeasonFinal.page) });
+  await postSeasonFinal.page.close();
+
   // The final scheduled departure switches to the celebration without a reload.
   const finalRide = await open('Europe/London', '2026-10-17T08:29:59Z');
   assert.equal((await state(finalRide.page)).title, 'Lock, Stock and Barrel');
@@ -106,10 +155,17 @@ try {
     await page.locator('#where-to-next').screenshot({ path: `artifacts/countdown/celebration-${width}.png` });
     assert.deepEqual(errors, []);
     await page.close();
+    const empty = await open('Europe/London', '2026-12-02T00:00:00Z');
+    await empty.page.setViewportSize({ width, height: 1000 });
+    await checkEmptyProgramme(empty.page);
+    assert.equal(await empty.page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+    await empty.page.locator('#where-to-next').screenshot({ path: `artifacts/countdown/empty-programme-${width}.png` });
+    assert.deepEqual(empty.errors, []);
+    await empty.page.close();
   }
   mkdirSync('artifacts/countdown', { recursive: true });
   writeFileSync('artifacts/countdown/browser-results.json', JSON.stringify(records, null, 2));
-  console.log('PASS: three timezones, live departure rollover, single timer/request, celebration fallback at mobile/desktop widths, empty/exhausted schedules, invalid data, and HTTP failure.');
+  console.log('PASS: three timezones, live departure rollover, single timer/request, UK seasonal midnight expiry, post-season next-ride selection, mobile/desktop celebration and coming-soon states, empty/exhausted schedules, invalid data, and HTTP failure.');
 } finally { await browser.close(); }
 
 async function checkCelebration(page) {
@@ -126,4 +182,16 @@ async function checkCelebration(page) {
     const image = document.getElementById('next-route-map');
     return image.complete && image.naturalWidth > 0;
   });
+}
+
+async function checkEmptyProgramme(page) {
+  assert.equal(await page.locator('#next-empty-message').isVisible(), true);
+  assert.match(await page.locator('#next-empty-message').textContent(), /next Longer Ride will be announced here soon/);
+  assert.equal(await page.locator('#next-empty-message a[href="#ride-diary"]').isVisible(), true);
+  assert.equal(await page.locator('#next-empty-message a[href^="https://chat.whatsapp.com/"]').isVisible(), true);
+  for (const id of ['next-countdown', 'next-intro', 'next-details', 'next-route-caption', 'next-map-column']) {
+    assert.equal(await page.locator(`#${id}`).isVisible(), false, `${id} should be hidden`);
+  }
+  assert.deepEqual((await state(page)).clock, ['00', '00', '00', '00']);
+  assert.equal(await page.locator('#next-content-column').evaluate(el => el.classList.contains('col-xxl-6')), false);
 }
