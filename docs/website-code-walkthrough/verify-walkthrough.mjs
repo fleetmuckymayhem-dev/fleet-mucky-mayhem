@@ -30,3 +30,9 @@ const ride=live.archivedRides.find(ride=>ride.id==='war-of-the-worlds-2026-03-14
 if(ride?.distanceMiles!==36) throw new Error('Practice starting distance differs');
 if(live.programmeYear!==2027 || live.longerRides.length!==0) throw new Error('Programme state differs');
 console.log(JSON.stringify({slides:content.slides.length,timingMinutes:last/60,allSourcePathsExist:true,practiceRecordValid:true,exampleMatchesSource:true,presenterGuideMatches:true}));
+
+if (content.project !== 'fleet-mucky-mayhem' || /astro-prototype|P:\\bootstraprefactor/.test(JSON.stringify(content) + guide + handout)) throw new Error('Retired workspace instruction remains');
+const navigation = fs.readFileSync(path.join(root, 'src/js/navlink.js'), 'utf8');
+if (!content.slides[23].code.includes("classList.toggle('active', item === link)") || !navigation.includes("classList.toggle('active', item === link)")) throw new Error('Navigation example differs from source');
+if (content.slides[23].code.includes("querySelector('.active')")) throw new Error('Unscoped active selector remains');
+console.log('Reviewed workspace instructions and navigation excerpt match current source.');

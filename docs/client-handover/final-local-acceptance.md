@@ -1,5 +1,7 @@
 # Final local acceptance readiness
 
+**Subsequent code review:** [5 November technical review and fixes](code-review-2026-11-05.md) covers a newer working-tree candidate. The acceptance and unchanged-source statements below retain their original version scope. The remaining code-walkthrough consistency review is completed in the newer report.
+
 **Later guided result, 5 November 2026:** Martin approved local acceptance of candidate be5efc2e52e289579b48b522e70d5a7abe97001f after the checks recorded in [acceptance-session.md](acceptance-session.md). Final client acceptance remains at the later new-account GitHub Pages stage. The clean handover copy has not been created and publication is not authorised here.
 
 **Preparation evidence, 5 November 2026:** ready to begin final local acceptance at tested website b12fc29e5ca3cf037af597e747d47edd23484569. The following verification and limitations describe that preparation; subsequent human results are in the session record. No new website defect was established in this review. The existing Contact Us QR fix is included and reverified. The tested website is unchanged. The acceptance candidate adds reviewed documentation and matching release/undo PDFs; see [version record](acceptance-version.md).

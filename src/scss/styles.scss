@@ -7,9 +7,6 @@
 @use "./pages/hero.scss" as *;
 @use "./pages/contact-us.scss" as *;
 
-// Featured Ride Font
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-
 .variable-height-section {
   height: auto;
   display: flex;
@@ -110,7 +107,6 @@ a {
 
 .carousel-indicators-container .active {
   background-color: var(--bs-warning);
-  ;
   transform: scale(1.3);
 }
 
@@ -141,123 +137,4 @@ a {
 .carousel-control-next:hover {
   background-color: var(--bs-warning);
   transform: scale(1.1);
-}
-
-.featured-ride {
-  font-family: 'Roboto Mono', sans-serif;
-  width: 80%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 2rem;
-  background-image: url('../img/Featured-DDOTTS-30.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 0.5rem;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.ride-title {
-  font-weight: 700;
-  font-size: 1.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  color: black;
-}
-
-.ride-tagline {
-  font-weight: 100;
-  font-size: 0.9rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  padding-bottom: 0.5rem;
-  color: black;
-}
-
-.ride-date {
-  font-weight: 400;
-  font-size: 1.25rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  padding-bottom: 0.75rem;
-  color: black;
-}
-
-.ride-countdown-clock {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding-bottom: 0.75rem;
-}
-
-.display-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-weight: bold;
-  color: black;
-}
-
-.clock-item {
-  border: none;
-  border-radius: 10px;
-  padding: 20px;
-  min-width: 100px;
-  background: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-  text-align: center;
-  color: var(--bs-warning);
-  font-weight: bold;
-  font-size: 2rem;
-}
-
-.ride-details {
-  font-weight: 400;
-  font-size: 1.25rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  padding-top: 1.5rem;
-  padding-bottom: 0.75rem;
-  color: black;
-}
-
-.ride-details-button {
-  background-color: #ffc107;
-  color: black;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 15px;
-  font-size: 1.25rem;
-  font-weight: 400;
-  cursor: pointer;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  transition: background-color 0.3s ease;
-}
-
-.ride-details-button:hover {
-  background-color: #ffd740;
-}
-
-.ride-details-link a {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .ride-countdown-clock {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .clock-item {
-    min-width: 80px;
-    padding: 15px;
-    font-size: 1.5rem;
-  }
-
-  .ride-details-button {
-    margin: 20px auto;
-    width: fit-content;
-  }
 }

@@ -2,7 +2,7 @@
 
 ## Where to start
 
-The project folder for this lesson is `P:\bootstraprefactor\astro-prototype`. All shorter paths below start inside it. This workspace also contains the original website in `fleet-mucky-mayhem`. The `baseline` folder inside the Astro project is a historical comparison copy.
+The active project is `/home/martin/projects/fleet-mucky-mayhem`, opened through **WSL: FMM-Dev** in VS Code. All shorter paths below start at that project folder, which contains `package.json`. The older P: checkouts are historical references.
 
 | What you want to change | Where to begin |
 | --- | --- |
@@ -127,7 +127,7 @@ A dated ride uses a real `YYYY-MM-DD` date, a matching numeric year and a 24-hou
 
 Include the display information the diary needs, including destination, departure time and overall time. Use `"rideTime": "TBC"` when the cycling time is unknown. A route-map image path, if supplied, starts with `img/ride-maps/`; the file itself lives under `public/img/ride-maps/`.
 
-The data checks catch many structural mistakes, including duplicate IDs and invalid dates. They cannot confirm that an image exists or that a shared album is accessible to a visitor.
+The data checks catch many structural mistakes, including duplicate IDs and invalid dates. The build also checks that supplied route-map image files exist. Shared-album access must still be checked as a visitor.
 
 ## Photo data
 
@@ -141,7 +141,7 @@ A ride’s `photosUrl` and the Photos menu’s album URL are separate entries. I
 
 A variable names a value. A function groups instructions under a name. An event is something that happens, such as a click.
 
-`document.querySelectorAll('.nav-link')` finds page elements with that class. `addEventListener('click', ...)` registers code to run when a click happens. `classList.add('active')` adds a class label.
+`nav.querySelectorAll('.nav-link')` finds links inside the navigation. The active-link helper updates only these links, so carousel state stays independent. `addEventListener('click', ...)` registers code to run when a click happens. `classList.add('active')` adds a class label.
 
 Bootstrap controls also depend on matching attributes. For a FAQ, `data-bs-target="#question-one"` connects the button to the answer with `id="question-one"`. Renaming one side alone breaks the connection.
 
@@ -154,7 +154,7 @@ Bootstrap controls also depend on matching attributes. For a FAQ, `data-bs-targe
 | Link goes to the wrong place | Check `href` or the relevant JSON URL |
 | Accordion opens the wrong answer | Compare its target and the corresponding unique ID |
 | JSON syntax error | Inspect the edited line and the line before it for quotes and commas |
-| A field displays `undefined` | Compare the ride with a complete record and check the display fields |
+| A field displays `TBC` | Supply the missing optional detail when known; omitted departure times default to 09:30 |
 | Script stops responding | Inspect the browser Console and keep the full error text |
 | Preview looks unchanged | Confirm the correct practice project and preview workflow with the maintainer |
 
@@ -184,3 +184,7 @@ When asking for help, include the file path, what you changed, what you expected
 | Validation | Checking information against rules |
 
 The project README contains fuller maintenance instructions. Build and deployment are topics for a separate session.
+
+## Reviewed materials
+
+The current deck and matching PDF are `fleet-mucky-mayhem-code-walkthrough-reviewed-2026-11-05.pptx` and `fleet-mucky-mayhem-code-walkthrough-reviewed-2026-11-05.pdf`. The unversioned October exports are retained as historical references.

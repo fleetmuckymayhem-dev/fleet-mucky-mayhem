@@ -15,6 +15,12 @@ function object(value: unknown, label: string): asserts value is RecordValue {
 function text(value: unknown, label: string): asserts value is string {
   if (typeof value !== 'string' || !value.trim()) throw new Error(`${label}: expected nonempty text`);
 }
+function httpsUrl(value: unknown, label: string): void {
+  text(value, label);
+  let parsed: URL;
+  try { parsed = new URL(value); } catch { throw new Error(`${label}: expected HTTPS URL`); }
+  if (parsed.protocol !== 'https:') throw new Error(`${label}: expected HTTPS URL`);
+}
 function list(value: unknown, label: string): asserts value is unknown[] {
   if (!Array.isArray(value)) throw new Error(`${label}: expected array`);
 }
@@ -22,7 +28,7 @@ function validateRide(value: unknown, label: string): asserts value is Ride {
   object(value, label);
   text(value.id, `${label}.id`); text(value.title, `${label}.title`);
   if (value.date !== null) { text(value.date, `${label}.date (use null for TBD)`); parseDate(value.date); }
-  if (!Number.isInteger(value.year)) throw new Error(`${label}: invalid year`);
+  if (!Number.isInteger(value.year) || Number(value.year) < 1) throw new Error(`${label}: invalid year`);
   if (typeof value.date === 'string' && Number(value.date.slice(0, 4)) !== value.year) throw new Error(`${label}: year/date mismatch`);
   if (value.startTime !== undefined) { text(value.startTime, `${label}.startTime`); validateTime(value.startTime); }
   if (typeof value.date === 'string') londonDeparture(value.date, value.startTime as string | undefined);
@@ -32,6 +38,11 @@ function validateRide(value: unknown, label: string): asserts value is Ride {
     // Preserve compatibility with historical single-item URL arrays.
     if (['routeMapImage', 'photosUrl', 'reliveUrl'].includes(key) && Array.isArray(value[key]) && value[key].length === 1) value[key] = value[key][0];
     text(value[key], `${label}.${key}`);
+  }
+  if (value.meetPoint.googleMapsUrl !== undefined) httpsUrl(value.meetPoint.googleMapsUrl, `${label}.meetPoint.googleMapsUrl`);
+  for (const key of ['photosUrl', 'reliveUrl']) if (value[key] !== undefined) httpsUrl(value[key], `${label}.${key}`);
+  if (typeof value.routeMapImage === 'string' && !/^img\/ride-maps\/[a-zA-Z0-9_-][a-zA-Z0-9_.-]*\.(png|jpe?g|webp|svg)$/i.test(value.routeMapImage)) {
+    throw new Error(`${label}.routeMapImage: expected an image under img/ride-maps/`);
   }
   if (value.distanceMiles !== undefined && (typeof value.distanceMiles !== 'number' || !Number.isFinite(value.distanceMiles) || value.distanceMiles < 0)) throw new Error(`${label}: invalid distance`);
   for (const key of ['guidance', 'notes']) if (value[key] !== undefined) {

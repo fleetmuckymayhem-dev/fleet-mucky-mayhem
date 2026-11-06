@@ -81,3 +81,24 @@ test('programme year is optional for legacy data and validated when supplied', (
     assert.throws(() => parseRideData({ programmeYear, longerRides: [], archivedRides: [] }), /programmeYear/);
   }
 });
+
+test('ride links reject invalid schemes and map paths while preserving legacy URL arrays', () => {
+  for (const field of ['photosUrl', 'reliveUrl']) {
+    for (const invalid of ['javascript:alert(1)', 'http://example.com/album', 'not a URL']) {
+      const data = fixture();
+      (data.longerRides[0] as unknown as Record<string, unknown>)[field] = invalid;
+      assert.throws(() => parseRideData(data), /HTTPS URL/);
+    }
+  }
+  const data = fixture();
+  data.longerRides[0]!.meetPoint.googleMapsUrl = 'javascript:alert(1)';
+  assert.throws(() => parseRideData(data), /HTTPS URL/);
+  for (const invalid of ['../secret.png', 'https://example.com/map.png', 'img/ride-maps/../map.png']) {
+    const data = fixture();
+    data.longerRides[0]!.routeMapImage = invalid;
+    assert.throws(() => parseRideData(data), /routeMapImage/);
+  }
+  const legacy = fixture() as unknown as { longerRides: Record<string, unknown>[] };
+  legacy.longerRides[0]!.photosUrl = ['https://example.com/photos'];
+  assert.equal(parseRideData(legacy).longerRides[0]!.photosUrl, 'https://example.com/photos');
+});

@@ -1,22 +1,12 @@
-document.addEventListener("DOMContentLoaded", function () {
-    var carousel = document.querySelector("#aboutUsCarousel");
-    var indicators = document.querySelectorAll(".carousel-indicators-container .indicator");
+const carousel = document.querySelector('#aboutUsCarousel');
+const indicators = carousel?.querySelectorAll('.carousel-indicators-container .indicator') ?? [];
 
-    carousel.addEventListener("slid.bs.carousel", function (event) {
-      // Remove active class from all indicators
-      indicators.forEach(function (indicator) {
-        indicator.classList.remove("active");
-      });
-
-      // Add active class to the current indicator
-      indicators[event.to].classList.add("active");
-    });
-
-    // Ensure indicator clicks also update properly
-    indicators.forEach(function (indicator, index) {
-      indicator.addEventListener("click", function () {
-        indicators.forEach((i) => i.classList.remove("active"));
-        this.classList.add("active");
-      });
-    });
+// The completed slide transition is the single source of indicator state.
+carousel?.addEventListener('slid.bs.carousel', event => {
+  indicators.forEach((indicator, index) => {
+    const active = index === event.to;
+    indicator.classList.toggle('active', active);
+    if (active) indicator.setAttribute('aria-current', 'true');
+    else indicator.removeAttribute('aria-current');
   });
+});

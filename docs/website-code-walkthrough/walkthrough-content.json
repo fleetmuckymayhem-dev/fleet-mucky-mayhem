@@ -1,6 +1,6 @@
 {
   "title": "Fleet Mucky Mayhem: a beginner’s guide to the website code",
-  "project": "astro-prototype",
+  "project": "fleet-mucky-mayhem",
   "durationMinutes": 90,
   "slides": [
     {
@@ -74,15 +74,15 @@
     },
     {
       "title": "The folders you will use",
-      "code": "astro-prototype/\n  src/pages/\n  src/layouts/\n  src/components/\n  src/scss/\n  src/js/ and src/scripts/\n  src/lib/\n  public/data/\n  public/img/",
+      "code": "fleet-mucky-mayhem/\n  src/pages/\n  src/layouts/\n  src/components/\n  src/scss/\n  src/js/ and src/scripts/\n  src/lib/\n  public/data/\n  public/img/",
       "explain": [
         "pages and layouts assemble the page.",
         "components holds the visible sections.",
         "scss, scripts and lib control appearance and behaviour.",
         "public holds data files and images."
       ],
-      "caption": "All paths in this walkthrough start inside astro-prototype/",
-      "notes": "TIME 15:00–18:00 (3 minutes).\nOpen this folder tree in the editor and expand only the folders on screen. src means source. A component is a named piece of a page; lib holds reusable helper code. Explain that this workspace also contains the original fleet-mucky-mayhem project, and astro-prototype/baseline is a historical comparison copy. The lesson uses astro-prototype/src and astro-prototype/public. Generated folders such as dist, .astro and node_modules are not the source to edit for content changes. Ask the learner to find components and public/data themselves.",
+      "caption": "All paths start inside the fleet-mucky-mayhem project folder",
+      "notes": "TIME 15:00–18:00 (3 minutes).\nOpen this folder tree in the editor and expand only the folders on screen. src means source. A component is a named piece of a page; lib holds reusable helper code. Use the shared FMM-Dev checkout at /home/martin/projects/fleet-mucky-mayhem in VS Code's WSL connection. Paths start at the folder containing package.json. The P: checkouts are historical references and are not the active source. Generated folders such as dist, .astro and node_modules are not the source to edit for content changes. Ask the learner to find components and public/data themselves.",
       "source": [
         "README.md"
       ]
@@ -342,7 +342,7 @@
         "Remove unused optional fields, including an empty meeting-point note.",
         "Replace placeholder links or remove optional links until they are ready."
       ],
-      "notes": "TIME 58:00–60:00 (2 minutes).\nOpen public/data/ride-template.json. It contains instructions, examples and newRide, so copying the entire file would be wrong. Its empty meetPoint.note and placeholder date are not ready to pass validation unchanged. Use startTime in HH:MM, a matching numeric year, and a non-negative numeric distance. Include destination, startTime and overallTime for useful diary output even where the validator permits omission; rideTime may be TBC. Show that parseRideData checks duplicates and date formats, but cannot confirm image files exist or that a shared folder opens for visitors. The handout has a complete practice record. Save real authoring and review workflow for a supervised task.",
+      "notes": "TIME 58:00–60:00 (2 minutes).\nOpen public/data/ride-template.json. It contains instructions, examples and newRide, so copying the entire file would be wrong. Its empty meetPoint.note and placeholder date are not ready to pass validation unchanged. Use startTime in HH:MM, a matching numeric year, and a non-negative numeric distance. Include destination, startTime and overallTime for useful diary output even where the validator permits omission; rideTime may be TBC. Show that parseRideData checks duplicates and date formats, and the build also checks that supplied route-map files exist. A shared folder still needs to be opened as a visitor. The handout has a complete practice record. Save real authoring and review workflow for a supervised task.",
       "source": [
         "public/data/ride-template.json",
         "src/lib/data.ts",
@@ -366,15 +366,15 @@
     },
     {
       "title": "A click changes the active menu item",
-      "code": "const navLinkEls =\n  document.querySelectorAll('.nav-link');\nnavLinkEls.forEach(navLinkEl => {\n  navLinkEl.addEventListener('click', () => {\n    document.querySelector('.active')\n      ?.classList.remove('active');\n    navLinkEl.classList.add('active');\n  });\n});",
+      "code": "function setActiveLink(link) {\n  navLinkEls.forEach(item => {\n    item.classList.toggle('active', item === link);\n  });\n}",
       "explain": [
-        "Find the navigation links.",
-        "For each link, listen for a click.",
-        "Remove an existing active class if one exists.",
-        "Add active to the clicked link."
+        "Use only the links selected inside the navigation.",
+        "Compare each item with the clicked link.",
+        "Keep active on the matching link only.",
+        "Leave carousel and other controls independent."
       ],
-      "caption": "First block of src/js/navlink.js, whitespace normalised",
-      "notes": "TIME 62:00–65:00 (3 minutes).\nRead this as a story rather than asking the learner to memorise punctuation. document refers to the page; querySelectorAll finds all matches for a CSS selector; forEach repeats the following steps for each link. addEventListener registers what to do later when a click happens. The => notation starts a small function. ?. safely stops the removal if no matching active element exists. classList edits class labels on an element. Explain that navlink.js also contains mobile menu closing code below this block. The shown code selects the first .active element on the page, so do not describe it as a navigation-scoped search. CHECK: Is active visible text or a class name? A class name.",
+      "caption": "Shortened helper from src/js/navlink.js; aria-current lines omitted",
+      "notes": "TIME 62:00–65:00 (3 minutes).\nRead this as a story rather than asking the learner to memorise punctuation. navLinkEls contains only links inside header nav, selected earlier in the file. forEach repeats the next steps for each navigation link. item === link asks whether this is the selected link. classList.toggle adds active when that condition is true and removes it when false. The real helper also updates aria-current for assistive technology; those lines are omitted from the slide. The click listener calls setActiveLink(link), then closes the mobile menu through Bootstrap Collapse. Scrolling calls the same helper for the visible section. These updates never remove active from carousel slides or indicators. CHECK: Is active visible text or a class name? A class name.",
       "source": [
         "src/js/navlink.js"
       ]
@@ -428,5 +428,6 @@
         "README.md"
       ]
     }
-  ]
+  ],
+  "reviewedDate": "2026-11-05"
 }

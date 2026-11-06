@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 const require = createRequire(process.env.QA_PACKAGE_ROOT ? `${process.env.QA_PACKAGE_ROOT}/package.json` : import.meta.url);
 const { chromium } = require('playwright');
-const browser = await chromium.launch({ channel: 'msedge', headless: true });
+const browser = await chromium.launch({ channel: process.env.QA_BROWSER_CHANNEL || 'msedge', headless: true });
 const data = JSON.parse(readFileSync('public/data/longer-rides.json', 'utf8'));
 // Use the completed 2026 schedule as a fixture for live departure boundaries.
 data.longerRides = data.archivedRides.filter(ride => ride.year === 2026);

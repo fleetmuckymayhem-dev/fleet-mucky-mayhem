@@ -8,7 +8,7 @@ const data = parsePhotoData(JSON.parse(readFileSync('public/data/photos.json', '
 const referenceTime = Date.parse('2026-10-19T12:00:00Z');
 const { current, archived } = photoCollections(data, referenceTime);
 const years = [...(current ? [current] : []), ...archived];
-const browser = await chromium.launch({ channel: 'msedge', headless: true });
+const browser = await chromium.launch({ channel: process.env.QA_BROWSER_CHANNEL || 'msedge', headless: true });
 mkdirSync('artifacts/photos', { recursive: true });
 try {
   for (const width of [390, 1440]) {

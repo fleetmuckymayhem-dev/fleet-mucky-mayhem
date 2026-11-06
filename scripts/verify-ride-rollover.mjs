@@ -3,7 +3,7 @@ import { readFileSync, mkdirSync } from 'node:fs';
 import assert from 'node:assert/strict';
 const require = createRequire(process.env.QA_PACKAGE_ROOT ? `${process.env.QA_PACKAGE_ROOT}/package.json` : import.meta.url);
 const { chromium } = require('playwright');
-const browser = await chromium.launch({ channel: 'msedge', headless: true });
+const browser = await chromium.launch({ channel: process.env.QA_BROWSER_CHANNEL || 'msedge', headless: true });
 const data = JSON.parse(readFileSync('public/data/longer-rides.json', 'utf8'));
 const url = process.env.ASTRO_QA_URL || 'http://127.0.0.1:4321/';
 mkdirSync('artifacts/ride-rollover', { recursive: true });

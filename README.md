@@ -1,5 +1,7 @@
 # Fleet Mucky Mayhem
 
+Latest local technical review: [code review and verification, 5 November 2026](docs/client-handover/code-review-2026-11-05.md), including the reviewed code walkthrough.
+
 Fleet Mucky Mayhem is a website for a social cycling group in Fleet, Hampshire, and the surrounding area. It includes information about the group, Regular and Longer Rides, past adventures, photos, and frequently asked questions.
 
 This is version **2.0.0**, built with Astro and Bootstrap. It keeps the familiar website layout and styling while using a newer build system. The public rehearsal source repository is [fleetmuckymayhem-dev/fleet-mucky-mayhem](https://github.com/fleetmuckymayhem-dev/fleet-mucky-mayhem), with its own history separate from the original website repository. The original maintainer's Astro repository remains a separate private copy.
@@ -57,8 +59,8 @@ The editable presentation remains attached to the Codex chat where it was prepar
 
 | File | Purpose |
 | --- | --- |
-| [PowerPoint presentation](docs/website-code-walkthrough/fleet-mucky-mayhem-code-walkthrough.pptx) | Editable 27-slide deck with speaker notes. |
-| [PDF presentation](docs/website-code-walkthrough/fleet-mucky-mayhem-code-walkthrough.pdf) | The same 27 slides for viewing or printing. |
+| [PowerPoint presentation](docs/website-code-walkthrough/fleet-mucky-mayhem-code-walkthrough-reviewed-2026-11-05.pptx) | Editable 27-slide deck with speaker notes. |
+| [PDF presentation](docs/website-code-walkthrough/fleet-mucky-mayhem-code-walkthrough-reviewed-2026-11-05.pdf) | The same 27 slides for viewing or printing. |
 | [presenter-guide.md](docs/website-code-walkthrough/presenter-guide.md) | Notes matching the current 27-slide order, explanation prompts and suggested pacing. |
 | [learner-reference.md](docs/website-code-walkthrough/learner-reference.md) | A beginner's file guide, code explanations and glossary. |
 | [walkthrough-content.json](docs/website-code-walkthrough/walkthrough-content.json) | The current slide text and speaker notes for maintaining the presentation. |
@@ -432,4 +434,4 @@ Useful commands in Ubuntu: `npm run dev` for a development server, `npm run chec
 
 The saved-build comparison harness is `scripts/verify-full-browser.mjs` (serve two saved Astro builds with `scripts/preview-snapshot.mjs` and set `BASELINE_QA_URL` and `ASTRO_QA_URL`); countdown and populated General Info checks are in `scripts/verify-countdown.mjs` and `scripts/verify-general-info.mjs`. These need a separately available Playwright installation and Edge. Screenshot comparison uses `scripts/compare-screenshots.py` with Python/Pillow. See [VERIFICATION.md](VERIFICATION.md) for historical migration evidence and its limits.
 
-The historical `vite-baseline` dependency and `baseline:build`/`baseline:preview` commands were retired during the dependency security cleanup. Active staging verification remains in `scripts/verify-staging.mjs`. See [the cleanup report](docs/client-handover/dependency-security-cleanup.md) for audit and validation evidence. Older walkthrough references to `baseline/` describe the pre-retirement workspace.
+The historical `vite-baseline` dependency and `baseline:build`/`baseline:preview` commands were retired during the dependency security cleanup. Active staging verification remains in `scripts/verify-staging.mjs`. See [the cleanup report](docs/client-handover/dependency-security-cleanup.md) for audit and validation evidence. The reviewed walkthrough uses the shared FMM-Dev project; the unversioned October PDF/PPTX are historical exports.

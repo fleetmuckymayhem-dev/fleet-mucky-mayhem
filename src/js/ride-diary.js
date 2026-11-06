@@ -22,6 +22,13 @@
  */
 import { formatRideDate as formatDate, compareRideDates } from '../lib/dates.ts';
 import { loadRideData } from '../lib/data.ts';
+import Collapse from 'bootstrap/js/dist/collapse';
+
+// Plain data fields are text. Guidance and notes deliberately support author-written HTML.
+function escapeHtml(value) {
+  return String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
+}
 
 /**
  * Generate the accordion header button HTML
@@ -31,7 +38,7 @@ function createAccordionButton(ride, collapseId, cssClass) {
   return `
     <button class="accordion-button collapsed ${cssClass} lead brand-text" type="button" data-bs-toggle="collapse"
       data-bs-target="#${collapseId}" aria-expanded="false" aria-controls="${collapseId}">
-      ${dateDisplay} | ${ride.title}
+      ${dateDisplay} | ${escapeHtml(ride.title)}
     </button>
   `;
 }
@@ -42,36 +49,37 @@ function createAccordionButton(ride, collapseId, cssClass) {
  * 🟢 Beginner: This creates the Bootstrap table showing ride details
  */
 function createGeneralInfoTable(ride) {
-  const meetPointNote = ride.meetPoint.note ? ` ${ride.meetPoint.note}` : "";
+  const meetPointNote = ride.meetPoint.note ? ` ${escapeHtml(ride.meetPoint.note)}` : "";
+  const meetPointName = escapeHtml(ride.meetPoint.name);
   const meetPointHtml = ride.meetPoint.googleMapsUrl
-    ? `${ride.meetPoint.name} (<a href="${ride.meetPoint.googleMapsUrl}" target="_blank" class="brand-text">Google Maps <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>)${meetPointNote}`
-    : ride.meetPoint.name;
+    ? `${meetPointName} (<a href="${escapeHtml(ride.meetPoint.googleMapsUrl)}" target="_blank" rel="noopener noreferrer" class="brand-text">Google Maps <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>)${meetPointNote}`
+    : `${meetPointName}${meetPointNote}`;
 
   return `
     <table class="table table-borderless table-dark ride-general-info">
       <tbody class="text-start">
         <tr>
           <th scope="row" style="width: 20%;">DESTINATION:</th>
-          <td class="text-start" style="width: 80%;">${ride.destination}</td>
+          <td class="text-start" style="width: 80%;">${escapeHtml(ride.destination ?? 'TBC')}</td>
         </tr>
         <tr>
           <th scope="row" style="width: 20%;">DISTANCE:</th>
-          <td class="text-start" style="width: 80%;">${ride.distanceMiles} miles</td>
+          <td class="text-start" style="width: 80%;">${escapeHtml(ride.distanceMiles ?? 'TBC')} miles</td>
         </tr>
         <tr>
           <th scope="row" style="width: 20%;">DEPARTURE TIME:</th>
-          <td class="text-start" style="width: 80%;">${ride.startTime} ${meetPointHtml}</td>
+          <td class="text-start" style="width: 80%;">${escapeHtml(ride.startTime ?? '09:30')} ${meetPointHtml}</td>
         </tr>
         <tr>
           <td colspan="2" class="pt-4">Timings below are for guidance only!</td>
         </tr>
         <tr>
           <th scope="row" style="width: 20%;">OVERALL TIME:</th>
-          <td class="text-start" style="width: 80%;">${ride.overallTime}</td>
+          <td class="text-start" style="width: 80%;">${escapeHtml(ride.overallTime ?? 'TBC')}</td>
         </tr>
         <tr>
           <th scope="row" style="width: 20%;">RIDE TIME:</th>
-          <td class="text-start" style="width: 80%;">${(ride.rideTime ?? 'TBC').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</td>
+          <td class="text-start" style="width: 80%;">${escapeHtml(ride.rideTime ?? 'TBC')}</td>
         </tr>
       </tbody>
     </table>
@@ -123,15 +131,15 @@ function createGuidanceHtml(guidance) {
  * Generate the photos section HTML
  */
 function createPhotosHtml(ride) {
-  let html = `
-    <a href="${ride.photosUrl}" target="_blank"><img
+  let html = ride.photosUrl ? `
+    <a href="${escapeHtml(ride.photosUrl)}" target="_blank" rel="noopener noreferrer"><img
       src="img/photos.svg" alt="Photos Button" width="50px" height="50px"> <i
       class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a>
-  `;
+  ` : '<p>Photos will be available here soon.</p>';
 
   if (ride.reliveUrl) {
     html += `<br /><br />
-    <p><a href="${ride.reliveUrl}" class="brand-text" target="_blank">Relive the adventure here <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a></p>`;
+    <p><a href="${escapeHtml(ride.reliveUrl)}" class="brand-text" target="_blank" rel="noopener noreferrer">Relive the adventure here <i class="bi bi-box-arrow-up-right brand-text link-icon"> </i></a></p>`;
   }
 
   return html;
@@ -152,12 +160,11 @@ function createAccordionItem(ride, index, group) {
   const guidanceHtml = createGuidanceHtml(ride.guidance);
 
   return `
-    <!-- ${formatDate(ride.date)} | ${ride.title} -->
     <div class="accordion-item">
       <h2 class="accordion-header" id="${headingId}">
         ${createAccordionButton(ride, collapseId, cssClass)}
       </h2>
-      <div id="${collapseId}" class="accordion-collapse collapse" aria-labelledby="${headingId}">
+      <div id="${collapseId}" class="accordion-collapse collapse" data-bs-parent="#accordion${group}" aria-labelledby="${headingId}">
         <div class="accordion-body body-text">
           GENERAL INFO:
           ${createGeneralInfoTable(ride)}
@@ -301,14 +308,19 @@ function collapseAllAccordionItems(accordionId) {
   const accordion = document.getElementById(accordionId);
   if (!accordion) return;
 
-  const items = accordion.querySelectorAll('.accordion-item');
-  items.forEach((item) => {
-    const button = item.querySelector('.accordion-button');
-    const collapse = item.querySelector('.accordion-collapse');
-
-    button.classList.add('collapsed');
-    button.setAttribute('aria-expanded', 'false');
-    collapse.classList.remove('show');
+  accordion.querySelectorAll('.accordion-collapse').forEach(panel => {
+    const collapse = Collapse.getOrCreateInstance(panel, { toggle: false });
+    if (panel.classList.contains('collapsing')) {
+      const settled = () => {
+        panel.removeEventListener('shown.bs.collapse', settled);
+        panel.removeEventListener('hidden.bs.collapse', settled);
+        collapse.hide();
+      };
+      panel.addEventListener('shown.bs.collapse', settled, { once: true });
+      panel.addEventListener('hidden.bs.collapse', settled, { once: true });
+    } else {
+      collapse.hide();
+    }
   });
 }
 
@@ -321,38 +333,9 @@ document.getElementById('showLonger').addEventListener('click', function () {
   showAccordion('accordionLonger', 'showLonger');
 });
 
-// Ensure only one accordion item is expanded at a time
-function handleAccordionToggle(accordionId) {
-  const accordion = document.getElementById(accordionId);
-  if (!accordion) return;
-
-  const items = accordion.querySelectorAll('.accordion-item');
-
-  items.forEach((item) => {
-    const button = item.querySelector('.accordion-button');
-    const collapse = item.querySelector('.accordion-collapse');
-
-    button.addEventListener('click', () => {
-      // Collapse all other items within the same accordion
-      items.forEach((otherItem) => {
-        if (otherItem !== item) {
-          const otherButton = otherItem.querySelector('.accordion-button');
-          const otherCollapse = otherItem.querySelector('.accordion-collapse');
-          otherButton.classList.add('collapsed');
-          otherButton.setAttribute('aria-expanded', 'false');
-          otherCollapse.classList.remove('show');
-        }
-      });
-    });
-  });
-}
-
 /** Initialize controls once the ride groups have been rendered. */
 async function initRideDiary() {
   await loadRidesFromJson();
-  document.querySelectorAll('#ride-diary .accordion').forEach((accordion) => {
-    handleAccordionToggle(accordion.id);
-  });
   showAccordion('accordionRegular', 'showRegular');
 }
 
